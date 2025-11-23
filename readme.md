@@ -32,7 +32,7 @@ Hello, this repo is for my **learning journey**. I will post my journey here, wh
 
 | Track | Folder | Level | Status | Start Date | Completion Date | Projects |
 | :--- | :--- | :---: | :--- | :---: | :---: | :--- |
-| **JavaScript (JS)** | `[/JavaScript](D:\MY-Skills\SCRIPTING_LANGUAGES\JavaScript)` | Beginner | In Progress | 2025-11-24 | — | - |
+| **JavaScript (JS)** | `[./JavaScript]` | Beginner | In Progress | 2025-11-24 | — | - |
 
 ---
 
