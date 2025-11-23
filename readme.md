@@ -1,12 +1,11 @@
 # 🚀 My Skills: The Learning Journey 🧠
 
-[![Status](https://img.shields.io/badge/Status-Actively%20Learning-blueviolet)](https://github.com/Itx-Psycho0/my-skills)
 
 ---
 
 ## 💡 Overview: I'm Become From Zero to Developer!
 
-Hello, this repo is for my **learning journey**. I will post my journey here, whatever new skills I learn, I will post them from **beginner to pro**. This is the complete overview of my skills and this repo. And this repo is not only about coding, I will also learn any creative skill, I will post that too in this repo.
+Welcome to my personal repository where I document my journey of learning new skills from scratch! This repo is dedicated to tracking my progress as I explore various programming languages, frameworks, tools, and creative skills. Whether you're a beginner like me or an experienced developer looking to expand your skill set, you'll find valuable resources and projects here.
 
 ---
 
