@@ -621,7 +621,7 @@ console.log(vowelCount); //Output: 5
 
 // 13. Find Max: Given an array [4, 1, 9, 3, 2], find the largest number using a loop (Do not use Math.max).
 let arr1 = [4,1,9,3,2]
-max = arr1[0]
+let max = arr1[0]
 for(let char of arr1){
     if (char > max){
         max= char
@@ -670,15 +670,20 @@ for(let i=0; i<word.length; i++){
 console.log(count) // Output: 3
 
 // 18. Fibonacci Sequence: Print the first 10 numbers of the Fibonacci sequence using a loop. (Sequence: 0, 1, 1, 2, 3, 5, 8... where current = prev + prevPrev)
-let current =0
-let prev = 1
-let prevPrev = 0
-for(let i =1 ; i<=10;i++){
-    console.log(current)
-    prevPrev = prev
-    current = prevPrev + prev
-    prev = i
+let n1 = 0, n2 = 1, nextTerm;
+
+console.log("Fibonacci Series:");
+
+for (let i = 1; i <= 10; i++) {
+    console.log(n1); // Print the current number
+    
+    nextTerm = n1 + n2; // Calculate the next one
+    
+    // Shift values for the next iteration
+    n1 = n2; 
+    n2 = nextTerm;
 }
+//Output: 
 
 // 19. Array Sum: Write a function that accepts an array of numbers (e.g., [10, 20, 30]) and returns their total sum.
 
