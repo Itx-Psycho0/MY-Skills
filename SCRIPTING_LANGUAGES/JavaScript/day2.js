@@ -714,6 +714,128 @@ for(let i = arr6.length-1; i>=0; i--){
 }
 console.log(arrR) //Output: [5,4,3,2,1]
 
+// 22. FizzBuzz (Loop Logic): Loop 1 to 50.
 
+// If divisible by 3 → Print "Fizz"
 
+// If divisible by 5 → Print "Buzz"
+
+// If divisible by both → Print "FizzBuzz"
+
+// Else → Print the number.
+
+for(let i = 0; i <= 50; i++){
+    i%3==0 && i%5==0?console.log("FizzBuzz"): 
+    i%3==0?console.log("Fizz"):
+    i%5==0?console.log("Buzz"):
+    console.log(i);
+}
+
+//Output:FizzBuzz 1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz 16 17 Fizz 19 Buzz Fizz 22 23 Fizz Buzz 26 Fizz 28 29 FizzBuzz 31 32 Fizz 34 Buzz Fizz 3738 Fizz Buzz 41 Fizz 43 44 FizzBuzz 46 47 Fizz 49 Buzz
+
+// 23. Star Pattern (Nested Loop): Print a right-angled triangle pattern of stars for 5 rows using nested loops (one loop for rows, one for columns).
+
+for(let i = 0; i < 6; i++){
+    let row = "";
+    for(let j = 0; j < i; j++){
+        row += "* ";
+    
+    }
+    console.log(row);
+
+}
+//Output: *
+       // * *
+       // * * *
+       // * * * *
+       // * * * * *
+
+// 24. Matrix Traversal (2D Array): Given a 2D array [[1, 2], [3, 4], [5, 6]], use two loops to print every single number individually.
+
+let matrix = [[1,2],[3,4],[5,6]]
+for(let i=0; i<matrix.length; i++){
+    for(let j=0; j<matrix[i].length; j++){
+        console.log(matrix[i][j])
+    }
+}
+//Output: 1 2 3 4 5 6
+
+// 25. Prime Number Check: Write a function that loops to check if a number n is prime. (Hint: A number is prime if it is NOT divisible by any number between 2 and n-1).
+
+function isPrime(n) { {
+    if (n <= 1) return false;
+    for (let i = 2; i < n; i++) {
+        if (n % i === 0) return false;  
+    }
+    return true;
+}
+}
+
+console.log(isPrime(5)); //Output: true
+
+// 26. Object Iteration (for...in): Given an object user = { name: "Anurag", role: "Dev", level: 1 }, use a for...in loop to print every key and value (e.g., "name: Anurag").
+let user = { name: "Anurag", role: "Dev", level: 1}
+for (let key in user){
+    console.log(`${key}:${user[key]}`)
+}
+
+// 27. Remove Duplicates (Logic): Given [1, 2, 2, 3, 4, 4, 5], create a new array that contains only unique numbers (no duplicates). (Hint: Loop through original. Check if new array .includes() the value before pushing).
+
+let givenArr = [1,2,2,3,4,4,5]
+let uniqueArr = []
+for (let char of givenArr){
+    if(!uniqueArr.includes(char)){
+        uniqueArr.push(char)
+    }
+}
+console.log(uniqueArr) //Output: [1,2,3,4,5]
+
+// 28. Palindrome Check: Check if the string "racecar" is a palindrome (reads same forward and backward). (Try doing this with a loop that compares the first letter to the last, second to second-last, etc.).
+
+let str1 = 'racecar';
+let isPalindrome = true; // Assume true first
+
+for(let i = 0; i < str1.length / 2; i++) { // Optimization: Only loop halfway!
+    if(str1[i] !== str1[str1.length - 1 - i]) {
+        isPalindrome = false;
+        break; // Found a mismatch, stop checking
+    }
+}
+
+console.log(isPalindrome ? "Palindrome" : "Not Palindrome"); // Output: Palindrome
+
+// 29. Bubble Sort Logic (DSA Intro): Sort [5, 1, 4, 2, 8] manually using nested loops.
+
+// Compare arr[j] with arr[j+1].
+
+// If arr[j] > arr[j+1], swap them.
+
+let givearr = [5, 1, 4, 2, 8];
+
+for(let i = 0; i < givearr.length; i++) {
+    // Inner loop goes to the end, minus the parts we already sorted (i)
+    for(let j = 0; j < givearr.length - 1 - i; j++) { 
+        if(givearr[j] > givearr[j+1]) {
+            let temp = givearr[j];
+            givearr[j] = givearr[j+1];
+            givearr[j+1] = temp;
+        }
+    }
+}
+console.log(givearr); //Output: [1, 2, 4, 5, 8]
+
+// 30. Specific Filter: Given [5, 12, 8, 130, 44], create a new array containing only numbers greater than 10 using a for loop (Manual filtering).
+
+let givenArr3 = [5,12,8,130,44]
+let newArr = []
+
+for(let i = 0; i < givenArr3.length; i++){
+    if(givenArr3[i]>10){
+        newArr.push(givenArr3[i])
+    }
+}
+
+console.log(newArr) // Output: [12,130,44]
+
+//--------------End of Loops-------------------
 
