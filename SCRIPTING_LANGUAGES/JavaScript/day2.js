@@ -396,3 +396,319 @@ function mixColors(color1, color2){
 }
 console.log(mixColors("Red", "Blue")) //Output: Purple
 
+//--------End of Conditional Flow and Control Statements----------
+
+//Next Topic: JavaScript Loops
+//JavaScript Loops
+//Loops are used to repeat a block of code multiple times until a specified condition is met.
+
+//1. For Loop
+//Syntax:
+// for (initialization; condition; increment/decrement) {
+//     // code to be executed
+// }
+//Example:
+for (let i = 1; i <= 5; i++) {
+    console.log(i);
+}
+//Output: 1 2 3 4 5
+//Explanation: The for loop initializes i to 1, checks if i is less than or equal to 5, and increments i by 1 in each iteration. It prints the value of i in each iteration.
+
+//2. While Loop
+//Syntax:
+// while (condition) {
+//     // code to be executed
+// }
+//Example:
+let j = 1;
+while (j <= 5) {
+    console.log(j);
+    j++;
+}
+//Output: 1 2 3 4 5
+//Explanation: The while loop checks the condition (j <= 5) before each iteration. If it's true, it executes the block and increments j by 1.
+
+//3. Do-While Loop
+//Syntax:
+// do {
+//     // code to be executed
+// } while (condition);
+//Example:
+let k = 1;
+do {
+    console.log(k);
+    k++;
+} while (k <= 5);
+//Output: 1 2 3 4 5
+//Explanation: The do-while loop executes the block first and then checks the condition (k <= 5). It ensures that the block is executed at least once.
+
+//break and continue statements
+//The break statement is used to exit a loop prematurely when a certain condition is met.
+//The continue statement is used to skip the current iteration of a loop and move to the next iteration.
+//Example of break:
+for (let m = 1; m <= 10; m++) {
+    if (m === 6) {
+        break;
+    }
+    console.log(m);
+}
+//Output: 1 2 3 4 5
+//Explanation: The loop prints numbers from 1 to 5. When m equals 6, the break statement exits the loop.
+//Example of continue:
+for (let n = 1; n <= 10; n++) {
+    if (n % 2 === 0) {
+        continue;
+    }
+    console.log(n);
+}
+//Output: 1 3 5 7 9
+//Explanation: The loop prints only odd numbers from 1 to 10. When n is even, the continue statement skips the current iteration.
+
+//For...in Loop
+//Syntax:
+// for (key in object) {
+//     // code to be executed
+// }
+//Example:
+const person = { name: "Alice", age: 25, city: "New York" };
+for (let key in person) {
+    console.log(key + ": " + person[key]);
+}
+//Output:
+// name: Alice
+// age: 25
+// city: New York
+//Explanation: The for...in loop iterates over the keys of the person object and prints each key-value pair.
+
+//For...of Loop
+//Syntax:
+// for (element of iterable) {
+//     // code to be executed
+// }
+//Example:
+const numbers = [10, 20, 30, 40, 50];
+for (let number of numbers) {
+    console.log(number);
+}
+//Output: 10 20 30 40 50
+//Explanation: The for...of loop iterates over the elements of the numbers array and prints each element.
+
+//ForEach Loop
+//Syntax:
+// array.forEach(function(element) {
+//     // code to be executed
+// });
+//Example:
+const fruits = ["Apple", "Banana", "Cherry"];   
+fruits.forEach(function(fruit) {
+    console.log(fruit);
+});
+//Output: Apple Banana Cherry
+//Explanation: The forEach method executes the provided function once for each array element, printing each fruit.
+
+
+//summary:
+//Loops are essential for automating repetitive tasks in JavaScript.
+//They allow you to execute a block of code multiple times based on conditions.
+//Different types of loops (for, while, do-while, for...in, for...of, forEach) provide flexibility in iterating over data structures.
+//Using break and continue statements helps control the flow of loops effectively.
+
+//Practice Exercises:
+
+// 1. 1 to 10: Write a for loop that prints numbers from 1 to 10.
+for(let i =1; i<=10; i++){
+    console.log(i);
+}
+//Output: 1 2 3 4 5 6 7 8 9 10
+
+// 2. Sum of Natural Numbers: Calculate the sum of the first 100 natural numbers (1+2+...+100) using a loop.
+let sum = 0;
+for(let i=1; i<=100; i++){
+    sum += i;
+}
+console.log(sum); //Output: 5050
+
+// 3. Factorial: Write a function that takes a number n and returns its factorial using a loop.
+let fact =1;
+for(i=1; i<=5; i++){
+    fact *= i;
+}
+console.log(fact); //Output: 120
+
+// 4. Reverse a String: Use a loop to reverse a given string.
+let str = "hello";
+let reversedStr = "";
+for(let i = str.length - 1; i >= 0; i--){
+    reversedStr += str[i];
+}
+console.log(reversedStr); //Output: olleh
+
+// 5. Even Numbers: Print all even numbers between 0 and 20 using a for loop.
+for(let i = 0; i <=20; i++){
+    if(i%2==0){
+        console.log(i)
+    }
+}
+
+//Output: 0,2,4,6,8,10,12,14,16,18,20
+
+// 6. Multiplication Table: Print the multiplication table of 5 (e.g., "5 x 1 = 5", "5 x 2 = 10") up to 10.
+
+for(let i =1; i<=10; i++){
+    console.log("5"+" "+"x"+" "+ i + "=" + 5*i)
+}
+
+//Output:5 x 1=5
+// 5 x 2=10
+// 5 x 3=15
+// 5 x 4=20
+// 5 x 5=25
+// 5 x 6=30
+// 5 x 7=35
+// 5 x 8=40
+// 5 x 9=45
+// 5 x 10=50
+
+// 7. Array Traversal: Given an array [10, 20, 30, 40, 50], print every element using a for loop.
+
+let arr = [10, 20, 30, 40, 50]
+for(let i=0; i<arr.length;i++){
+    console.log(arr[i])
+}
+//Output: 10 20 30 40 50
+
+// 8. Power Function: Write a loop to calculate $2^5$ (2 to the power of 5) without using Math.pow().
+let pow= 1;
+for(let i =0; i<5;i++){
+    pow *= 2
+    
+}
+console.log(pow) //Output: 32
+
+// 9.Do-While: Use a do...while loop to print "I run at least once" even if the condition is initially false.
+i=1
+do{
+    console.log("I run at least once")
+    i -=1
+}while(i>10) //Output: I run at least once
+
+// 10. String Length: Find the length of a string "JavaScript" by counting characters in a loop (simulate .length).
+let string = "JavaScript";
+let length = 0;
+for(let i =0; i<string.length; i++){
+    length++
+}
+console.log(length); //Output: 10
+
+//11. Countdown: Write a while loop that prints numbers from 10 down to 1.
+let countdown = 10;
+while(countdown > 0){
+    console.log(countdown);
+    countdown--;
+}
+//Output: 10 9 8 7 6 5 4 3 2 1
+
+// 12. Count Vowels: Count how many vowels (a, e, i, o, u) are in the string "Education".
+let string2 = "Education";
+let vowelCount = 0;
+for(let i =0; i<string2.length; i++){
+    let char = string2[i].toLowerCase();
+    if("aeiou".includes(char)){
+        vowelCount++;
+    }
+}
+console.log(vowelCount); //Output: 5
+
+// 13. Find Max: Given an array [4, 1, 9, 3, 2], find the largest number using a loop (Do not use Math.max).
+let arr1 = [4,1,9,3,2]
+max = arr1[0]
+for(let char of arr1){
+    if (char > max){
+        max= char
+    }
+}
+console.log(max) //Output: 9
+
+// 14. Break Statement: Loop from 1 to 20. If the number is divisible by 7, print the number and stop the loop immediately.
+
+for(let i=0; i<=20; i++){
+    console.log(i)
+    if(i==7){
+        break
+    }
+}
+
+//Output: 0,1,2,3,4,5,6,7
+
+// 15. Continue Statement: Loop from 1 to 10. Print all numbers except 5 (use continue to skip it).
+
+for(let i=1; i<10;i++){
+    if(i==5){
+        continue
+    }
+    console.log(i)
+}
+//Output: 1,2,3,4,6,7,8,9
+
+// 16. For...Of Loop (Essential for Three.js): Use a for...of loop to iterate over an array of fruits ["Apple", "Banana", "Mango"] and print them. (Syntax: for (let item of array) { ... })
+
+let fr = ["Apple", "Banana", "Mango"]
+for(let char of fr){
+    console.log(char)
+}
+//Output: Apple Banana Mango
+
+// 17. Count how many times the letter 'a' appears in the string "banana".
+
+let count = 0;
+let word = "banana";
+for(let i=0; i<word.length; i++){
+    if("a".includes(word[i])){
+        count++
+    }
+}
+console.log(count) // Output: 3
+
+// 18. Fibonacci Sequence: Print the first 10 numbers of the Fibonacci sequence using a loop. (Sequence: 0, 1, 1, 2, 3, 5, 8... where current = prev + prevPrev)
+let current =0
+let prev = 1
+let prevPrev = 0
+for(let i =1 ; i<=10;i++){
+    console.log(current)
+    prevPrev = prev
+    current = prevPrev + prev
+    prev = i
+}
+
+// 19. Array Sum: Write a function that accepts an array of numbers (e.g., [10, 20, 30]) and returns their total sum.
+
+let arr3 = [10,20,30]
+let sum2 = 0
+for(let i =0; i<arr3.length; i++){
+    sum2 += arr3[i]
+}
+console.log(sum2) //Output 60
+
+// 20. Search & Break: Given an array [10, 20, 30, 40], loop through it. If you find 30, print "Found it!" and stop the loop.
+
+let arr4 = [10,20,30,40]
+for(let i =0; i<arr4.length; i++){
+    if(arr4[i] === 30){
+        console.log("Found it!")
+        break
+    }
+}
+//Output: Found it!
+
+// 21. (Bonus) The "For Loop" Mirror: Given an array [1, 2, 3, 4, 5], create a new array using a loop that contains the elements in reverse order [5, 4, 3, 2, 1].
+
+let arr6 = [1,2,3,4,5]
+let arrR = []
+for(let i = arr6.length-1; i>=0; i--){
+    arrR.push(arr6[i])
+}
+console.log(arrR) //Output: [5,4,3,2,1]
+
+
+
+
