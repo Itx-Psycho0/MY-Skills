@@ -114,3 +114,64 @@ console.log(adults); // [18, 25, 30]
 
 //Find()
 //Locate the first item that matches a condition.
+// Input: Array.
+// Output: The single Item (or undefined if not found).
+
+const users = [
+    { id: 1, name: "Sam" },
+    { id: 2, name: "Alex" },
+    { id: 3, name: "Sam" } // Another Sam
+];
+
+// "Find the user with id 2"
+const target = users.find(user => user.id === 2);
+
+console.log(target); // { id: 2, name: "Alex" }
+
+//Every() and some()
+// These return Booleans (true or false). They don't give you data; they give you a "Yes" or "No" answer.
+
+// .some(): Returns true if at least one item passes.
+
+// .every(): Returns true ONLY if ALL items pass.
+
+const temperatures = [20, 25, 30, 100]; // 100 is dangerously hot
+
+// Is SOME temperature dangerous? (Is there at least one > 90?)
+const hasDanger = temperatures.some(temp => temp > 90); 
+console.log(hasDanger); // true
+
+// Is EVERY temperature safe? (Is everyone < 90?)
+const allSafe = temperatures.every(temp => temp < 90);
+console.log(allSafe); // false
+
+//ForEach()
+//Just run code for every item. Do not return a new array. Use case: Logging data, sending emails to a list, saving to a database.
+// Warning: You cannot save the result of a forEach to a variable. It returns undefined.
+const friends = ["Ross", "Joey"];
+
+// Just say hi. Don't create a new list.
+friends.forEach(friend => console.log(`Hi ${friend}`));
+//Output: Hi Ross
+//Hi Joey
+
+// Reduce()
+// Turn an entire array into ONE single value. This is the most powerful (and confusing) one.
+// Analogy: Rolling a snowball. You start with a small ball (Initial Value). You roll over the snow (The Array). The ball gets bigger and changes shape until you have one giant snowman.
+// It takes two arguments:
+// The Accumulator: The "Snowball" (the result so far).
+// The Current Item: The item we are currently rolling over.
+const prices = [10, 20, 30];
+
+// 0 is the Initial Value (The starting snowball size)
+const total = prices.reduce((totalSoFar, currentPrice) => {
+    return totalSoFar + currentPrice;
+}, 0);
+
+console.log(total); // 60
+// Logic Trace:
+// Start: 0
+// Loop 1: 0 + 10 = 10
+// Loop 2: 10 + 20 = 30
+// Loop 3: 30 + 30 = 60 -> Done.
+
