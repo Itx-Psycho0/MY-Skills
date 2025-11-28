@@ -175,3 +175,69 @@ console.log(total); // 60
 // Loop 2: 10 + 20 = 30
 // Loop 3: 30 + 30 = 60 -> Done.
 
+//Practice Exercise
+
+// 1. Create an array of student names and print each
+const arr1 = [2,3,4,5,6]
+for(let num of arr1){
+    console.log(num)
+}
+//Output:- 2 3 4 5 6
+
+// 2. Filter even numbers from an array
+const arr2 = [5,3,1,4,2,6]
+let chnagedArr=arr2.filter(num => num%2===0)
+console.log(chnagedArr)
+//Output: 2 4 6
+
+// 3.  Map prices to include GST (18%)
+const prices1 = [10, 20, 30];
+let gst = prices1.map(num => (num + (num*0.18)))
+console.log(gst) //Output: [ 11.8, 23.6, 35.4 ]
+
+// 4. Reduce salaries to calculate total payroll
+const salaries = [50000, 60000, 55000];
+let payRoll = salaries.reduce((total,salry)=> total+salry,0)
+console.log(payRoll) //Output: 165000
+
+// 5. Find the first student with grade A
+const students = [
+    { name: "Alice", grade: "A" },
+    { name: "Bob", grade: "B" },
+    { name: "Charlie", grade: "A" }
+];
+let gradeAstu = students.find(student => student.grade === "A")
+console.log(gradeAstu) //Output: { name: 'Alice', grade: 'A' }
+
+// 6. Write a function to reverse an array
+function reverseArray(arr) {
+    return arr.reverse();
+}
+console.log(reverseArray([1,2,3,4,5])) //Output:[ 5, 4, 3, 2, 1 ]
+
+// 7. Sort array of ages in ascending order
+arr2.sort((a, b) => a - b);
+console.log(arr2) // Output: [ 1, 2, 3, 4, 5, 6 ]
+
+// 8. Destructure first two elements of an array
+const names1 = ["Alice", "Bob", "Charlie", "David"]
+[nam1,nam2] = names1
+console.log(nam1,nam2) //Output: Alice Bob
+
+// 9. Use some() to check if any student failed
+const students1 = [
+    { name: "Alice", grade: "A" },
+    { name: "Bob", grade: "B" },
+    { name: "Charlie", grade: "F" }
+];
+const hasFailed = students1.some(student => student.grade === "F");
+console.log(hasFailed) //Output: true
+
+// 10. Use spread to copy and add new item
+const forCopy = [2,3,4,5,6]
+const byCopy = [...forCopy,7]
+console.log(byCopy) //Output: 2 3 4 5 6 7
+console.log(forCopy) //Output: 2 3 4 5 6
+
+
+
