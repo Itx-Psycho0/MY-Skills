@@ -205,6 +205,115 @@ console.log(newCounter()); // Output: 1
 //Output: Runs immediately
 // Used to create private scope instantly.
 
+//Practice Exercise
+// 1. Write a BMI calculator function
+
+function calculateBMI(weight, height) {
+    return weight / (height * height);
+}
+
+console.log(calculateBMI(70, 1.75)); // Output: 24.22
+
+// 2. Create a greet function with default name
+
+function greet(name = "Guest") {
+    console.log(`Hello, ${name}!`);
+}
+
+greet(); // Output: Hello, Guest!
+greet("Harsh"); // Output: Hello, Harsh!
+
+// 3. Sum all numbers using rest parameter
+
+function sum(...numbers) {
+    let total = 0;
+    for (let num of numbers) {
+        total += num;
+    }
+    return total;
+}
+
+console.log(sum(1, 2, 3, 4, 5)); // Output: 15
+
+// 4. Create a closure counter function
+
+function createCounter() {
+    let count = 0;
+
+    return function() {
+        count++;
+        return count;
+    };
+}
+
+const counter = createCounter();
+console.log(counter()); // Output: 1
+console.log(counter()); // Output: 2
+
+// 5. Use a function to log even numbers in array
+
+function logEvenNumbers(arr) {
+
+    for (let num of arr) {
+        if (num % 2 === 0) {
+            console.log(num);
+        }
+    }
+}
+        
+logEvenNumbers([1, 2, 3, 4, 5, 6]); // Output: 2 4 6
+
+// 6. Write a function that returns another function
+
+function outerFunction() {
+    return function(){
+        console.log("hello")
+    }
+}
+
+const fun = outerFunction();
+fun(); //Output: hello
+
+// 7. Create a pure function to add tax
+
+function addTax(price, taxRate) {
+    return price + (price * taxRate);
+}
+
+console.log(addTax(100, 0.1)); // Output: 110
+
+// 8. Use IIFE to show welcome message
+
+(
+    function hello(){
+        console.log("welcome")
+    }
+)()
+
+// 9. Write a discount calculator (HOF style)
+
+function createDiscountCalculator(discountRate) {
+    return function(price) {
+        return price - (price * discountRate);
+    };
+}
+
+const calculateDiscountedPrice = createDiscountCalculator(0.1);
+console.log(calculateDiscountedPrice(100)); // Output: 90
+
+// 10. Make a toUpperCase transformer using HOF
+
+function makeUpperCaseTransformer() {
+    return function(str) {
+        return str.toUpperCase();
+    };
+}
+
+const toUpperCase = makeUpperCaseTransformer();
+console.log(toUpperCase("hello")); // Output: HELLO
+
+//----------------------------------------------------------End of Functions----------------------------------------------------------------------------
+
 
 
 
