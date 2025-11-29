@@ -235,5 +235,26 @@ for(let key in user2){
 console.log(Object.entries(user2))
 //Output:[[ 'name', 'xyz' ],[ 'address', { city: 'Mumbai', zipcode: '400001' } ]]
 
+// 7. Copy an object using spread operator
+const copyUser2 = {...user2}
+console.log(copyUser2) //Output:{ name: 'xyz', address: { city: 'Mumbai', zipcode: '400001' } }
+
+// 8. Create a deep copy of an object with nested structure
+const deepCopyUser2 = JSON.parse(JSON.stringify(user2));
+console.log(deepCopyUser2) //Output:{ name: 'xyz', address: { city: 'Mumbai', zipcode: '400001' } }
+
+// 9. Use optional chaining to safely access deep values
+console.log(user2?.address?.city); 
+
+// 10. Use a variable as a key using computed properties
+let key1 = "marks";
+let report1 = {
+ [key]: 100
+};
+console.log(report1) //Output: { marks: 100 }
+
+// More ques. will come soon............................
+
+
 
 
