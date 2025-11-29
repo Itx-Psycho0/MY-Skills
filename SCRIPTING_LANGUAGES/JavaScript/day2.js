@@ -396,6 +396,8 @@ function mixColors(color1, color2){
 }
 console.log(mixColors("Red", "Blue")) //Output: Purple
 
+// More ques. will come soon............................
+
 //--------End of Conditional Flow and Control Statements----------
 
 //Next Topic: JavaScript Loops
@@ -836,6 +838,8 @@ for(let i = 0; i < givenArr3.length; i++){
 }
 
 console.log(newArr) // Output: [12,130,44]
+
+// More ques. will come soon............................
 
 //--------------End of Loops-------------------
 

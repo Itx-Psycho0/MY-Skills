@@ -193,6 +193,10 @@ let report = {
  [key]: 89
 };
 
+//Summary 
+// Objects are key-value structures for organizing data, accessible via dot notation or bracket notation (essential for dynamic keys) and manipulatable using modern syntax like Destructuring and Computed Properties. The notes heavily emphasize the "Reference vs. Value" concept, distinguishing between Shallow Copies (using Spread ...) and Deep Copies (using JSON methods) to prevent unintended mutations. Key utilities include Object.keys/values for iteration and Optional Chaining (?.) to safely access nested properties without crashing.
+
+
 
 // Practice Exercise
 
@@ -254,6 +258,8 @@ let report1 = {
 console.log(report1) //Output: { marks: 100 }
 
 // More ques. will come soon............................
+
+
 
 
 

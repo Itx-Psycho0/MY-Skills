@@ -175,6 +175,9 @@ console.log(total); // 60
 // Loop 2: 10 + 20 = 30
 // Loop 3: 30 + 30 = 60 -> Done.
 
+//Summary
+// Arrays are ordered collections (0-based indices) for storing multiple values, offering mutable methods like push/pop and immutable extractors like slice. The notes emphasize the "Reference vs. Value" distinction, using the Spread operator (...) for safe copying and Destructuring for cleaner variable extraction. Key functional methods include map for transformation, filter for selection, and reduce for accumulating data into a single value. Finally, find locates specific items, some/every run boolean checks, and forEach handles side effects without returning new data.
+
 //Practice Exercise
 
 // 1. Create an array of student names and print each
@@ -239,8 +242,10 @@ const byCopy = [...forCopy,7]
 console.log(byCopy) //Output: 2 3 4 5 6 7
 console.log(forCopy) //Output: 2 3 4 5 6
 
+// More ques. will come soon............................
 
 
-//--------------------------------------------------------------------------End of the Day---------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------End of the Day--------------------------------------------------------------------
 
 

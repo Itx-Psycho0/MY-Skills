@@ -368,4 +368,6 @@ function calculate(num1, num2, op) {
 }
 console.log("Result: " + calculate(number1, number2, operation));
 
+// More ques. will come soon............................
+
 //---------------Operators End Here-----------------

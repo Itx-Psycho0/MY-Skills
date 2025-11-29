@@ -205,6 +205,29 @@ console.log(newCounter()); // Output: 1
 //Output: Runs immediately
 // Used to create private scope instantly.
 
+//Hoisting: Declarations vs Expressions
+//declaration
+hello(); // works
+function hello() {
+ console.log("Hi");
+}
+
+//expression
+greet(); // error
+const greet = function () {
+ console.log("Hi");
+};
+
+// Declarations are hoisted
+// Expressions are not
+
+
+
+//Summary
+// Functions are reusable logic blocks that act as "First-Class Citizens," meaning they can be assigned to variables, passed as arguments, or returned by Higher-Order Functions. The notes cover syntax variations like Arrow Functions and handle data flow using Default parameters, Rest (packing), and Spread (unpacking) operators. Key scoping concepts include Lexical Scope (inner functions accessing outer variables) and Closures, which allow functions to "remember" their environment even after execution. Finally, IIFEs are introduced as a technique to immediately execute code for private scoping.
+
+
+
 //Practice Exercise
 // 1. Write a BMI calculator function
 
@@ -312,7 +335,9 @@ function makeUpperCaseTransformer() {
 const toUpperCase = makeUpperCaseTransformer();
 console.log(toUpperCase("hello")); // Output: HELLO
 
-//----------------------------------------------------------End of Functions----------------------------------------------------------------------------
+// More ques. will come soon............................
+
+//--------------------------------------------------------End of Functions----------------------------------------------------------------------------
 
 
 
