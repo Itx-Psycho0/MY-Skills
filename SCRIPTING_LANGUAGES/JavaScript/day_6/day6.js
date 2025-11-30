@@ -266,3 +266,71 @@ document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/"; //
 // and more...
 
 // ====================================================================================================================================================
+
+// Resources to Learn More:
+// MDN Web Docs - DOM: https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model
+// MDN Web Docs - Event Handling: https://developer.mozilla.org/en-US/docs/Web/Events
+// MDN Web Docs - Forms: https://developer.mozilla.org/en-US/docs/Learn/Forms
+// MDN Web Docs - Timers: https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout
+// MDN Web Docs - Web Storage API: https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API
+// MDN Web Docs - Cookies: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies
+// JavaScript.info - DOM: https://javascript.info/dom-nodes
+// JavaScript.info - Events: https://javascript.info/events
+// JavaScript.info - Forms: https://javascript.info/forms
+// JavaScript.info - Timers: https://javascript.info/settimeout-setinterval
+// JavaScript.info - Web Storage: https://javascript.info/localstorage
+// W3Schools - DOM Tutorial: https://www.w3schools.com/js/js_htmldom.asp
+// W3Schools - JavaScript Forms: https://www.w3schools.com/js/js_validation.asp
+// W3Schools - JavaScript Timers: https://www.w3schools.com/js/js_timing.asp
+// W3Schools - Web Storage: https://www.w3schools.com/js/js_storage.asp
+// W3Schools - JavaScript Cookies: https://www.w3schools.com/js/js_cookies.asp  
+// FreeCodeCamp - JavaScript DOM Manipulation: https://www.freecodecamp.org/news/javascript-dom-manipulation-tutorial-with-examples/
+// FreeCodeCamp - JavaScript Events: https://www.freecodecamp.org/news/javascript-events-explained-with-examples/
+// FreeCodeCamp - JavaScript Forms: https://www.freecodecamp.org/news/javascript-forms-validation-tutorial-with-examples/
+// FreeCodeCamp - JavaScript Timers: https://www.freecodecamp.org/news/javascript-timers-settimeout-setinterval-explained-with-examples/
+// FreeCodeCamp - Web Storage and Cookies: https://www.freecodecamp.org/news/web-storage-and-cookies-in-javascript-explained/
+// YouTube Tutorials:
+// Traversy Media - JavaScript DOM Crash Course: https://www.youtube.com/watch?v=0ik6X4DJKCc
+// The Net Ninja - JavaScript DOM Tutorials: https://www.youtube.com/playlist?list=PL4cUxeGkcC9gZD-Tvwfod2gaISzfRiP9d
+// Academind - JavaScript Events Tutorial: https://www.youtube.com/watch?v=XF1_MlZ5l6w
+// Dev Ed - JavaScript Forms Tutorial: https://www.youtube.com/watch?v=1Ju5_PLDarg
+// Code Explained - JavaScript Timers Tutorial: https://www.youtube.com/watch?v=G8uL0lFFoN0
+// Web Dev Simplified - Web Storage and Cookies Tutorial: https://www.youtube.com/watch?v=H3v5k1K8n5A
+// Books:
+// "JavaScript: The Definitive Guide" by David Flanagan
+// "Eloquent JavaScript" by Marijn Haverbeke
+// "You Don't Know JS" (book series) by Kyle Simpson
+// Online Courses:
+// Udemy - The Complete JavaScript Course 2024: From Zero to Expert! by Jonas Schmedtmann
+// Coursera - JavaScript, jQuery, and JSON by University of Michigan
+// edX - JavaScript Introduction by W3C
+// Codecademy - Learn JavaScript
+// Pluralsight - JavaScript Fundamentals by Liam McLennan
+// Practice Platforms:
+// LeetCode - JavaScript Problems: https://leetcode.com/problemset/all/?difficulty=All&status=All&tags=javascript
+// HackerRank - JavaScript Challenges: https://www.hackerrank.com/domains/tutorials/10-days-of-javascript
+// Codewars - JavaScript Kata: https://www.codewars.com/dashboard
+// Exercism - JavaScript Track: https://exercism.org/tracks/javascript
+// Project Ideas:
+// Build a To-Do List Application
+// Create a Weather App using a public API
+// Develop a Simple Quiz Game
+// Create a Personal Blog Template
+// Build a Recipe Finder Application
+// Create a Movie Search App using an external API
+// Develop a Budget Tracker Application
+// Build a Real-time Chat Application
+// Create a Portfolio Website
+// Develop a Task Management Tool
+// Join Developer Communities:
+// Stack Overflow: https://stackoverflow.com/questions/tagged/javascript
+// Reddit - r/javascript: https://www.reddit.com/r/javascript/
+// GitHub - Explore JavaScript Repositories:
+// Dev.to - JavaScript Tag: https://dev.to/t/javascript
+// Twitter - Follow JavaScript Influencers
+// Attend Local Meetups and Conferences
+// Practice Regularly and Build Projects to Solidify Your Understanding!
+// Happy Coding!
+
+// ====================================================================================================================================================
+// ------------------------------ End of Day 6 ------------------------------//
