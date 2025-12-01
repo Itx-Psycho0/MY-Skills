@@ -85,3 +85,12 @@ function showUsers(arr){
     });
 }
 showUsers(users)
+
+document.querySelector("input").addEventListener("input", function(e){
+    let newUsers = users.filter(user =>
+        user.name.startsWith(e.target.value)
+    );
+    document.querySelector(".cards").innerHTML="";
+    showUsers(newUsers);
+}
+     );
