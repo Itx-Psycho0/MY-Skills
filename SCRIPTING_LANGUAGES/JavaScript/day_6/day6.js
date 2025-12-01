@@ -322,6 +322,8 @@ document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/"; //
 // Build a Real-time Chat Application
 // Create a Portfolio Website
 // Develop a Task Management Tool
+
+
 // Join Developer Communities:
 // Stack Overflow: https://stackoverflow.com/questions/tagged/javascript
 // Reddit - r/javascript: https://www.reddit.com/r/javascript/
