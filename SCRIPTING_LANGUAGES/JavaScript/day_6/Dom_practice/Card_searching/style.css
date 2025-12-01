@@ -13,6 +13,7 @@ body{
     border: none;
     padding: 20px;
     border-radius: 10px;
+    margin: 0 0 10px 0;
 }
 .cards{
     display: flex;
@@ -44,7 +45,7 @@ body{
     height: 100%;
     background-size: cover;
     background-position: bottom;
-    filter: blur(50px);
+    filter: blur(10px);
     z-index: 1;
     mask-image: linear-gradient(to top, rgba(0,0,0,1)),rgba(0,0,0,0);
     mask-size: 100% 100%;
