@@ -42,3 +42,46 @@ const users = [
     bio: "Creative Director with a flair for bold typography and vibrant color palettes. Art is life."
   }
 ];
+function showUsers(arr){
+    arr.forEach(user => {
+        //create outer card div
+        const card = document.createElement("div")
+        card.classList.add("card");
+
+        //create img
+        const img = document.createElement("img")
+        img.src = user.pic
+        img.classList.add("bg-img");
+
+        //create blurred-layer div
+        const blurredLayer = document.createElement("div")
+        blurredLayer.style.backgroundImage = `url(${user.pic})`
+        blurredLayer.classList.add("blurred-layer");
+
+        //create content div
+        const content = document.createElement("div")
+        content.classList.add("content");
+
+        // h3 and para
+        const heading = document.createElement("h3");
+        heading.textContent=user.name
+
+        const para = document.createElement("p");
+        para.textContent = user.bio;
+
+        //append h3 and p in content
+        content.appendChild(heading);
+        content.appendChild(para);
+
+        //append thing in card
+        card.appendChild(img);
+        card.appendChild(blurredLayer);
+        card.appendChild(content);
+
+        //append card in html
+        document.querySelector(".cards").appendChild(card);
+
+        
+    });
+}
+showUsers(users)
