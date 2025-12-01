@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1c1c1c;
+}
+.btnBox{
+    width: 300px;
+    height: 300px;
+    display: flex;;
+    justify-content: center;
+    align-items: center;
+    background-color: #0a0909;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+#changeBgBtn{
+    padding: 15px 25px;
+    font-family: monospace;
+    font-size: 18px;
+    color: #fff;
+    background-color: #3a3a3a;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#changeBgBtn:hover{
+    background-color: #575757;
+}
+
