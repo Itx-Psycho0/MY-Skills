@@ -1,0 +1,29 @@
+*{
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    background: #1b1b1b;
+}
+#heading {
+    margin-top: 20px;
+    font-size: 2.5rem;
+    color: #535252;
+    margin-bottom: 20px;
+}
+#timer {
+    font-size: 9rem;
+    color: #ffffff;
+    letter-spacing: 5px;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
