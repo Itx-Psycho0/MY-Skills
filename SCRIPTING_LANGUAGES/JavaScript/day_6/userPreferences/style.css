@@ -3,3 +3,40 @@
     padding: 0;
     box-sizing: border-box;
 }
+body {
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+h2 {
+    margin-bottom: 15px;
+}
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+body.light {
+    background-color: #ffffff;
+    color: #000000;
+}
+body.dark {
+    background-color: #333333;
+    color: #ffffff;
+}
+body.blue {
+    background-color: #007BFF;
+    color: #ffffff;
+}
+
+body.default {
+    background-color: #f0f0f0;
+    color: #000000;
+}
+
