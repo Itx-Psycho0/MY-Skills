@@ -33,7 +33,9 @@ Welcome to my personal repository where I document my journey of learning new sk
 | :--- | :--- | :---: | :--- | :---: | :---: | :--- |
 | **JavaScript (JS)** | `[./JavaScript]` | Beginner | In Progress | 2025-11-24 | — | - |
 | **Python (PY)** | `[./Python]` | Beginner | In Progress | 2025-11-27 | — | - |
-| **Data Structures and Algorithms (DSA)** | `[./DataStructure_And_Algorithms]` | Beginner | In Progress | 2025-11-30 | — | - |
+| **Data Structures and Algorithms (DSA)** | `[./DataStructure_And_Algorithms]` | Beginner | In Progress | 2025-12-08 | — | - |
+| **TypeScript (TS)** | `[./TypeScript]` | Beginner | In Progress | 2025-12-09 | — | - |
+| **C++ (CPP)** | `[./C++]` | Beginner | In Progress | 2025-12-09 | — | - |
 
 ---
 
