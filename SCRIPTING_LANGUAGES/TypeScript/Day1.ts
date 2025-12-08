@@ -32,3 +32,10 @@
 
 //Emitter: The emitter takes the validated AST and generates the equivalent JavaScript code. It translates TypeScript-specific constructs into standard JavaScript syntax, removing type annotations and other TypeScript-only features.
 // The resulting JavaScript code can then be executed in any JavaScript environment.
+
+// Example TypeScript Code
+let message: string = "Hello, TypeScript!";
+console.log(message);
+
+// Output:
+// Hello, TypeScript!
