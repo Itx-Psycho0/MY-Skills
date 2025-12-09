@@ -21,3 +21,6 @@ int main() { // Main function - entry point of the program
     return 0; // Return statement indicating successful execution
 }
 // This program prints "Hello, World!" to the console.
+
+
+//--------------------------------------------- Day 1 complete -----------------------------------

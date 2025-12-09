@@ -1,0 +1,326 @@
+# Day 1 CyberSecurity 
+
+--> Topic :- Networking
+
+What is Networking?
+
+Computer networking is the backbone of modern technology—it is the practice of connecting computers and other devices together to share resources (like files, printers, or internet access).
+
+-----------------------------------------------------------------------------------------------
+
+Why Networking Needed?
+
+Because of 
+- Foundation of all atacks and defence
+- Network Visibility
+- Effective Incident Response
+- Real World Exploits Depend on it 
+
+-------------------------------------------------------------------------------------------------
+
+History of Networking?
+
+Here is the in-depth evolution of networking, divided into 5 Definitive Eras.
+
+------------------------------------------------------------------------------
+Era 1: The Theoretical Spark (Early 1960s)
+The Motivation: Survivability
+
+Before networks, computers were massive mainframes that worked in isolation. If you wanted to move data, you carried magnetic tapes manually.
+
+The US Department of Defense (DoD) had a problem: if a nuclear attack destroyed a central communication hub, their entire command structure would go dark. They needed a network that was decentralized—one that could route messages around damaged cities.
+
+The Key Invention: Packet Switching
+
+Paul Baran (USA) and Donald Davies (UK) independently invented this concept.
+
+Instead of sending a continuous signal (like a telephone call), they proposed breaking data into small "blocks" (packets). If one route was blocked, the packets would automatically find another way.
+
+Note: The big telephone companies (like AT&T) hated this idea and refused to build it, claiming it wouldn't work. They were wrong.
+
+------------------------------------------------------------------------------
+
+Era 2: The "Lo" Moment (1969)
+The Birth of ARPANET
+
+The DoD’s research arm (ARPA) decided to build this theoretical network themselves. They called it ARPANET.
+
+
+Oct 29, 1969 (10:30 PM): The first message was sent.
+
+Sender: Charley Kline (a student at UCLA).
+
+Receiver: A computer at the Stanford Research Institute (SRI).
+
+The Message: Kline intended to type LOGIN. He typed L, then O... and the system crashed.
+
+
+Result: The first message ever sent over the internet was simply: "Lo".
+
+By the end of 1969, only 4 computers were connected. This was the infant Internet.
+
+-----------------------------------------------------------------------------------
+
+Era 3: The "Language" Crisis (1970s)
+The Invention of Rules
+
+As more networks sprang up, a new problem emerged: incompatability. A network in Hawaii (ALOHAnet) couldn't talk to a network in London because they used different hardware and code.
+
+1973 - Ethernet: Robert Metcalfe at Xerox PARC invented a way to connect computers within a single building using cables. This became the standard for Local Area Networks (LANs).
+
+1974 - The "Internet" Concept: Vint Cerf and Bob Kahn published a paper proposing a "Transmission Control Protocol" (TCP). They wanted a universal language that would allow any network to talk to any other network.
+
+
+Jan 1, 1983 - "Flag Day": ARPANET officially switched its old protocols to TCP/IP. This is considered the true birthday of the modern Internet. Now, different networks were unified into an "Inter-net."
+
+----------------------------------------------------------------------------------
+
+Era 4: The Web Revolution (1989–1995)
+Making it Human-Readable
+
+Up until the late 80s, the internet was just text, green screens, and complex commands. It was for scientists, not regular people.
+
+1989 - The World Wide Web: Tim Berners-Lee, a scientist at CERN (Switzerland), invented a system to link documents together using "Hypertext." He created:
+
+HTML: To format pages.
+
+URL: To give pages an address.
+
+HTTP: To send the pages.
+
+1993 - Mosaic: The first popular web browser with images. Suddenly, the internet wasn't just code; it was pictures, colors, and clicks.
+
+The Dot-Com Boom: Companies realized they could sell things online. Amazon and eBay were founded in this era.
+
+-------------------------------------------------------------------------------------
+
+Era 5: The Mobile & Cloud Era (2000s–Present)
+Cutting the Cord
+
+Wi-Fi (1999/2000s): The IEEE 802.11 standard became popular. Networking was no longer tethered to a wall socket.
+
+The iPhone (2007): Put a fully networked computer in everyone's pocket. Mobile data traffic exploded.
+
+Cloud Computing: Instead of storing data on your own hard drive (like in the 90s), high-speed networks allowed us to store everything on someone else's server (AWS, Google Drive, iCloud).
+
+--------------------------------------------------------------------------------------------------
+
+The Core Types of Networks -------
+
+Networks are primarily categorized by the geographical size they cover.
+
+- PAN (Personal Area Network): The smallest type. It connects devices within an individual's workspace (e.g., connecting your phone to your laptop via Bluetooth).
+
+
+- LAN (Local Area Network): Connects devices within a single limited area, like a home, office, or building. Most commonly uses Ethernet (cables) or Wi-Fi.
+
+
+- MAN (Metropolitan Area Network): Spans a larger area like a city or a large campus. Cable TV networks are a classic example.
+
+
+
+- WAN (Wide Area Network): Spans countries or continents. The Internet is the largest and most famous WAN.
+
+==================================================================================================================================================================================================
+
+- Data Transfer Terms
+
+1. The "Speed" Terms (Capacity & Delay)
+These terms describe how fast and how much data can move. People often confuse them, but they are physically different properties.
+
+Bandwidth vs. Throughput
+Bandwidth (The Pipe Width): The theoretical maximum amount of data that can be transferred in a specific time.
+
+Analogy: A 4-lane highway. It can handle 4,000 cars per hour.
+
+Throughput (The Actual Traffic): The actual amount of data effectively transferred. This is almost always lower than bandwidth due to errors, protocol overhead, and congestion.
+
+Analogy: Even on that 4-lane highway, if there is roadwork, you might only get 2,000 cars per hour.
+
+Latency (The Delay)
+The time it takes for a single piece of data (packet) to travel from source to destination.
+
+Ping: The tool used to measure latency (measured in milliseconds, ms).
+
+Jitter: The variation in latency. If your ping is 20ms, then 150ms, then 20ms, you have "high jitter." This kills real-time activities like gaming or VoIP calls.
+
+Visual Analogy: Imagine a water pipe.
+
+Bandwidth = How wide the pipe is (Gallons per second).
+
+Latency = How long it takes a single drop of water to travel from the tap to the bucket.
+
+2. The "Direction" Terms (Transmission Modes)
+These terms describe the flow direction of the data traffic.
+
+A. Simplex
+Data flows in one direction only.
+
+Characteristics: The sender cannot receive; the receiver cannot reply.
+
+Examples: Keyboard to CPU, Radio broadcasting (the radio station speaks, you listen).
+
+Diagram: Sender ----------------> Receiver
+
+B. Half-Duplex
+Data flows in both directions, but not at the same time.
+
+Characteristics: Like a one-lane bridge. You must wait for the other side to finish before you can send.
+
+Examples: Walkie-Talkies ("Over and out"), Hubs (legacy networking hardware).
+
+Diagram: Sender <--------------> Receiver (One at a time)
+
+C. Full-Duplex
+Data flows in both directions simultaneously.
+
+Characteristics: Like a two-way street. You can talk and listen at the same time.
+
+Examples: Telephones, Modern Switched Ethernet networks.
+
+Diagram: Sender ==============> Receiver (Simultaneous)
+
+3. The "Method" Terms (Transmission Types)
+How are the bits (1s and 0s) physically placed onto the wire?
+
+Serial vs. Parallel
+Parallel Transmission: Sending multiple bits at the same time over multiple wires.
+
+Pros: Fast for short distances.
+
+Cons: Expensive (thick cables) and suffers from "crosstalk" (interference between wires) over long distances.
+
+Example: Old Printer ports (LPT), Internal CPU buses.
+
+Serial Transmission: Sending bits one by one, sequentially, over a single channel.
+
+Pros: Cheaper cabling, can travel very long distances, and (surprisingly) modern serial is faster than old parallel (e.g., USB = Universal Serial Bus).
+
+Example: USB, Ethernet, SATA.
+
+
+Getty Images
+Synchronous vs. Asynchronous
+Synchronous: The sender and receiver share a Clock Signal. They agree on exactly when to read a bit. It is efficient but requires complex hardware.
+
+Asynchronous: No shared clock. Data is sent with "Start" and "Stop" bits so the receiver knows when data is arriving. It is simpler but has more "overhead" (wasted bits).
+
+4. The "Audience" Terms (Casting)
+Who is the data intended for?
+
+Unicast (One-to-One): Data is sent from one computer to one specific recipient.
+
+Example: You browsing a website.
+
+Broadcast (One-to-All): Data is sent from one computer to everyone on the network.
+
+Example: ARP requests ("Who has IP 192.168.1.1?").
+
+Multicast (One-to-Many): Data is sent from one computer to a specific group of subscribers.
+
+Example: Live TV streaming over IP, Zoom meetings.
+
+Anycast (One-to-Nearest): Data is sent to the "closest" server geographically.
+
+Example: DNS servers (Google's 8.8.8.8 exists in hundreds of locations; you connect to the one closest to you).
+
+==================================================================================================================================================================================================
+
+- Network Topologies (The Layout)
+Topology refers to how the network is physically or logically arranged.
+
+- Bus: All devices are connected to a single central cable (the "backbone").
+
+Pros: Cheap, easy to set up.
+
+Cons: If the backbone breaks, the whole network goes down.
+
+-----------------
+
+- Star: All devices connect to a central device (Switch or Hub). This is the most common modern topology (like your home Wi-Fi).
+
+
+Pros: If one cable breaks, only that device is affected.
+
+Cons: If the central switch fails, the network stops.
+
+-------------------
+
+- Ring: Devices are connected in a closed loop. Data travels in one direction (token passing).
+
+Pros: No collisions (data traffic jams).
+
+Cons: One broken cable breaks the entire ring.
+
+--------------------
+
+- Mesh: Devices are interconnected (Full Mesh = every device connects to every other device).
+
+Pros: Extremely reliable; if one link fails, data finds another path.
+
+Cons: Very expensive due to cabling. Used in critical infrastructure.
+
+==================================================================================================================================================================================================
+
+The OSI Model (7 Layers)
+This is a theoretical reference model used to standardize communication.
+
+Layer 7 - Application: What the user sees (Web browser, HTTP).
+
+Layer 6 - Presentation: Translation and encryption (JPEG, SSL).
+
+Layer 5 - Session: Manages the connection session between computers.
+
+Layer 4 - Transport: Reliable delivery and error checking (TCP, UDP).
+
+Layer 3 - Network: Routing and logical addressing (IP Addresses).
+
+Layer 2 - Data Link: Physical addressing (MAC Addresses) and switching.
+
+Layer 1 - Physical: The actual hardware (Cables, Radio waves, Hubs).
+
+Mnemonic: Please Do Not Throw Sausage Pizza Away (Physical -> Application)
+
+==================================================================================================================================================================================================
+
+1. Client-Server Architecture
+The Hierarchy: "The Boss and the Workers"
+
+This is the standard model used by the Internet (World Wide Web), corporate networks, and email systems. It is centralized.
+
+How It Works
+There is a distinct separation of roles.
+
+The Server (The Provider): A powerful computer that runs 24/7. It stores data, manages security, and provides services. Ideally, it has a high-bandwidth connection.
+
+The Client (The Requester): A less powerful computer (laptop, smartphone) that requests content. It does not share its own resources with others.
+
+The Process (Request-Response Cycle):
+
+Request: The Client sends a message asking for a resource (e.g., "Send me the homepage of https://www.google.com/search?q=Google.com").
+
+Process: The Server receives the request, checks if the client has permission, and locates the data.
+
+Response: The Server sends the data back to the Client.
+
+-------------------------------------------------------------------------------------------------
+
+2. Peer-to-Peer (P2P) Architecture
+The Democracy: "Everyone is Equal"
+
+This model became famous with file-sharing apps (like Napster and BitTorrent) but is also used in blockchain. It is decentralized.
+
+How It Works
+There is no central boss. Every computer on the network is called a Peer.
+
+Dual Role: Every peer acts as both a Client and a Server simultaneously.
+
+Resource Sharing: Peer A can download a file from Peer B, while simultaneously uploading a different file to Peer C.
+
+The Process:
+
+Discovery: The network helps peers find other peers who have the data they need.
+
+Direct Transfer: Data is transferred directly between user devices, bypassing any central storage.
+
+==================================================================================================

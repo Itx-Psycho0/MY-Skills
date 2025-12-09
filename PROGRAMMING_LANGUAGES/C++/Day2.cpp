@@ -44,3 +44,5 @@ int score;
 
 //Const keyword
 //is same as javascript, after intialize we cant reassign.
+
+//-------------------------------------------------------- Day 2 complete -----------------------------------------------------------------------------
