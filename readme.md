@@ -44,7 +44,7 @@ Welcome to my personal repository where I document my journey of learning new sk
 
 | Track | Folder | Level | Status | Start Date | Completion Date | Projects |
 | :--- | :--- | :---: | :--- | :---: | :---: | :--- |
-| **Blender** | `[./Blender]` | Beginner | In Progress | 2025-12-11 | — | - |
+| **Blender** | `[./Blender_Projects]` | Beginner | In Progress | 2025-12-11 | — | - |
 
 ---
 
