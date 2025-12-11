@@ -320,7 +320,95 @@ int main() {
     cout << "Size of double: " << sizeof(double) << " bytes" << endl;
     cout << "Size of Player: " << sizeof(Player) << " bytes" << endl;
 
+    //------------------------user input example , explaination below---------------------------
+
+    int a;
+    float b;
+    string c;
+
+    cout << "Enter your name: ";
+    cin >> c;
+
+    cout << "Enter your age: ";
+    cin >> a;
+
+    cout << "Enter your height: ";
+    cin >> b;
+
+    cout << "Name: " << c << endl;
+    cout << "Age: " << a << endl;
+    cout << "Height: " << b << endl;
+
     return 0;
 }
 
 // --------------------------------------------------------------------------------------------------------------------------------------------------
+
+// User input
+
+// To take input from the user, we use:
+
+// cin >> variable;
+
+
+// Input an Integer
+// #include <iostream>
+// using namespace std;
+
+// int main() {
+//     int age;
+
+//     cout << "Enter your age: ";
+//     cin >> age;   // user types number
+
+//     cout << "Your age is: " << age;
+//     return 0;
+// }
+
+// -------------------------------------
+
+// Input a Float / Double
+// float price;
+// // cout << "Enter price: ";
+// // cin >> price;
+// // cout << "Price is: " << price;
+
+//Input a Character
+// char grade;
+// cout << "Enter your grade: ";
+// cin >> grade;
+// cout << "Grade is: " << grade;
+
+//Input a String (Single word only)
+
+// (Stops at space)
+
+// string name;
+// cout << "Enter your name: ";
+// cin >> name;
+// cout << "Hello " << name;
+
+//Input a Full Sentence (with spaces)
+
+// Use getline instead of cin >>.
+
+// string fullName;
+
+// cout << "Enter your full name: ";
+// getline(cin, fullName);
+
+// cout << "Your name is: " << fullName;
+
+
+//If you used cin >> before getline, add:
+
+// cin.ignore();
+
+//Input Multiple Values at Once
+// int a, b;
+// cout << "Enter two numbers: ";
+// cin >> a >> b;
+
+// cout << "Sum = " << a + b;
+
+// ------------------------------------------ Day 3 ends here  -------------------------------------------------------------
