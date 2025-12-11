@@ -36,7 +36,7 @@ Welcome to my personal repository where I document my journey of learning new sk
 | **Data Structures and Algorithms (DSA)** | `[./DataStructure_And_Algorithms]` | Beginner | In Progress | 2025-12-08 | — | - |
 | **TypeScript (TS)** | `[./TypeScript]` | Beginner | In Progress | 2025-12-09 | — | - |
 | **C++ (CPP)** | `[./C++]` | Beginner | In Progress | 2025-12-09 | — | - |
-| **CyberSecurity| `[./CyberSecurity]` | Beginner | In Progress | 2025 - 12 - 10 | — | - |
+| **CyberSecurity**| `[./CyberSecurity]` | Beginner | In Progress | 2025 - 12 - 10 | — | - |
 
 ---
 
