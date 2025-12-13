@@ -169,5 +169,140 @@ console.log(arr); // Output: [ { name: 'Alice', age: 30 }, { name: 'Bob', age: 2
 
 // ===============================================================
 
+// The Memory Lifecycle in JavaScript
+
+// How and where are variables created in javascript
+//unlike other languages memmory is automatically managed by js behind the scenes
+// every value created in js goes through memory lifecycle
+
+//MEMORY LIFECYCLE
+//allocate memory :-
+let temp = 2;
+//whenever we assign a value to a new variable, the engine automatically allocates(reverses) a piece of memory to store the value.
+
+// 
+
+// Use memory :-
+temp = temp + 5;
+round(temp);
+// while code i running , the value is written, read, and updated in allocated piece of memory
+
+// Release Memory
+//temp is removed from the memory when its no longer needed.
+
+
+//-----------------------------------------
+
+//Shallow vs Deep Copy
+
+const me = {
+    name : "Psycho",
+    age : 19,
+    skill: ["Creative","Techy"]
+}
+const who = me;
+me.name = "Anurag"
+
+console.log(me.name);
+console.log(who.name);
+// Output : Anurag
+
+function getName (OriginalPerson, Name){
+    OriginalPerson.name = Name;
+    return OriginalPerson;
+}
+const who2 = getName(me,'Psycho')
+console.log(who2.name);
+console.log(me.name);
+// Output : Psycho
+
+
+//-----------------------------
+const meCopy = {...me}
+console.log(meCopy)
+// Output : { name: 'Psycho', age: 19, skill: [ 'Creative', 'Techy' ] }
+meCopy.skill.push('smart')
+console.log(meCopy.skill);
+// Output : [ 'Creative', 'Techy', 'smart' ]
+console.log(me.skill);
+// Output : [ 'Creative', 'Techy', 'smart' ]
+meCopy.name = "Anurag"
+console.log(meCopy.name);
+// Output : Anurag
+console.log(me.name);
+// Output : Psycho
+
+// But using spread opr we make copy the obj on first lvl not so its called shallow copy is true but in the deep if we add array in the obj and make change in copy of obj it also change the array of original copy , there us the drawback of spread opr.
+
+//---------
+const meClone = JSON.parse(JSON.stringify(me))
+console.log(meClone)
+meClone.name = "Anurag"
+
+console.log(meClone.name);
+// Output : Anurag
+console.log(me.name);
+// Output : Psycho
+meClone.skill.push('sharp')
+console.log(meClone.skill);
+// Output : [ 'Creative', 'Techy', 'smart', 'sharp' ]
+console.log(me.skill);
+// Output : [ 'Creative', 'Techy', 'smart' ]
+
+
+
+//Its a deep copy it also copy array or any obj in the obj and if changes the clone it not effect on the original.
+
+//---------------------------------
+
+//Memory Management: Garbage collection
+// Recall that in JavaScript, each value we create goes through a memory lifecycle: first, memory is allocated for the value; then, the allocated memory is used; and finally, when no longer needed, the memory is released. We have already discussed allocation in depth, and usage is straightforward, so now we focus on how memory is released in the JavaScript engine.
+
+// Since values are stored in both the stack and the heap, we need to analyze both storage mechanisms to understand memory release.
+
+// Memory Release in the Call Stack
+// Memory management in the call stack is simple. Variable environments where primitives are stored are deleted when their corresponding execution context pops off the stack. For example, consider the call stack with the global execution context and two additional function call contexts. The global context has a variable X (a primitive), and the calcAge function context has variables Y and Z. These variables reside in the call stack. When the calcAge execution context pops off, its variable environment is removed from memory along with the context itself. Thus, variables stored in execution contexts are removed as soon as their contexts are gone, releasing the occupied memory for future use.
+
+// Note that the global execution context never disappears during the program's lifetime, so variables like X in the global context remain in the stack indefinitely. This means global variables persist for the entire runtime, which is intuitive.
+
+// Memory Management in the Heap and Garbage Collection
+// Memory management in the heap is considerably more complex. To delete old, unused objects from the heap and free memory, JavaScript engines employ a process called garbage collection. This is the central tool for memory management in any JavaScript engine. Importantly, garbage collection runs automatically within the engine whenever it deems necessary. Developers cannot control when heap memory is cleared, which is beneficial because automatic memory management simplifies development.
+
+// You can think of garbage collection as an automatic cleaning service that periodically identifies and removes old, unused items from your house. Different implementations exist, but all modern engines use the mark-and-sweep algorithm. Let's explore how this algorithm works by revisiting the call stack and heap.
+
+// Consider objects named hobbies and tasks stored in the heap, referenced by variables in the stack. These variables store references to the actual objects in the heap. Objects can also reference other objects in the heap. Note that objects in the heap include not only objects but also arrays, functions, and other data structures like sets or maps.
+
+// The Mark-and-Sweep Algorithm
+// The first phase is the mark phase, where all objects reachable from a root are marked as alive. Roots are starting points for the algorithm, typically including the global execution context and any execution context of running functions. The algorithm traverses from these roots to mark all reachable objects as alive. For example, objects referenced by variables in the stack or by other reachable objects are marked alive.
+
+// Roots can also include event listeners, active timers, and closures. Objects reachable from these roots are also considered alive. Conversely, objects not reachable from any root are not marked alive and are considered dead. For instance, an object in the heap not referenced by any root is dead.
+
+// The second phase is the sweep phase, where all unmarked (unreachable) objects are deleted. The algorithm reclaims the memory occupied by these objects for future allocations. For example, if an object is unreachable, it will be deleted and its memory reclaimed during this phase.
+
+// Example of Garbage Collection
+// Suppose the getTasks function finishes execution and its execution context pops off the stack. If the garbage collector runs at this point, objects previously referenced only by getTasks become unreachable. These objects will be swept away, and their memory reclaimed. However, objects referenced by the global execution context remain alive and are never deleted, as the global context persists throughout the program's lifetime.
+
+// Memory Leaks
+// A memory leak occurs when an object no longer needed by the application remains reachable by the garbage collector from a root, causing it to be marked alive and not deleted. This is analogous to forgetting to throw away items you no longer need, cluttering your house unnecessarily. In JavaScript, common causes include old and unnecessary event listeners and timers that continue referencing objects. To avoid memory leaks, always deactivate timers and event listeners when no longer required, especially if they reference large objects. Also, avoid declaring large objects as global variables, as these will never be garbage collected.
+
+// Summary and Further Topics
+// This overview explains how garbage collection runs repeatedly inside the user's browser while using the application, ensuring memory stays clean and uncluttered of unnecessary objects. In reality, memory management is more complex, involving multiple heaps, object aging, and multiple garbage collection algorithms such as generational garbage collection. However, this broad overview provides a solid understanding of automatic memory management inside the engine.
+
+// Before moving on, it is important to mention four additional major topics related to JavaScript internals that will be covered later in the course:
+
+// Closures: Deeply explored in the "Closer Look at Functions" section.
+// Prototypal Inheritance: Covered in the "Object Oriented Programming" section.
+// Event Loop: Detailed in the "Asynchronous JavaScript" section.
+// DOM Internals: Discussed in the "Advanced DOM and Events" section.
+// These topics are fundamental but are introduced later to ensure better retention and understanding.
+
+// Conclusion
+// This section on how JavaScript works behind the scenes was extensive and introduced many new and challenging concepts. It is normal if some parts were difficult to grasp fully. Even partial understanding provides a significant advantage over many developers unaware of these internals. Congratulations on completing this section. Take a break, and we will continue with the next section soon.
+
+// Key Takeaways
+// Memory in JavaScript is managed through allocation, usage, and release phases.
+// The call stack handles primitive values simply by removing variable environments when execution contexts pop off.
+// Heap memory management is complex and handled by automatic garbage collection using the mark-and-sweep algorithm.
+// Memory leaks occur when objects are no longer needed but remain reachable, often due to lingering event listeners or timers.
 
 // ------ Day 8 Ends Here --------------------------------
