@@ -66,4 +66,46 @@ int main(){
 // 3. Comparison(Relational) Operators
 // ==, !=, >, <, >=, <=
 
+#include <iostream>
+using namespace std;
+int main(){
+    int buyCups;
+    cout << "Enter How many cups you want to buy: ";
+    cin >> buyCups;
 
+    if (buyCups >= 10 && buyCups <= 20){
+        cout << "You got Silver Badge";
+    }else if(buyCups > 20){
+        cout << "You got Gold Badge";
+    }else{
+        cout << "You got Bronze Badge";
+    }
+    return 0;
+
+}
+
+// 4. Logical Operators
+// &&, ||, !
+
+#include <iostream>
+using namespace std;
+int main(){
+    bool isStudent;
+    int cups;
+    cout << "Are you a student(true/false): ";
+    cin >> isStudent;
+    cout << "How many cups of tea have you purchased";
+    cin >> cups;
+
+    if (isStudent || cups > 15 ){
+        cout << "You Got a Discount";
+    }else{
+        cout << "Discount only for students";
+    }
+    return 0;
+}
+
+// 5. Bitwise Operators:-
+// &, |, ^, ~, <<, >>
+
+// -------------------------- Day 4 Ends Here ------------------------------
