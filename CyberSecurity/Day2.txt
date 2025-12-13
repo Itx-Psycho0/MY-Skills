@@ -1,0 +1,145 @@
+# Day 2 of CyberSecurity
+
+--> Encapsulation :- The "Wrapping" of Data
+
+Encapsulation is a fundamental concept in networking where data is wrapped with additional information (headers and sometimes footers) at each layer of the OSI model as it travels down the stack from the application to the physical layer.
+
+Why is it needed?
+
+Modularity: Each layer only needs to worry about its own specific functions.
+Information Hiding: Details of one layer are hidden from others.
+Protocol Independence: Different protocols can operate at different layers without affecting others.
+
+How it Works (The Journey of a Web Page Request)
+
+Imagine you type "google.com" into your web browser.
+
+1. Application Layer (Layer 7):
+   - Data: Your HTTP request ("GET / HTTP/1.1 Host: google.com").
+   - Encapsulation: The browser (application) hands this data to the next layer.
+
+2. Transport Layer (Layer 4):
+   - Data: The HTTP request.
+   - Encapsulation: TCP (Transmission Control Protocol) adds a TCP Header. This header includes source and destination port numbers (e.g., your browser uses a random high port, Google's web server uses port 80 or 443), sequence numbers, and acknowledgment numbers for reliable delivery.
+   - Result: A "TCP Segment" (or UDP Datagram if using UDP).
+
+3. Network Layer (Layer 3):
+   - Data: The TCP Segment.
+   - Encapsulation: IP (Internet Protocol) adds an IP Header. This header includes the source IP address (your computer's IP) and the destination IP address (Google's server IP). It also includes information for routing.
+   - Result: An "IP Packet."
+
+4. Data Link Layer (Layer 2):
+   - Data: The IP Packet.
+   - Encapsulation: The Data Link layer (e.g., Ethernet) adds an Ethernet Header and an Ethernet Trailer (or "Frame Check Sequence" - FCS). The header includes the source MAC address (your network card's MAC) and the destination MAC address (the MAC address of your router's interface). The trailer contains error-checking information.
+   - Result: An "Ethernet Frame."
+
+5. Physical Layer (Layer 1):
+   - Data: The Ethernet Frame.
+   - Encapsulation: The entire frame is converted into electrical signals, light pulses, or radio waves
+
+======================================================================================================================================================
+
+--> Decapsulation :- The "Unwrapping" of DataDecapsulation is the reverse process of encapsulation. As data travels up the OSI model layers at the receiving end, each layer removes the header (and sometimes footer) added by its corresponding layer on the sending side. This process reveals the original data to the application.
+
+Why is it needed?
+
+Data Extraction: To progressively reveal the original application data.
+Error Checking: Each layer can verify the integrity of its specific header and payload.
+Protocol Processing: Allows each layer to process the information relevant to its function.
+
+How it Works (The Journey of a Web Page Response)
+
+Imagine Google's server sending the requested web page back to your browser.
+
+1. Physical Layer (Layer 1):
+   - Data: Electrical signals, light pulses, or radio waves.
+   - Decapsulation: The physical layer receives these signals and converts them back into a raw Ethernet Frame.
+
+2. Data Link Layer (Layer 2):
+   - Data: The Ethernet Frame.
+   - Decapsulation: The Data Link layer removes the Ethernet Header and Trailer. It checks the FCS for errors and verifies the destination MAC address. If the MAC address matches the device's, it passes the IP Packet up.
+   - Result: An "IP Packet."
+
+3. Network Layer (Layer 3):
+   - Data: The IP Packet.
+   - Decapsulation: The Network layer removes the IP Header. It checks the destination IP address to ensure the packet is for this host and processes routing information if necessary. It then passes the TCP Segment up.
+   - Result: A "TCP Segment."
+
+4. Transport Layer (Layer 4):
+   - Data: The TCP Segment.
+   - Decapsulation: The Transport layer removes the TCP Header. It uses the port numbers to deliver the data to the correct application process (e.g., your web browser). It also handles reassembly of segments and error recovery if needed.
+   - Result: The original HTTP response data.
+
+5. Application Layer (Layer 7):
+   - Data: The HTTP response data (e.g., the HTML, CSS, JavaScript for google.com).
+   - Decapsulation: The application (your web browser) receives the data and renders the web page for you to see.
+
+======================================================================================================================================================
+
+--> Cable Types :-There are several types of cables used in networking, each with different characteristics and applications.
+
+1. Twisted Pair Cable:
+   - Description: Consists of pairs of insulated copper wires twisted together. The twisting helps reduce electromagnetic interference (EMI) from external sources and crosstalk between adjacent pairs.
+   - Types:
+     - Unshielded Twisted Pair (UTP): Most common type, used in Ethernet networks. It's inexpensive and easy to install.
+     - Shielded Twisted Pair (STP): Has an additional metallic shield around the twisted pairs to further reduce EMI. More expensive and harder to install than UTP.
+   - Categories (for UTP):
+     - Cat3: Used for voice communication (telephones).
+     - Cat5/5e: Common for 100 Mbps Ethernet. Cat5e supports Gigabit Ethernet.
+     - Cat6/6a: Supports Gigabit Ethernet and 10 Gigabit Ethernet over shorter distances. Cat6a offers better performance over longer distances.
+     - Cat7/7a: Supports 10 Gigabit Ethernet and beyond, with individual shielding for each pair.
+   - Connectors: RJ-45 (for Ethernet), RJ-11 (for telephones).
+   - Applications: Local Area Networks (LANs), telephone lines.
+
+2. Coaxial Cable:
+   - Description: Consists of a central copper conductor, an insulating layer, a metallic shield, and an outer insulating jacket.
+   - Types:
+     - Thicknet (10BASE5): Older, thicker cable, used for early Ethernet.
+     - Thinnet (10BASE2): Thinner, more flexible, also used for early Ethernet.
+     - RG-6: Commonly used for cable television and internet.
+     - RG-59: Used for CCTV and older video applications.
+   - Connectors: BNC, F-type.
+   - Applications: Cable TV, internet connections (cable modems), older Ethernet networks, CCTV.
+
+3. Fiber Optic Cable:
+   - Description: Transmits data using light pulses through glass or plastic strands. It's immune to electromagnetic interference and can transmit data over very long distances at high speeds.
+   - Types:
+     - Single-Mode Fiber (SMF): Has a very small core, allowing a single path for light. Used for long-distance, high-bandwidth applications (e.g., intercontinental communication,
+
+======================================================================================================================================================
+
+--> Transceivers :-multimode fiber).
+     - Multi-Mode Fiber (MMF): Has a larger core, allowing multiple paths for light. Used for shorter distances within buildings or campuses.
+   - Connectors: SC, ST, LC, MTRJ.
+   - Applications: High-speed data networks, long-haul telecommunications, data centers.
+
+--> Transceivers :- Devices that send and receive data. They convert electrical signals into optical signals (for fiber) or vice versa, or prepare electrical signals for transmission over copper.
+
+1. SFP (Small Form-Factor Pluggable):
+   - Description: A compact, hot-pluggable transceiver used for both telecommunication and data communications applications. It interfaces a network device mother board (for a router, switch, media converter or similar device) to a fiber optic or copper networking cable.
+   - Types: Available in various types for different speeds and distances (e.g., 1000BASE-SX for multimode fiber, 1000BASE-LX for single-mode fiber).
+   - Applications: Gigabit Ethernet, Fibre Channel.
+
+2. SFP+ (Small Form-Factor Pluggable Plus):
+   - Description: An enhanced version of the SFP that supports data rates up to 10 Gbit/s. It's the most popular 10 Gigabit Ethernet fiber module.
+   - Applications: 10 Gigabit Ethernet, Fibre Channel.
+
+3. QSFP (Quad Small Form-Factor Pluggable):
+   - Description: A compact, hot-pluggable transceiver used for 40 Gigabit Ethernet and 100 Gigabit Ethernet applications. It integrates 4 transmit and 4 receive channels.
+   - Types: QSFP+, QSFP28 (for 100G).
+   - Applications: Data centers, high-performance computing networks.
+
+4. GBIC (Gigabit Interface Converter):
+   - Description: An older, larger form-factor transceiver that was replaced by SFP. It also converts electrical signals to optical signals and vice versa.
+   - Applications: Older Gigabit Ethernet equipment.
+
+======================================================================================================================================================
+
+--> Cabling Standards :-
+
+
+
+
+
+
+
