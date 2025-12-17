@@ -46,6 +46,21 @@ movement.forEach(function(mov,i,arr){
     }
 })
 
+// map, filter, reduce
+
+const calcAvgages = ages => 
+    {ages
+    .map((age) => {(age <= 2 ? 2 * age : 16 + age*4) })
+    .filter((age) =>{ age >= 18
+    })
+    .reduce((acc,age,i,arr) => acc + age/arr.length,0)
+}
 
 
+const avg1 = calcAvgages([5,2,4,1,15,8,3])
+console.log(avg1)
+
+// find method
+const firstWithdrawal = movement.find(mov => mov < 0)
+console.log(firstWithdrawal)
 
