@@ -148,8 +148,18 @@ console.log(typeof anotherBigInt); // Output: "bigint"
 // Non-Primitive (Reference) Data Types:
 
 // 1. Object: A collection of key-value pairs. Objects can store multiple values and more complex data structures.
-let obj = { name: "Alice", age: 30 };
+let obj = { name: "Alice", age: 30,
+    calcAge : function(){
+        console.log(this.age)
+    },
+    adrress : {
+        city : "New York",
+        state : "NY"
+    }
+
+};
 console.log(typeof obj); // Output: "object"
+console.log(obj.calcAge())
 
 // 2. Array: A special type of object used to store ordered collections of values.
 let arr = [1, 2, 3, 4, 5];
