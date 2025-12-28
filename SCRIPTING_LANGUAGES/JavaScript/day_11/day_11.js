@@ -64,3 +64,16 @@ console.log(avg1)
 const firstWithdrawal = movement.find(mov => mov < 0)
 console.log(firstWithdrawal)
 
+// findIndex Method
+const firstWithdrawalIndex = movement.findIndex(mov => mov < 0)
+console.log(firstWithdrawalIndex)
+
+// findLast Method
+const lastWithdrawal = movement.findLast(mov => mov < 0)
+console.log(lastWithdrawal)
+
+// findlastIndex Method
+const lastWithdrawalIndex = movement.findLastIndex(mov => mov < 0)
+console.log(lastWithdrawalIndex)
+
+//
