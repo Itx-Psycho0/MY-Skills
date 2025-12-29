@@ -1,0 +1,53 @@
+/* CSS (casacading Style sheet) */
+
+/* Style Html page 
+
+Cascading → order of rules decides priority.
+
+Style Sheets → rules applied to many pages.
+
+Types of CSS
+
+Inline CSS
+<p style="color:red">inline </p>
+
+Internal CSS
+<style>
+        h1 {color:red}
+</style>
+
+External CSS
+
+<link rel="stylesheet" href="style.css"> */
+
+/* CSS syntax:
+selector{
+    property:value;
+} */
+
+
+/* Selecting Elements
+Universal → * { margin: 0; padding: 0; }
+
+Tag → h1 { color: blue; }
+
+Class → .highlight { color: green; }
+
+ID → #special { color: red; }
+ Text & Color Properties
+Example:
+ Use class (reusable), ID (unique) */
+
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+div{
+    background-color: aliceblue;
+    color: black ;
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+    
+}
