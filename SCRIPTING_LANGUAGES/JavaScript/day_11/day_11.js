@@ -76,4 +76,7 @@ console.log(lastWithdrawal)
 const lastWithdrawalIndex = movement.findLastIndex(mov => mov < 0)
 console.log(lastWithdrawalIndex)
 
-//
+// some and every Method
+
+console.log(movement.some(mov => mov === -130)) //true
+console.log(movement.every(mov => mov > 0)) //false
