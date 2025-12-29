@@ -80,3 +80,68 @@ console.log(lastWithdrawalIndex)
 
 console.log(movement.some(mov => mov === -130)) //true
 console.log(movement.every(mov => mov > 0)) //false
+
+// flat and flatMap method
+const arrDeep = [[[1,2],[3]],[4,[5,6]],7,8]
+console.log(arrDeep.flatMap(2)) //[1,2,3,4,5,6,7,8]
+const arrflat = [[1,2,3],[4,5,6],[7,8]]
+console.log(arrflat.flat()) //[1,2,3,4,5,6,7,8]
+
+
+// Sorting Arrays
+// String
+const owners = ['Jonas','Zach','Adam','Martha']
+console.log(owners.sort()) //
+console.log(owners) //['Adam', 'Jonas', 'Martha', 'Zach]
+
+// Numbers
+
+let movements = [200,450,-400,3000,-650,-130,70,1300]
+console.log(movements) //
+// console.log(movements.sort()) // [-130,-400,-650,1300,200,3000,450,70]
+movements.sort((a,b) => a-b)
+console.log(movements) // [-650,-400,-130,70,200,450,1300,3000]
+movements.sort((a,b) => b-a)
+console.log(movements) // 
+
+
+// Array Grouping
+const groupedMovements = Object.groupBy(movements, movement => movement > 0 ? 'deposits' : 'withdrawals')
+console.log(groupedMovements) //[Object: null prototype] {
+//   deposits: [ 200, 450, 3000, 70, 1300 ],
+//   withdrawals: [ -400, -650, -130 ]
+// }
+
+
+
+// ## Using the Array Constructor with a Single Argument
+
+// When using the `Array` constructor with a single argument, such as `new Array(7)`, it creates a new array with seven empty elements, not an array with the number seven as its only element. This behavior can lead to unexpected results if not understood.
+const x = new Array(7);
+
+
+// The `fill()` method can also accept start and end indices, similar to the `slice()` method. The filling starts at the `begin` index and ends before the `end` index.
+
+x.fill(1, 3, 5); // Fills indices 3 and 4 with 1
+
+// The `fill()` method can be used on any array, not just empty arrays.
+
+const arrFill = [1, 2, 3, 4, 5, 6, 7]; arrFill.fill(23, 4, 6); // Fills indices 4 and 5 with 23
+
+
+// Non-Destructive Alternatives: toReversed, toSorted, toSpliced, with
+
+console.log(movements);
+const reversedMov = movements.toReversed();
+console.log(reversedMov);
+
+// toSorted (sort), toSpliced (splice)
+
+// movements[1] = 2000;
+const newMovements = movements.with(1, 2000);
+console.log(newMovements);
+
+console.log(movements);
+
+
+//---------------------- Day 11 ends here --------------------
