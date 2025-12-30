@@ -37,6 +37,7 @@ Welcome to my personal repository where I document my journey of learning new sk
 | **TypeScript (TS)** | `[./TypeScript]` | Beginner | In Progress | 2025-12-09 | — | - |
 | **C++ (CPP)** | `[./C++]` | Beginner | In Progress | 2025-12-09 | — | - |
 | **CyberSecurity**| `[./CyberSecurity]` | Beginner | In Progress | 2025 - 12 - 10 | — | - |
+| **React**| `[./React]` | Beginner | In Progress | 2025 - 12 - 30 | — | - |
 
 ---
 
