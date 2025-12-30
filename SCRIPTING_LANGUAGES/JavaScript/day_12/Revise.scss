@@ -1,0 +1,81 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+// for working well in vscode download live saas compilor extension
+// for scss files and in extension setting set none in windows on and mark tick in last option
+
+
+// 1. Nesting
+// In normal CSS, you often repeat selectors again and again:
+
+// But in SCSS, you can **nest** your CSS the same way your HTML is
+// structured: it makes your css more neat and readable
+div{
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+    h1{
+        background-color: aliceblue;
+        display: flex;
+        flex-direction: column;
+        align-items: center
+    }
+}
+
+
+// 2. Mixin
+// A **mixin** is like a "reusable piece of code."
+
+// If you find yourself writing the same CSS again and again for example,
+// Flexbox centering you can save it as a mixin.
+@mixin flexcenter(){
+    display: flex;
+    flex-direction: column;
+    align-items: center
+
+}
+div{
+    background-color: aliceblue;
+    @include flexcenter;
+    h1{
+        background-color: aliceblue;
+    @include flexcenter;
+    }
+}
+
+// 3. Partials and imports
+
+// When your project grows, you don't want all your code in **one big
+// file** it's confusing.
+
+// So SCSS allows you to **split your styles** into small files called
+// **partials**.
+
+// For example : partial files start with `_` (underscore)
+
+//     _header.scss
+//     _footer.scss
+//     _variables.scss
+//     style.scss
+
+// @import "fileName";
+
+// 4. Built-in fn
+// SCSS has some **in-built color tools** that make design tweaks super
+// easy.
+
+// Examples:
+
+// lighten($color, 20%); // makes the color lighter
+// darken($color, 10%);  // makes the color darker
+// mix(#ff0000, #0000ff, 50%); // mixes two colors
+
+// You can use them like this:
+
+button {
+  background: lighten(#3498db, 10%);
+} 
+
