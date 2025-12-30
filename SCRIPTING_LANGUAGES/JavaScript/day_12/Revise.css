@@ -290,6 +290,62 @@ button {
 } */
 
 
+/* ## 🌱 4. `:root` Selector
+`:root` = top-level element  
+Used to store **global CSS variables**.
+
+### Example
+```css */
+:root {
+  --main-color: #ff9500;
+  --big-font: 32px;
+}
+
+/* ## 🎛 5. CSS Variables (Custom Properties)
+
+### Use */
+.box {
+  color: var(--main-color);
+  font-size: var(--big-font);
+}
+
+/* ## 🟦 7. Box Shadow
+
+### Syntax
+```css
+box-shadow: offsetX offsetY blur spread color;
+```
+
+### Example
+```css */
+.card {
+  width: 200px;
+  height: 200px;
+  box-shadow: 5px 10px 20px rgba(0,0,0,0.3);
+}
 
 
+/* ## 🎞 9. @keyframes (Animations)
 
+### Example
+```css */
+@keyframes move {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(200px);
+  }
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background: orange;
+  animation: move 2s linear infinite;
+}
+/* ```
+
+### Notes
+- Use `%` (0% → 100%) to define animation steps
+- `animation: name duration timing counts; */

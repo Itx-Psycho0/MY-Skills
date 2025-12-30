@@ -1,0 +1,21 @@
+Why I learn React?
+Bcz its Make easy to manage and build complex frontend
+
+when should i learn react?
+after mastering js
+ 
+why react was created?
+to solve the problem in consistency in UI
+react gives the consistency to update ui on real time modification
+
+two ways to install react :
+first we have node js in system
+
+first way :- use npx create-react-app name of file
+
+second way :- use bundler:- npm create vite@latest
+
+and also other way :- use cdn link for use react.
+
+
+* react is core but react doesn't work alone it used react dom to working on web and react-native for mobile. react dom is connect browser to react.
