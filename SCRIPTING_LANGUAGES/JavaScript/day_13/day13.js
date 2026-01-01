@@ -129,4 +129,43 @@ console.log(Number('230_000')); // NaN
 console.log(+('230_000')); // NaN
 console.log(parseInt('230_000')); // 230
 console.log(parseFloat('2.30_000')); // 2.3
-console.log(Number.parseInt('230_000')); // 230
+console.log(Number.parseInt('230_000')); // 
+
+// Working with BigInt
+console.log(2 ** 53 - 1); // 9007199254740991
+console.log(Number.MAX_SAFE_INTEGER); // 9007199254740991
+console.log(2 ** 53 + 1); // 9007199254740992
+console.log(2 ** 53 + 2); // 9007199254740994
+console.log(2 ** 53 + 3); // 9007199254740996
+console.log(2 ** 53 + 4); // 9007199254740998
+//You can see that after 2**53, the numbers are not accurate anymore so we use BigInt for very large integers
+
+// BigInt can be created by appending n to the end of an integer literal
+console.log(2n ** 53n - 1n); // 9007199254740991n
+console.log(typeof 9007199254740991n); // bigint
+console.log(9007199254740991n + 2n); // 9007199254740993n
+console.log(9007199254740991n + 2); // Error: Cannot mix BigInt and other types
+console.log(typeof (9007199254740991n + 2n)); // bigint
+console.log(10n / 3n); // 3n
+console.log(10 / 3); // 3.3333333333333335
+// Note: BigInt cannot be used with Math methods and functions
+// console.log(Math.sqrt(16n)); // Error
+
+// Exceptions
+console.log(20n > 15); // true
+console.log(20n === 20); // false
+console.log(20n == 20); // true
+
+console.log(10n + 5n); // 15n
+// console.log(10n + 5); // Error
+console.log(10n * 2n); // 20n
+console.log(10n * 2); // Error
+console.log(10n - 4n); // 6n
+// console.log(10n - 4); // Error
+console.log(10n / 2n); // 5n
+// console.log(10n / 2); // Error
+
+const huge = 20289830237283728378237n;
+const num = 23;
+console.log(huge * BigInt(num)); // 465665095456524752099451n
+console.log(huge + ' is REALLY big!!!'); // 20289830237283728378237 is REALLY big!!!
