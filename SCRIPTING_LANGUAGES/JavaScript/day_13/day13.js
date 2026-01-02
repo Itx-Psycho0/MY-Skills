@@ -169,3 +169,127 @@ const huge = 20289830237283728378237n;
 const num = 23;
 console.log(huge * BigInt(num)); // 465665095456524752099451n
 console.log(huge + ' is REALLY big!!!'); // 20289830237283728378237 is REALLY big!!!
+
+// Creating Dates
+const now = new Date();
+console.log(now); // 2023-06-15T12:34:56.789Z (example output)
+
+console.log(new Date('June 15, 2023 10:20:30')); // 2023-06-15T10:20:30.000Z
+console.log(new Date('2023-06-15T10:20:30Z')); // 2023-06-15T10:20:30.000Z
+console.log(new Date(2023, 5, 15, 10, 20, 30));; // 2023-06-15T10:20:30.000Z (month is 0-indexed)
+console.log(new Date(0)); // 1970-01-01T00:00:00.000Z (Unix epoch)
+
+console.log(new Date(30 * 24 * 60 * 60 * 1000)); // 1970-01-31T00:00:00.000Z (30 days after epoch)
+
+// Working with Dates
+const future = new Date(2023, 11, 25, 10, 30, 0);
+console.log(future); // 2023-12-25T10:30:00.000Z
+console.log(future.getFullYear()); // 2023
+console.log(future.getMonth()); // 11 (December, 0-indexed)
+console.log(future.getDate()); // 25
+console.log(future.getDay()); // 1 (Monday, 0=Sunday)
+console.log(future.getHours()); // 10
+console.log(future.getMinutes()); // 30
+console.log(future.getSeconds()); // 0
+console.log(future.toISOString()); // 2023-12-25T10:30:00.000Z
+console.log(future.getTime()); // 1703490600000 (milliseconds since epoch)
+
+future.setFullYear(2024);
+console.log(future); // 2024-12-25T10:30:00.000Z
+future.setMonth(0);
+console.log(future); // 2024-01-25T10:30:00.000Z
+future.setDate(1);
+console.log(future); // 2024-01-01T10:30:00.000Z    
+future.setHours(0);
+console.log(future); // 2024-01-01T00:30:00.000Z
+future.setMinutes(0);
+console.log(future); // 2024-01-01T00:00:00.000Z
+future.setSeconds(0);
+console.log(future); // 2024-01-01T00:00:00.000Z
+console.log(Date.now()); // current timestamp in milliseconds since epoch
+// Date.now() is a faster way to get current timestamp than new Date().getTime()
+
+// What is epoch?
+// The epoch is the point where the time starts and is platform dependent
+// For JavaScript, the epoch is January 1, 1970 00:00:00 UTC
+// Timestamps are measured in milliseconds since the epoch
+
+// Operations with Dates
+const date1 = new Date(2023, 0, 1);
+const date2 = new Date(2023, 5, 15);
+const diffTime = Math.abs(date2 - date1);
+const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+console.log(diffDays); // 165
+
+// Internationalizing Dates and Numbers
+const nowDate = new Date();
+// const formatDateUS = new Intl.DateTimeFormat('en-US').format(nowDate);
+// console.log(formatDateUS); // MM/DD/YYYY format
+//ISO language code table where you can find codes for different languages and countries
+
+const options = {
+    hour: 'numeric',
+    minute: 'numeric',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    weekday: 'long',
+};
+
+const locale = navigator.language;
+console.log(locale);
+
+
+const formatDateUS = new Intl.DateTimeFormat('en-US',options).format(nowDate);
+console.log(formatDateUS); // e.g., "Thursday, June 15, 2023 at 12:34 PM"
+
+const formatDateIN = new Intl.DateTimeFormat('hi-IN',options).format(nowDate);
+console.log(formatDateIN); // e.g., "गुरुवार, 15 जून 2023, 12:34 अपराह्न"
+
+// Internationalizing Numbers
+const number = 1234567.89;
+
+
+const formatNumberUS = new Intl.NumberFormat('en-US').format(number);
+console.log(formatNumberUS); // "1,234,567.89"
+console.log(typeof formatNumberUS); // string
+
+const num2 = 3884764.23;
+
+const option2 = {
+  style: 'currency',
+  unit: 'celsius',
+  currency: 'EUR',
+  // useGrouping: false,
+};
+
+console.log('US:      ', new Intl.NumberFormat('en-US', option2).format(num2));
+console.log('Germany: ', new Intl.NumberFormat('de-DE', option2).format(num2));
+console.log('Syria:   ', new Intl.NumberFormat('ar-SY', option2).format(num2));
+console.log(
+  navigator.language,
+  new Intl.NumberFormat(navigator.language, option2).format(num2)
+);
+
+
+// Timers: setTimeout and setInterval
+// setTimeout
+const ingredients = ['olives', 'spinach'];
+const pizzaTimer = setTimeout(
+  (ing1, ing2) => console.log(`Here is your pizza with ${ing1} and ${ing2} 🍕`),
+  3000,
+  ...ingredients
+);
+console.log('Waiting...');
+
+if (ingredients.includes('spinach')) clearTimeout(pizzaTimer);
+
+// setInterval
+// setInterval(() => {
+//     const now = new Date();
+//     console.log(now);
+// }, 1000);
+// The above code will log the current date and time every second
+// To stop the interval, you can use clearInterval with the interval ID returned by setInterval
+
+// ============= End of Day 13 =============//
