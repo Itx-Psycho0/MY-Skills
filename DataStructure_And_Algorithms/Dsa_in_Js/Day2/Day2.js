@@ -1,6 +1,6 @@
 // Day2 in DSa in Js
 
-// Topic: Math Functions in JavaScript
+// Topic: Math Functions in JavaScript 
 
 console.log("Welcome to Day 2 of Data Structures and Algorithms in JavaScript!");
 
