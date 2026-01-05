@@ -66,4 +66,26 @@ function isPrime(n){
     return true
 }
 
-//
+// 7. calculatePower
+function calculatePower(a,b){
+    return Math.pow(a,b)
+}
+
+// 8. check strong number
+function Factorial(num){
+    let fact = 1;
+    for(let i =1; i<=num; i++){
+        fact *= i
+    }
+    return fact
+}
+function isStrongNumber(n){
+    let sum = 0;
+    let temp = n;
+    while(temp>0){
+        let digit = temp % 10;
+        sum += Factorial(digit);
+        temp = Math.floor(temp/10);
+    }
+    return sum === n? "Yes" : "No";
+}
