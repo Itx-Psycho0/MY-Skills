@@ -38,3 +38,16 @@
 // Polymorphism is the ability of different classes to be treated as instances of the same class through a common interface. It allows methods to do different things based on the object it is acting upon.
 
 
+// In js we have prototype, and all objects are linked to that prototype object.
+
+//Prototypal Inheritance
+// In JavaScript, prototypal inheritance is a mechanism by which objects can inherit properties and methods from other objects. This is achieved through the prototype chain, where each object has a prototype object that it can delegate property and method lookups to.
+
+// Constructor Function
+// A constructor function is a special type of function that is used to create and initialize objects. When called with the new keyword, it creates a new object and sets its prototype to the constructor's prototype property.
+
+// ES6 Classes
+// In ES6, JavaScript introduced a new syntax for creating classes using the class keyword. This syntax is syntactical sugar over the existing prototype-based inheritance and provides a more familiar way to create objects and deal with inheritance.
+
+// Object.create()
+// The Object.create() method is used to create a new object with a specified prototype object and properties. This allows for more direct control over the prototype chain and can be used to implement inheritance in a more flexible way.
