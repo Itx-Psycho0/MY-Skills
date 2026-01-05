@@ -6,6 +6,7 @@ function App() {
 
   return (
     <>
+    <div className="container">
       <div className="flex flex-col items-center gap-6 p-7 md:flex-row md:items-start rounded-2xl bg-white shadow-lg">
         <div className="flex-shrink-0">
           <img
@@ -24,6 +25,7 @@ function App() {
           </div>
         </div>
       </div>
+    </div>
     </>
   );
 }
