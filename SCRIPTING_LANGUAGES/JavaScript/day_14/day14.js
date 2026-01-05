@@ -54,11 +54,56 @@
 
 //Example of Connstructor Function
 function Person(name,age){
+    //instance properties
     this.fname = name
     this.age = age
-    this.greet = function(){
-        console.log(`Hello, my name is ${this.name} and i am ${this.age} years old.`)
-    }
+    // Instance method
+    // But you should avoid defining methods inside the constructor function as it creates a new copy of the method for each instance, which is inefficient. Instead, define methods on the prototype.
+    //======================
+    // this.greet = function(){
+    //     console.log(`Hello, my name is ${this.fname} and i am ${this.age} years old.`)
+    // }
 }
 const a = new Person("Alice",30)
 console.log(a)
+
+// Prototype
+Person.prototype.greet = function(){
+    console.log(`Hello, my name is ${this.fname} and i am ${this.age} years old.`)
+}
+console.log(Person.prototype)
+a.greet()
+console.log(a.__proto__===Person.prototype)
+console.log(Person.prototype.isPrototypeOf(a))
+
+// Person.prototype is the prototype object for all instances created using the Person constructor function. It contains properties and methods that are shared among all instances of Person. But it is not prototype of Person function itself.
+
+//Prtotype Chain
+console.log(a.toString())
+console.log(a.__proto__.__proto__===Object.prototype)
+console.log(Object.prototype.__proto__===null)
+
+// =============================
+function Car(Brand,speed){
+    this.Brand = Brand
+    this.speed = speed
+}
+Car.prototype.accelerate = function(){
+    this.speed += 10
+    console.log(`${this.Brand} is going to ${this.speed} km/h.`)
+}
+Car.prototype.brake = function(){
+    this.speed -= 10
+    console.log(`${this.Brand} is going to ${this.speed} km/h.`)
+
+}
+const myCar = new Car("Toyota", 150)
+console.log(myCar)
+myCar.accelerate()
+myCar.brake()
+//
+const myCar2 = new Car("BMW", 120)
+console.log(myCar2)
+myCar2.accelerate()
+myCar2.brake()
+//=============================
