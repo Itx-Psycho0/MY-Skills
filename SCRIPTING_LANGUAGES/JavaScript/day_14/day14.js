@@ -51,3 +51,14 @@
 
 // Object.create()
 // The Object.create() method is used to create a new object with a specified prototype object and properties. This allows for more direct control over the prototype chain and can be used to implement inheritance in a more flexible way.
+
+//Example of Connstructor Function
+function Person(name,age){
+    this.fname = name
+    this.age = age
+    this.greet = function(){
+        console.log(`Hello, my name is ${this.name} and i am ${this.age} years old.`)
+    }
+}
+const a = new Person("Alice",30)
+console.log(a)
