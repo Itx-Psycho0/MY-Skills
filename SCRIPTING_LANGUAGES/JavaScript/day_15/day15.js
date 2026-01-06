@@ -21,3 +21,15 @@
 // There are many APIs :- like :- DOM, GEOLOCATION, OWN CLASS API,ONLINE APIs, etc
 // Online APIs:- Application running on a server, that receives request for data, and sends data back as response.
 //We can build our own Web APIs(requires back-end development, e.g node.js) or use 3rd-party APIs.
+
+//Most APIs this that use JSON data Format instead of XML data format.
+// JSON :- Its bassically js obj that converted in to string.
+
+//https://countries-api-836d.onrender.com/countries/
+
+
+
+//PROJECT FOR LEARNING
+///////////////////////////////////////
+const btn = document.querySelector('.btn-country');
+const countriesContainer = document.querySelector('.countries');
