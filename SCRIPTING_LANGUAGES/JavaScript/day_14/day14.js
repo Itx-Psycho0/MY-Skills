@@ -119,7 +119,55 @@ class PersonCl{
         this.name = name
         this.age = age
     }
+
+    greet(){
+        console.log(`Hello, my name is ${this.name} and i am ${this.age} years old.`)
+    }
+
+    get ages(){
+        return this.age
+    }
+
+    set fullName(name){
+        if(name.includes(' ')){
+            this.name = name
+        } else{
+            alert(`${name} is not a full name!`)
+        }
+    }
+
 }
 
-const b = new PersonCl("Bob",25)
+const b = new PersonCl("Bob singh",25)
 console.log(b)
+console.log(b.__proto__===PersonCl.prototype)
+b.greet()
+console.log(PersonCl.prototype.isPrototypeOf(b))
+console.log(b.ages)
+b.fullName = "Bob Smith"
+console.log(b.name)
+// b.fullName = "Bob"
+// console.log(b.name)
+
+//=============================
+
+// Important Points About Classes
+// Classes are not hoisted, even if they are class declarations. Unlike function declarations, you cannot use a class before it is declared in the code.
+// Classes are first-class citizens, meaning they can be passed into functions and returned from functions because they are special kinds of functions behind the scenes.
+// The body of a class is always executed in strict mode, even if strict mode is not activated for the entire script
+
+// Setters and Getters
+const account = {
+    owner: 'John Doe',
+    movements: [200, 530, 120, 300],
+    get latest(){
+        return this.movements[this.movements.length - 1]
+    },
+    set latest(mov){
+        this.movements.push(mov)
+    }
+}
+console.log(account.latest)
+account.latest = 50
+console.log(account.movements)
+
