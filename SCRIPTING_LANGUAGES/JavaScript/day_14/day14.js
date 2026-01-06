@@ -109,3 +109,17 @@ myCar2.brake()
 //=============================
 
 // ES6 Class
+
+//class expression
+// const PersonCl = class{}
+
+//class declaration
+class PersonCl{
+    constructor(name,age){
+        this.name = name
+        this.age = age
+    }
+}
+
+const b = new PersonCl("Bob",25)
+console.log(b)
