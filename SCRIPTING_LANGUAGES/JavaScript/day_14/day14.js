@@ -171,3 +171,12 @@ console.log(account.latest)
 account.latest = 50
 console.log(account.movements)
 
+// Static Methods
+// Static methods are functions that are defined on the class itself, rather than on the prototype. They are called directly on the class, not on instances of the class.
+class Helper{
+    static isEven(num){
+        return num % 2 === 0
+    }
+}
+console.log(Helper.isEven(4))
+console.log(Helper.isEven(5))
