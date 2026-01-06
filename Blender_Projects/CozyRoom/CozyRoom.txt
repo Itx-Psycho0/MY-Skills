@@ -1,0 +1,37 @@
+Day 2 :-
+
+Isometric Cozy Room – Blender
+
+This project is an isometric cozy room created in Blender using only basic shapes. The focus is on clean topology and a non-destructive workflow.
+
+Key Techniques
+
+Built from primitives (cube, plane, cylinder)
+
+Modifiers used:
+
+Bevel
+
+Subdivision Surface
+
+Solidify
+
+No messy booleans or destructive edits
+
+Edge flow kept simple and quad-based
+
+Purpose
+
+Practice clean topology
+
+Improve modifier stacking
+
+Understand low-to-mid poly modeling
+
+Build visually appealing scenes with minimal complexity
+
+Tools
+
+Blender (Eevee/Cycles compatible)
+
+This project is purely for learning and skill-building, not realism or asset optimization.
