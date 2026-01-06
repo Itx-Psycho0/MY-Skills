@@ -89,3 +89,82 @@ function isStrongNumber(n){
     }
     return sum === n? "Yes" : "No";
 }
+
+// 9. check numder is automorphic
+function isAutomorphic(n){
+    let square = n * n;
+    let numStr = n.toString();
+    let squareStr = square.toString();
+    let lastDigits = squareStr.slice(-numStr.length);
+    return lastDigits === numStr;
+}
+
+// 10. Reverse a Number
+function reverseNumber(n){
+    let reversed = 0;
+    while(n>0){
+        let digit = n % 10;
+        reversed = reversed * 10 + digit;
+        n = Math.floor(n/10);
+    }
+    return reversed
+}
+
+// 11. Palindrome Number
+function isPalindrome(n){
+    let original = n;
+    let reversed = 0;
+    while(n>0){
+        let digit = n % 10;
+        reversed = reversed * 10 + digit;
+        n = Math.floor(n/10);
+    }
+    return reversed === original;
+}
+
+// 12. Armstrong Number
+function isArmstrong(n){
+    let original = n;
+    let sum = 0;
+    while(n>0){
+        let digit = n % 10;
+        sum += digit * digit * digit;
+        n = Math.floor(n/10);
+    }
+    return sum === original;
+}
+
+// 13. Harshad Number
+function isHarshad(n){
+    let sum = 0;
+    let temp = n;
+    while(temp>0){
+        let digit = temp % 10;
+        sum += digit;
+        temp = Math.floor(temp/10);
+    }
+    return n % sum === 0;
+}
+
+// 14. Abundant Number
+function isAbundant(n){
+    let sum = 0;
+    for(let i = 1; i < n; i++){
+        if(n % i === 0){
+            sum += i;
+        }
+    }
+    return sum > n;
+}
+
+// 15. Prime Factors of a Number
+function primeFactors(n){
+    let factors = [];
+    for(let i = 2; i <= n; i++){
+        while(n % i === 0){
+            factors.push(i);
+            n = n / i;
+        }
+    }
+    return factors;
+}
