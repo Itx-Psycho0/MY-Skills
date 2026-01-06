@@ -185,6 +185,11 @@ console.log(Helper.isEven(5))
 const PersonProto = {
     greet(){
         console.log(`Hello, my name is ${this.name} and i am ${this.age} years old.`)
+    },
+
+    init(name,age){
+        this.name = name
+        this.age = age
     }
 }
 
@@ -193,3 +198,43 @@ c.name = "Charlie"
 c.age = 28
 console.log(c)
 c.greet()
+const d = Object.create(PersonProto)
+d.init("David", 35)
+console.log(d)
+d.greet()
+
+
+// =============================
+
+class CarCl{
+    constructor(Brand,speed){
+        this.Brand = Brand
+        this.speed = speed
+    
+    }
+    accelerate(){
+        this.speed += 10
+        console.log(`${this.Brand} is going to ${this.speed} km/h.`)
+    }
+    brake(){
+        this.speed -= 10
+        console.log(`${this.Brand} is going to ${this.speed} km/h.`)
+    }
+    get speedUS(){
+        return this.speed / 1.6
+    }
+    set speedUS(speed){
+        this.speed = speed * 1.6
+    }
+}
+
+const myCarCl = new CarCl("Audi", 140)
+console.log(myCarCl)
+myCarCl.accelerate()
+myCarCl.brake()
+console.log(myCarCl.speedUS)
+myCarCl.speedUS = 100
+console.log(myCarCl.speed)
+console.log(myCarCl.speedUS)
+
+//=============================
