@@ -238,3 +238,106 @@ console.log(myCarCl.speed)
 console.log(myCarCl.speedUS)
 
 //=============================
+
+// Inheritance
+const Student = function(name,age,course){
+    Person.call(this,name,age)
+    this.course = course
+}
+
+//inherit protoype
+Student.prototype=Object.create(Person.prototype)
+Student.prototype.greet = function(){
+    console.log(`My name is ${this.name} and i am ${this.age} years old. I am studying ${this.course}.`)}
+
+const mike = new Student("Mike",2022,"computer")
+mike.greet()
+
+//=============================
+// function Car(Brand,speed){
+//     this.Brand = Brand
+//     this.speed = speed
+// }
+// Car.prototype.accelerate = function(){
+//     this.speed += 10
+//     console.log(`${this.Brand} is going to ${this.speed} km/h.`)
+// }
+// Car.prototype.brake = function(){
+//     this.speed -= 10
+//     console.log(`${this.Brand} is going to ${this.speed} km/h.`)
+
+// }
+
+const EV = function(Brand,speed,battery){
+    Car.call(this,Brand,speed)
+    this.battery = battery
+    
+}
+EV.prototype = Object.create(Car.prototype)
+EV.prototype.chargeBattery = function(charge){
+    this.battery += charge}
+EV.prototype.accelerate = function(){
+    this.speed += 20
+    this.battery -= 1
+    console.log(`${this.Brand} is going to ${this.speed} km/h, with a charge of ${this.battery}%.`)
+}
+EV.prototype.brake = function(){
+    this.speed -= 20
+    this.battery -= 1
+    console.log(`${this.Brand} is going to ${this.speed} km/h, with a charge of ${this.battery}%.`)}
+
+const tesla = new EV("Tesla",120,23)
+
+console.log(tesla)
+tesla.accelerate()
+tesla.brake()
+tesla.chargeBattery(50)
+console.log(tesla)
+//=============================
+// You can see the polymorphism in it example above just observe accelerate fn and brake fn.
+
+// Inheritance with es6 class syntax
+class StudentCl extends PersonCl{
+    constructor(name,age,course){
+        super(name,age)
+        this.course = course
+    
+    }
+    greet(){
+        console.log("I am a student")}
+}
+
+const c=StudentCl("boby",24,"CSe")
+console.log(c)
+c.greet()
+
+// Inheritance Between "Classes": Object.create
+
+// const PersonProto = {
+//   calcAge() {
+//     console.log(2037 - this.birthYear);
+//   },
+
+//   init(firstName, birthYear) {
+//     this.firstName = firstName;
+//     this.birthYear = birthYear;
+//   },
+// };
+
+const steven = Object.create(PersonProto);
+
+const StudentProto = Object.create(PersonProto);
+StudentProto.init = function (firstName, birthYear, course) {
+  PersonProto.init.call(this, firstName, birthYear);
+  this.course = course;
+};
+
+StudentProto.introduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
+
+const jay = Object.create(StudentProto);
+jay.init('Jay', 2010, 'Computer Science');
+jay.introduce();
+jay.calcAge();
+
