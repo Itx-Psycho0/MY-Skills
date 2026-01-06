@@ -180,3 +180,16 @@ class Helper{
 }
 console.log(Helper.isEven(4))
 console.log(Helper.isEven(5))
+
+// Object.create()
+const PersonProto = {
+    greet(){
+        console.log(`Hello, my name is ${this.name} and i am ${this.age} years old.`)
+    }
+}
+
+const c = Object.create(PersonProto)
+c.name = "Charlie"
+c.age = 28
+console.log(c)
+c.greet()
