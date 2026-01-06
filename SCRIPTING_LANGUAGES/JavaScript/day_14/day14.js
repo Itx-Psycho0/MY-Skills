@@ -107,3 +107,5 @@ console.log(myCar2)
 myCar2.accelerate()
 myCar2.brake()
 //=============================
+
+// ES6 Class
