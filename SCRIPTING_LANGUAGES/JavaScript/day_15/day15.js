@@ -241,3 +241,9 @@ const getCountryData = function(country){
 btn.addEventListener('click',function(){
     getCountryData("bharat")
 })
+
+
+//Async fn
+
+
+
