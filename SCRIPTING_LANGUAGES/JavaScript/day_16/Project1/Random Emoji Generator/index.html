@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Random Emoji Generator</title>
 </head>
 <body>
@@ -11,16 +12,21 @@
             <h1 class="firstHeading">How are you Feeling?</h1>
             <h2 id="Emojis">?</h2>
             <div class="moodBtn">
-                <input type="button" value="Happy" id="happy">
-                <input type="button" value="Sad" id="sad">
-                <input type="button" value="Angry" id="angry">
-                <input type="button" value="Surprised" id="surprised">
-                <input type="button" value="Confused" id="confused">
-                <input type="button" value="Crying" id="crying">
+                <input type="button" value="Happy" id="happy" class="mood">
+                <input type="button" value="Sad" id="sad" class="mood">
+                <input type="button" value="Angry" id="angry" class="mood">
+                <input type="button" value="Surprised" id="surprised" class="mood">
+                <input type="button" value="Confused" id="confused" class="mood">
+                <input type="button" value="Crying" id="crying" class="mood">
             </div>
-            <Button id="GetEmoji"></Button>
+            <Button id="GetEmoji">Get Emoji</Button>
         </div>
     </div>
     
+
+
+
+
+    <script type="module" src="script.js"></script>
 </body>
 </html>

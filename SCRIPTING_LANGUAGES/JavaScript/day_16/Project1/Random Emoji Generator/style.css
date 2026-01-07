@@ -1,0 +1,140 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+:root {
+    --bg-gradient: linear-gradient(135deg, #0a0ae4 0%, #151924 40%, #E94560 100%);
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+  --c1: #7b00ff;
+  --c2: #005eff;
+  --c3: #ff00b7;
+  --c4: #0059ff;
+  --c5: hsl(218, 100%, 50%);
+}
+
+body{
+    font-family: system-ui;
+    color: #ffffff;
+    background:
+    radial-gradient(circle at 20% 30%, var(--c2) 0%, transparent 42%),
+    radial-gradient(circle at 80% 25%, var(--c3) 0%, transparent 45%),
+    radial-gradient(circle at 50% 80%, var(--c3) 0%, transparent 48%),
+    radial-gradient(circle at 70% 75%, var(--c4) 0%, transparent 46%),
+    radial-gradient(circle at 50% 50%, var(--c5) 0%, #020024 70%);
+    animation: lavaFlow 2s ease-in-out infinite;
+}
+@keyframes lavaFlow {
+  0% {
+    background-position:
+      0% 0%,
+      100% 10%,
+      10% 100%,
+      90% 90%,
+      50% 50%;
+  }
+  50% {
+    background-position:
+      60% 100%,
+      0% 60%,
+      100% 40%,
+      40% 0%,
+      50% 50%;
+  }
+  100% {
+    background-position:
+      0% 0%,
+      100% 10%,
+      10% 100%,
+      90% 90%,
+      50% 50%;
+  }
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+.block{
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    inset 0 0 30px rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+}
+
+.block::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.4),
+    rgba(255,255,255,0.05)
+  );
+  z-index: -1;
+  filter: blur(12px);
+}
+
+
+#Emojis{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 200px;
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.2));
+    transition: scale 0.2s ease-in-out ;
+
+}
+.moodBtn{
+    width : 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+
+.mood{
+    margin: 7px;
+    width : 100%;
+    background: transparent;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 15px;
+    padding: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50px;
+    color: #ffffff;
+
+}
+
+#GetEmoji{
+    width : 80%;
+    height: 50px;
+    font-size: larger;
+    font-weight: bolder;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+
+    
+}
+
+#Emojis:hover{
+    scale: 1.5;
+}
