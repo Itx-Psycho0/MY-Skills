@@ -1,28 +1,40 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 const Todo = () => {
-    const [todos,setTodos]= useState([])
-    const [newTask,setNewTask] = useState("")
-    const handleChange = (e) =>{
-        setNewTask(e.target.value)
+  const [todos, setTodos] = useState([])
+  const [newTask, setNewTask] = useState("")
+
+  const handleChange = (e) => {
+    setNewTask(e.target.value)
+  }
+
+  const addTask = () => {
+    if (!newTask.trim()) return
+
+    if (todos.includes(newTask)) {
+      alert("Task already exists")
+      return
     }
-    const tasks  = ()=>{
-            return (!todos.includes(newTask))? newTask:"Already Exists"
-        }
-    const AddTask = () =>{
-        setTodos([...todos,tasks()])
-    }
+
+    setTodos([...todos, newTask])
+    setNewTask("")
+  }
+
   return (
     <div>
-      {todos.map(t=>(
-        <ul key={Math.random()}>
-            <li>{t}</li>
-        </ul>
-      ))}
-      <input type="text" value={newTask} onChange={handleChange} />
+      <ul>
+        {todos.map((t, index) => (
+          <li key={index}>{t}</li>
+        ))}
+      </ul>
 
-      <button onClick={AddTask}>Add Todo</button>
+      <input
+        type="text"
+        value={newTask}
+        onChange={handleChange}
+      />
+
+      <button onClick={addTask}>Add Todo</button>
     </div>
   )
 }
