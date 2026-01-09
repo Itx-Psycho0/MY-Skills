@@ -3,11 +3,15 @@ import { useState } from 'react'
 import { use } from 'react'
 
 const State = () => {
-    const counter = useState(0)
-    console.log(counter)
+    const [count,setCount] = useState(0)
+    const increment = () => {
+        setCount(count+1)
+    }
   return (
     <div>
-      
+      <h1>{count}</h1>
+      <button onClick={increment}>Plus</button>
+      <button onClick={() => setCount(count-1)}>Minus</button>
     </div>
   )
 }
