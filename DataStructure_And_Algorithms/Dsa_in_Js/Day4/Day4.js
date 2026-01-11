@@ -11,3 +11,7 @@
 //(O)n :- Signifies that the execution time of the algorithm grows lineaerly in proportion to the size of the input data(n).
 
 //(O)1:- aka constant time, signifies that the execution time of an algorithm remains constant regardless of the input size.
+
+//(O)n^2:- Indicates that the algorithm's execution time grows quadratically with the size of the input data(represented by n)
+
+//(O)log n:- time complexity refers to an algorithm's runtime that grows logarithmically with the size of the input(represented by n). In simpler terms, as the input size increases, the time it takes for the algorithm to run increases slowly.
