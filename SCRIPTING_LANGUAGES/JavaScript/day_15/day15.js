@@ -265,3 +265,9 @@ try{
 }catch(err){
   alert(err.message)
 }
+
+// Some combinators in promises
+// promise.all
+// promise.race
+// promise.allsettled
+// promise.any
