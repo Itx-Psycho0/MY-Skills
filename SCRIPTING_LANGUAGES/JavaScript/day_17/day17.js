@@ -5,7 +5,12 @@
 // Module:- Reusable piece of code that encapsulates implementation details;
 //usually a standalone file, but it doesn't have to be.
 
-import "./shoppingCart.js"
+import {cost} from "./shoppingCart.js"
+import addToCart from "./shoppingCart.js"
+// import * as ShoppingCart from "./shoppingCart.js"
+// import {cost as ct} from "./shoppingCart.js"
 console.log("Importing Module")
+console.log(cost)
+console.log(addToCart("bread",5))
 
 
