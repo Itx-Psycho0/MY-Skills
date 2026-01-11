@@ -13,4 +13,28 @@ console.log("Importing Module")
 console.log(cost)
 console.log(addToCart("bread",5))
 
+// imports is not a copy of export its a live connection. 
+
+// top level await :- using await without async but its only work on modules.
+
+const res = await fetch()
+const data = await res.json()
+console.log(data)
+// its blocking the entire execution. without async
+
+
+//some commands line
+// ls , dir showing the folders/files in the file/folder.
+
+// cd change directory
+// clear
+// mkdir make directory
+// touch , edit to make file
+
+// rm, del to del the file
+// mv filename locationToMove
+//rmdir remove dir, -R(recurrsive)
+
+
+
 
