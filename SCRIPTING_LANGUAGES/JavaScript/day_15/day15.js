@@ -247,8 +247,21 @@ btn.addEventListener('click',function(){
 
 const whereAmI = async function(){
   const res = await fetch('https://restcountries.com/v2/name/portugal')
-  console.log(res)
-
+  const data = await res.json()
+  console.log(data)
+  renderCountry(data[0])
 }
 whereAmI()
 console.log("first")
+
+
+// Error Handling
+//try....Catch
+try{
+  //code 
+  let y = 1
+  const x = 2
+  x = 3
+}catch(err){
+  alert(err.message)
+}
