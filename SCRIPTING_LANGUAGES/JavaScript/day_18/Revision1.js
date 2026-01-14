@@ -91,3 +91,35 @@ console.log(m) // [Boolean: False])
 
 // special char and escapig values
 // we know already  \(backslash is "king")
+
+
+//  Falsy values 
+// false
+// undefined
+// null
+// 0
+// NaN
+// the empty string ("")
+
+
+// i revise about if else swtich case, and try if catch
+// in error handling if we have finally block we return something in catch block and also return in finally block then finally block return overwirte the catch block.
+
+// and other thing error also have object name error where we give name and msg.
+
+// The name property provides the general class of Error (such as DOMException or Error), while message generally provides a more succinct message than one would get by converting the error object to a string.
+
+function doSomethingErrorProne() {
+  if (ourCodeMakesAMistake()) {
+    throw new Error("The message");
+  }
+  doSomethingToGetAJavaScriptError();
+}
+
+try {
+  doSomethingErrorProne();
+} catch (e) {
+  // Now, we actually use `console.error()`
+  console.error(e.name); // 'Error'
+  console.error(e.message); // 'The message', or a JavaScript error message
+}
