@@ -103,3 +103,9 @@ console.log(m) // [Boolean: False])
 
 
 // i revise about if else swtich case, and try if catch
+// in error handling if we have finally block we return something in catch block and also return in finally block then finally block return overwirte the catch block.
+
+// and other thing error also have object name error where we give name and msg.
+
+// The name property provides the general class of Error (such as DOMException or Error), while message generally provides a more succinct message than one would get by converting the error object to a string.
+
