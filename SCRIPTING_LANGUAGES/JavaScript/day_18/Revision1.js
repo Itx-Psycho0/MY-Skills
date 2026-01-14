@@ -109,3 +109,17 @@ console.log(m) // [Boolean: False])
 
 // The name property provides the general class of Error (such as DOMException or Error), while message generally provides a more succinct message than one would get by converting the error object to a string.
 
+function doSomethingErrorProne() {
+  if (ourCodeMakesAMistake()) {
+    throw new Error("The message");
+  }
+  doSomethingToGetAJavaScriptError();
+}
+
+try {
+  doSomethingErrorProne();
+} catch (e) {
+  // Now, we actually use `console.error()`
+  console.error(e.name); // 'Error'
+  console.error(e.message); // 'The message', or a JavaScript error message
+}
