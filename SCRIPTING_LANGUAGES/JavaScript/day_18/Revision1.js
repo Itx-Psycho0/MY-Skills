@@ -50,3 +50,44 @@ console.log(x)
 const objs = {1:"a"}
 objs[1] = "b"
 console.log(objs) // {1: 'b'}
+
+// Data Structures
+// we have 7 primitives , string , numbers , bigint, Float, Boolean, null, Undefined
+// and refernce data structre , object, array , function (yes function treat as a object) but these all are says as object.
+
+//but
+let y = null
+console.log(typeof y) // object //in js we says its like error
+
+// data coercion or data type conversion 
+// so data coercion means language autmatically convert the type of data, and implicit is we convert the data.
+// js is dynamically typed language so 
+console.log("77"-"7") // 70 //coercion
+
+// convert string to number
+// we have parseINt, parseFloat, NUmber() and unary operator
+// *for use parse int , use radix parameter //pareseInt(varName,2)--> 2- binary, 10-> integers, 16--> hexadecimal, 8--> octal
+console.log(+'1.1'+1.1)
+
+// literals 
+// array literals , booleans literals, string literals, object literals, exp literals, floating point literals , numeber literals
+// literals means a way of writing of that data type
+
+// more about literals you will find there but i says its nothing
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#literals
+
+//. yeah one thing boolean primtive value are the value you know, but boolean objecct is useless this is just objec that value its nothing with true false
+let m = new Boolean(false)
+let n = false
+if (n){
+    console.log("yes n")
+}
+if (m){
+    console.log("yes m")
+}
+// you see its a object . its gives true like yeah object have value
+console.log(m) // [Boolean: False])
+
+
+// special char and escapig values
+// we know already  \(backslash is "king")
