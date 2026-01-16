@@ -126,3 +126,4 @@ try {
 
 // Loops
 // So many types of loops , first why we need loop
+// so loop is something that do repetated task in one go
