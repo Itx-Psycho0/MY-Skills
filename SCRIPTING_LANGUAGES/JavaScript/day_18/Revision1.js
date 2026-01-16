@@ -123,3 +123,5 @@ try {
   console.error(e.name); // 'Error'
   console.error(e.message); // 'The message', or a JavaScript error message
 }
+
+// Loops
