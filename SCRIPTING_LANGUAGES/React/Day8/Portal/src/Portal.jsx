@@ -15,3 +15,10 @@ const Portal = () => {
 }
 
 export default Portal
+
+//class classComponent extend component(){
+//render(
+// all code
+//)
+//}
+// but now we didn't use classes , industry use functional .
