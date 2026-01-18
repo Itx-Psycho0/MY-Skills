@@ -1,4 +1,4 @@
-import React, { use } from 'react'
+import React, { use, useEffect } from 'react'
 import { useState } from 'react'
 
 const App = () => {
@@ -11,6 +11,9 @@ const App = () => {
     setAdvice(data.slip.advice)
     setCount(count + 1)
   }
+  useEffect(() => {
+    fetchSomeAdvice()
+  }, [])
   return (
     <div>
       <h1>{advice}</h1>
