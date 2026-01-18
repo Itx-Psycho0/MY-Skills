@@ -1,13 +1,14 @@
 import React from 'react'
+import { useState } from 'react'
 
 const App = () => {
   const [advice, setAdvice] = useState("")
-        async function fetchSomeAdvice() {
-        const url = 'https://api.adviceslip.com/advice'
-        const response = await fetch(url)
-        const data = await response.json()
-        setAdvice(data.slip.advice)
-    }
+  async function fetchSomeAdvice() {
+    const url = 'https://api.adviceslip.com/advice'
+    const response = await fetch(url)
+    const data = await response.json()
+    setAdvice(data.slip.advice)
+  }
   return (
     <div>
       <h1>{advice}</h1>
