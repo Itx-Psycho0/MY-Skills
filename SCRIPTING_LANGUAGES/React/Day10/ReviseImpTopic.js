@@ -148,10 +148,36 @@ function getBook(id) {
 }
 
 // Destructing
-const books = getBook(2)
+const books = getBook(1)
 books
 // const title = books.title;
 // const author = books.author;
 const {title, author, pages, publicationDate, genres, hasMovieAdaptation, translations, reviews} = books;
-author
-title;
+
+// const primaryGenre = genres[0];
+const [primaryGenre, secondarGenre, thrdGenre, ,lastGenre] = genres
+
+// rest and Spread operator
+const [g1,g2,g3,...g4] = genres;
+console.log(g1,g2,g3,g4);
+
+const newGenre = ["wild",...genres]
+console.log(newGenre);
+
+const updateBook = {...books, moviePublicationDate: "2001-01-01" }
+console.log(updateBook);
+
+
+// Output by Quokka
+// primaryGenre
+// secondarGenre
+// thrdGenre
+// lastGenre  
+// author
+// title;
+// pages;
+// publicationDate;
+// genres;
+// hasMovieAdaptation;
+// translations;
+// reviews
