@@ -74,7 +74,7 @@ int main(){
     int num;
     cin >> num;
     bool isPrime = true;
-    for(int i = 2; i < num; i++){
+    for(int i = 2; i*i <= num; i++){
         if(num%i == 0){
             isPrime = false;
             break;
@@ -87,6 +87,14 @@ int main(){
     }
 
     //break , continue
+
+    // Nested loop
+    for(int i = 1; i<=5; i++){
+        for(int j = 1; j<=i; j++){
+            cout << "*";
+        }
+        cout << "\n";
+    }
     return 0; 
 }
 
