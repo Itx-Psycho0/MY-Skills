@@ -148,7 +148,7 @@ function getBook(id) {
 }
 
 // Destructing
-const books = getBook(1)
+const books = getBook(3)
 books
 // const title = books.title;
 // const author = books.author;
@@ -167,7 +167,32 @@ console.log(newGenre);
 const updateBook = {...books, moviePublicationDate: "2001-01-01" }
 console.log(updateBook);
 
+// Arrow fn
+const getYear =(str)=> str.split("-")[0]
+console.log(getYear(publicationDate));
 
+// Short circuiting
+console.log(true && "hello")
+console.log("world" && "hello")
+console.log(false && "hello")
+console.log(true || "hello")
+console.log(false || "hello")
+console.log(null || "hello") 
+console.log(0 || "hello")   
+console.log(false ?? 10)
+console.log(null ?? 10) 
+console.log(true ?? 10)
+console.log(undefined ?? 10)
+console.log(0 ?? 10)
+
+
+// Optional chaining
+function getTotalReviewCount(book){
+    const goodRead = book?.reviews?.goodreads?.reviewsCount;
+    const libraryThing = book?.reviews?.librarything?.reviewsCount;
+    return goodRead + libraryThing;
+}
+console.log(getTotalReviewCount(books));
 // Output by Quokka
 // primaryGenre
 // secondarGenre
