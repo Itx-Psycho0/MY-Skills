@@ -193,6 +193,32 @@ function getTotalReviewCount(book){
     return goodRead + libraryThing;
 }
 console.log(getTotalReviewCount(books));
+
+// Array Map method
+const book = getBooks()
+const titles = book.map((b)=> b.title)
+console.log(titles); 
+
+const essentialData = book.map((b)=>{
+    return {
+        title: b.title,
+        author: b.author,
+        genres: b.genres,
+        publicationDate: b.publicationDate
+    }
+})
+console.log(essentialData); 
+
+// Filter method
+const longBooks = book.filter((b)=> b.pages> 500)
+console.log(longBooks);
+ 
+// Reduce method
+const pagesAllBooks = book.reduce((acc,b)=>acc + b.pages, 0)
+console.log(pagesAllBooks);
+
+
+
 // Output by Quokka
 // primaryGenre
 // secondarGenre
