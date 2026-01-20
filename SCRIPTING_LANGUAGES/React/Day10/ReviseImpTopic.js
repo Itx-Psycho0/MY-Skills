@@ -217,6 +217,18 @@ console.log(longBooks);
 const pagesAllBooks = book.reduce((acc,b)=>acc + b.pages, 0)
 console.log(pagesAllBooks);
 
+// Promises
+console.log(fetch("https://jsonplaceholder.typicode.com/todos").then(res=>res.json()).then(data=>console.log(data)));
+
+// Async await
+async function getTodos(){
+    const res = await fetch("https://jsonplaceholder.typicode.com/todos")
+    const data = await res.json()
+    console.log(data);
+}
+getTodos()
+
+
 
 
 // Output by Quokka
