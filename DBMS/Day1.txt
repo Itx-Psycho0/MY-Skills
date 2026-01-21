@@ -1,0 +1,225 @@
+// day1
+// Data is raw uprocessed values.
+// data are three type - structure data, semi-structure data, unstructured data.
+// data is raw facts
+What “raw facts” means
+
+Data is just values:
+
+Numbers: 23, 1001
+
+Text: "Psycho", "India"
+
+Dates: 2026-01-21
+
+Signals: clicks, sensor readings, logs
+
+# Data vs Information (this matters)
+
+Data → raw, unprocessed
+
+Information → data + context + meaning
+
+Example:
+
+Data: 23
+
+Information: Age = 23 years
+
+1. What Data really is
+
+Data = raw facts or observations collected from the real world.
+
+Nothing more.
+Nothing less.
+
+Examples:
+
+101
+
+"Delhi"
+
+true
+
+2026-01-21
+
+A click
+
+A sensor reading
+
+Data has NO meaning by itself.
+Meaning comes later.
+
+2. Data vs Information vs Knowledge (don’t mess this up)
+Data
+
+Raw, unprocessed facts
+
+101
+
+Information
+
+Data + context
+
+Roll number = 101
+
+Knowledge
+
+Information + understanding
+
+Roll number 101 belongs to Psycho, a CSE student
+
+
+Most people never move beyond data. Professionals do.
+
+3. Types of Data (important)
+A. By structure
+
+Structured data
+
+Tables, rows, columns
+
+Easy to search
+
+Example: SQL databases
+
+Semi-structured data
+
+Has format, but flexible
+
+Example: JSON, XML
+
+Unstructured data
+
+No fixed format
+
+Example: images, videos, emails, audio
+
+Reality check: 80% of real-world data is unstructured
+
+B. By content
+
+Numeric → marks, age, price
+
+Text → names, messages
+
+Boolean → true / false
+
+Date & Time → logs, timestamps
+
+Media → images, audio, video
+
+4. Data lifecycle (how data lives)
+
+Data creation
+
+User input
+
+Sensors
+
+Logs
+
+Data collection
+
+Data storage
+
+Databases
+
+Files
+
+Data processing
+
+Cleaning
+
+Sorting
+
+Filtering
+
+Data analysis
+
+Data usage
+
+Data deletion / archiving
+
+Bad systems fail at step 3 and 4.
+
+5. Why data is valuable
+
+Data helps you:
+
+Make decisions
+
+Predict outcomes
+
+Automate systems
+
+Train AI
+
+Track behavior
+
+But here’s the truth:
+
+Data itself is useless unless it’s clean, structured, and correct.
+
+Garbage data → garbage results.
+
+6. Data + Database
+
+A database:
+
+Stores data
+
+Organizes it
+
+Protects it
+
+Makes it searchable
+
+A schema:
+
+Defines what data is allowed
+
+Prevents garbage entry
+
+No schema = future disaster.
+
+7. Data security (critical)
+
+Data must be:
+
+Accurate
+
+Consistent
+
+Secure
+
+Available
+
+Recoverable
+
+If data leaks or corrupts, systems die.
+That’s why companies pay insane money for people who understand data.
+
+8. Brutal truths you should remember
+
+Data is not intelligence
+
+More data ≠ better system
+
+Poor data design kills performance
+
+Most bugs come from bad data assumptions
+
+If you master data thinking, everything else (databases, backend, AI, security) becomes easier.
+
+Final mental model (burn this in)
+
+Data → raw facts
+
+Schema → rules
+
+Database → organized storage
+
+Information → meaningful output
+
+Knowledge → understanding
