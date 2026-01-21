@@ -1,28 +1,33 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import pizzaData from "./data";
+import './index.css';
 
 function App() {
   return (
-    <div>
+    <div className="container">
       <Header />
       <Menu />
-
       <Footer />
     </div>
   );
 }
 function Header() {
-  return <h1>Fast React Pizza Co.</h1>;
-}
+  // const style = {color: "red",fontSize:"50px"}
+  const style = {};
+  return( 
+    <header className="header">
+      <h1 style={style} >Fast React Pizza Co.</h1>
+    </header>
+  )}
 function Menu() {
   return (
-    <div>
+    <main className="menu">
       <h2>Our Menu</h2>
-      <Pizza />
-      <Pizza />
-      <Pizza />
-    </div>
+      <Pizza name="Pizza Spinaci" ingredients="Tomato, mozarella, spinach, and ricotta cheese" photoName="pizzas/spinaci.jpg" price={10} />
+      <Pizza name="Pizza Funghi" ingredients="Tomato, mozarella, mushrooms, and onion" photoName="pizzas/funghi.jpg" price={12} />
+      
+    </main>
   );
 }
 function Footer() {
@@ -30,19 +35,23 @@ function Footer() {
     const openHr = 12;
     const closeHr = 22;
     const isOpen = hr >= openHr && hr <= closeHr;
-    isOpen? alert("we're currently open") : alert("we're closed");
+    console.log(isOpen);
+    // isOpen? alert("we're currently open") : alert("we're closed");
   return (
     // React.createElement('footer',null, "We're currently open")
-    <footer> {new Date().toLocaleTimeString()}We're currently open</footer>
+    <footer className="footer"> {new Date().toLocaleTimeString()}We're currently open</footer>
   );
 }
 
-function Pizza() {
+function Pizza(props) {
   return (
-    <div>
-      <h2>Pizza</h2>
-      <img src="pizzas/spinaci.jpg" alt="Pizza Spinaci" />
-      <p>Tomato, mozarella, spinach, and ricotta cheese</p>
+    <div className="pizza">
+      <img src={props.photoName}alt={props.name} />
+      <div>
+      <h3>{props.name}</h3>
+      <p>{props.ingredients}</p>
+      <span>{props.price + 1}</span>
+      </div>
     </div>
   );
 }
@@ -62,3 +71,22 @@ root.render(
 // imperative - manual dom element selections and dom traversing, step by step dom mutations .
 
 // declarative - describe what ui should look like using jsx, based on current data.
+
+//Props are used to pass data from parent components to child components(down the component tree)
+//Essential tool to configure and customize components(like function parameters)
+//With props, parent components control how child components look and work
+//Anything can be passed as props: single values, arrays, objects, functions, even other components
+
+//props is data coming from the outside, and can only be updated by the parent component
+//state is internal data that can be updated by the component's logic
+
+// props are read-only, they are immutable! this is one of React's strict rules.
+
+//if you need to mutate props, you actually need state
+
+// mutating props would affect parent, creating side effects(not pure)
+// components have to be pure functions in terms of props and state.
+
+// this allows react to optimize apps, avoid bugs, make apps predictable.
+
+// react use - One way data flow 
