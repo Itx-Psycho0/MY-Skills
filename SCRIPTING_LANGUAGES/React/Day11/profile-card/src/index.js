@@ -3,6 +3,40 @@ import { createRoot } from "react-dom/client";
 import "./styles.css";
 
 
+const skills = [
+  {
+    skill: "HTML+CSS",
+    level: "advanced",
+    color: "#2662EA"
+  },
+  {
+    skill: "JavaScript",
+    level: "advanced",
+    color: "#EFD81D"
+  },
+  {
+    skill: "Web Design",
+    level: "advanced",
+    color: "#C3DCAF"
+  },
+  {
+    skill: "Git and GitHub",
+    level: "intermediate",
+    color: "#E84F33"
+  },
+  {
+    skill: "React",
+    level: "advanced",
+    color: "#60DAFB"
+  },
+  {
+    skill: "Svelte",
+    level: "beginner",
+    color: "#FF3B00"
+  }
+];
+
+
 function App() {
   return (
     <div className="card">
@@ -38,17 +72,16 @@ function Intro() {
 function SkillList() {
   return (
     <div className="skill-list">
-      <Skill skill = {"javaScript"}  color = {"yellow"}/>
-      <Skill skill = {"CSS"} color = {"blue"}/>
-      <Skill skill = {"HTML"} color = {"red"}/>
+      {skills.map((skill) => <Skill skill={skill.skill} level={skill.level} color={skill.color} />)}
     </div>
   );
 }
 
-function Skill  (props) {
+function Skill  ({skill,level,color}) {
   return (
-    <div style={{backgroundColor:props.color}} className="skill" >
-        <p>{props.skill}</p>
+    <div style={{backgroundColor:color}} className="skill" >
+        <span>{skill}</span>
+        <span>{level === "beginner"&&"⭐"}{level === "intermediate"&&"⭐⭐"}{level === "advanced"&&"⭐⭐⭐"}</span>
     </div>
   );
 }
