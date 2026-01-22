@@ -93,3 +93,7 @@ static class p1
 {
     //Everything will be static in it.
 }
+
+// Access Modifier
+//Manage how accessible a certain variable/function should be
+// Public and private
