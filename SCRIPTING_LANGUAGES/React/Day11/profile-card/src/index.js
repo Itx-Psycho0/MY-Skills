@@ -29,8 +29,8 @@ function Avatar() {
 function Intro() {
   return (
     <div>
-      <h1>I am who?</h1>
-      <p>Correction: Who am I?</p>
+      <h1>Who am I?</h1>
+      <p>Professional overthinker and part-time adventurer. I speak fluent sarcasm and movie quotes. Here for a good time and the best tacos in town.</p>
     </div>
   );
 }
@@ -38,17 +38,17 @@ function Intro() {
 function SkillList() {
   return (
     <div className="skill-list">
-      <Skill skill = {"javaScript"} />
-      <Skill skill = {"CSS"}/>
-      <Skill skill = {"HTML"}/>
+      <Skill skill = {"javaScript"}  color = {"yellow"}/>
+      <Skill skill = {"CSS"} color = {"blue"}/>
+      <Skill skill = {"HTML"} color = {"red"}/>
     </div>
   );
 }
 
 function Skill  (props) {
   return (
-    <div className="skill" >
-        <p >{props.skill}</p>
+    <div style={{backgroundColor:props.color}} className="skill" >
+        <p>{props.skill}</p>
     </div>
   );
 }
