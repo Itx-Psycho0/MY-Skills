@@ -49,4 +49,44 @@ int main(){
         cout << "\n";
     }
 
+    // Floyd's triangle pattern
+    int x = 1;
+    int z;
+    cin >> z;
+    for(int i = 0; i <z; i++){
+        for(int j = 0; j < i+1; j++){
+            cout << x << " ";
+            x++;
+        }
+        cout << "\n";
+    }
+
+    // inverted triangle pattern
+    int n;
+    cin >> n;
+    for(int i =0; i<n; i++){
+        for(int j = 0; j < i; j++){
+            cout << " ";
+        }
+        for(int j = 0; j < n-i; j++){
+            cout << i+1;
+        }
+        cout << "\n";
+    }
+
+    // pyramid pattern
+    int n2;
+    cin >> n2;
+    for(int i = 0; i < n2; i++){
+        for(int j = 0; j < n2-i-1; j++){
+            cout << " ";
+        }
+        for(int j = 1; j <= i+1; j++){
+            cout << j;
+        }
+        for(int j = i; j >0; j--){
+            cout << j;
+        }
+        cout << "\n";
+    }
 }
