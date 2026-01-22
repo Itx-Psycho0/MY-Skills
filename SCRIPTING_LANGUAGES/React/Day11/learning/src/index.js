@@ -90,3 +90,18 @@ root.render(
 // this allows react to optimize apps, avoid bugs, make apps predictable.
 
 // react use - One way data flow 
+
+//rules of jsx
+// jsx works essentially like html, but using {} we can enter in js mode.
+// in jsx statments are not allowed(if/else,for,switch)
+// jsx produces a js expression
+// A piece of jsx can only have one root element. if you need more, use <react.fragment>(or the short <>)
+
+// diff b/w in jsx and html
+// className instead of Html's class
+// htmlfor instead of Html's for
+// every tag needs to be closed.
+// all event handlers and other properties need to be camelCased
+// Css inline are written like this {{style}}(to ref a variable, and then an obj)
+// css property names also camelCased
+// comments need to be in {}(bcz they are js)
