@@ -10,14 +10,14 @@ function App() {
   const [step, setStep] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
   function handlePrevious() {
-    if (step > 1) setStep(step - 1);
+    if (step > 1) setStep((s)=>s-1);
   }
   function handleNext() {
-    if (step < 3) setStep(step + 1);
+    if (step < 3) setStep((s)=>s+1);
   }
   return (
     <>
-      <button className="close" onClick={() => setIsOpen(!isOpen)}>
+      <button className="close" onClick={() => setIsOpen((is)=>!is)}>
         &times;
       </button>
       {isOpen && (
@@ -65,3 +65,14 @@ export default App;
 // State preserved throughtout re-renders
 
 // component desapier from the ui entirely called unmounting
+
+//Guidelines
+// Use a state var for any data that the component should keep track of "remember" over time. This is data that will change at some point . In vanilla js, that's a let var, or an[] or {}
+
+//Whenever you want to somethind in the component to be dynamic, create a piece of state related to that "thing", and update the state when the thing should change.
+
+// if you want to change the way a component looks, or the data it displays, update its state. This usually happens in an event handler fn.
+
+// When building a component, imagine its view as a reflection of state changing over time.
+
+// For data that should not trigger component re-renders, don't use state. Use a regular var instead.
