@@ -1,0 +1,32 @@
+Day 1
+What is Ethical Hacking? 
+Ethical hacking is the practice of legally and intentionally breaking into computers systems, networks, or applications to identify and fix vulnerabilities before malicious hackers can exploit them.
+
+
+Ethical hackers or "white hat hackers" are professionals who uses their skillls for good. THey male sure that a organization's security should be in place. 
+
+
+Different Types of hackers
+White Hat hackers
+Black Hat hackers
+Grey Hat hackers
+Script Kiddies
+Hacktivists
+state-sponsored hackers
+
+
+Testing Approach in Ethical Hacking
+White Box Testing - full knoledge of code - Internal Structure and logic - Unit and integration testing 
+Black Box Testing - no knowledge of code - functionality and user experience - System and acceptance testing
+Grey Box Testing - Partial Knowledge - Both internal and external aspects - Integration and system testing 
+
+
+Red Team VS Blue Team VS Purple Team
+Red Team - Offensive security - simulating attacks, penetration testing - Identify vulnerabilities 
+Blue Team - Defensive security - Monitoring systems, incident response - Proctect against attacks
+Purple Team - Collaboration between red and blue - Joint exercises, knowledge sharing, strengthen overall security posture
+
+
+
+
+
