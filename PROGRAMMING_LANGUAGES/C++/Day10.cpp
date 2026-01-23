@@ -44,6 +44,27 @@ int nFactorial(int n){
 // then main call other fun
 
 
+// Pass by value
+// it is just pass the value by name variable 
+// so if pass x y as param in any fn in main than they will be make a copy of itself in that fn by that fn param var name.
+
+// Pass by refernce
+// passing the original
+
+// primitive data always pass as pass by value.
+
+int nCr(int n, int r){
+    return nFactorial(n)/(nFactorial(r)*nFactorial(n-r));
+}
+int nFibonacci(int n){
+    if(n == 0){
+        return 0;
+    }
+    if(n == 1){
+        return 1;
+    }
+    return nFibonacci(n-1)+nFibonacci(n-2);
+}
 
 int main(){
     printHello();
@@ -51,6 +72,8 @@ int main(){
     cout << sumOftwonumber(5,6) <<"\n";
     cout << sumOfNnumber(5) <<"\n";
     cout << nFactorial(5) <<"\n";
+    cout << nCr(5,2) <<"\n";
+    cout << nFibonacci(5) <<"\n";
     return 0;
 }
 
