@@ -1,0 +1,178 @@
+Day 2
+
+Ethical Hacking methodolgy
+Ethical Hacking Phases
+
+1. Reconnaissance
+   - Description: Gathering information about the target system to identify potential vulnerabilities.
+   - Techniques Used: Google Dorking, WHOIS lookups, DNS enumeration, Social engineering tactics
+
+2. Scanning
+   - Description: Using tools to identify vulnerabilities in the target system through various scans.
+   - Techniques Used: Network mapping, Port scanning, Vulnerability scanning
+
+3. Gaining Access
+   - Description: Attempting to exploit identified vulnerabilities to gain unauthorized access to the system.
+   - Techniques Used: SQL injection, Buffer overflow attacks, Phishing attacks
+
+4. Maintaining Access
+   - Description: Establishing a persistent connection to the compromised system to assess the duration of undetected access.
+   - Techniques Used: Installing rootkits, Creating hidden user accounts, Tunneling
+
+5. Clearing Tracks
+   - Description: Removing traces of the ethical hacker’s activities from system logs to understand how attackers might cover their tracks after an attack.
+   - Techniques Used: Modifying log files, Deleting evidence of unauthorized access
+
+
+Cyber Kill Chain Methodology
+
+1. Reconnaissance
+   - Description: Attackers gather information about the target to identify vulnerabilities. This includes studying public data, websites, and social media.
+   - Techniques Used: Scanning for open ports, Collecting data on employees, Identifying security measures
+
+2. Weaponization
+   - Description: The attacker creates a malicious payload (e.g., virus, worm) paired with an exploit that targets identified vulnerabilities.
+   - Techniques Used: Developing malware, Combining payloads with exploits
+
+3. Delivery
+   - Description: The malicious payload is transmitted to the target through various methods such as phishing emails, malicious links, or USB drives.
+   - Techniques Used: Sending phishing emails, Utilizing compromised websites for downloads
+
+4. Exploitation
+   - Description: Upon successful delivery, the attacker exploits a vulnerability in the target's system to execute the payload and gain access.
+   - Techniques Used: Triggering malware, Exploiting software vulnerabilities
+
+5. Installation
+   - Description: The attacker installs malware on the victim's system to establish a foothold, allowing for persistent access in the future.
+   - Techniques Used: Installing backdoors, Setting up remote access tools
+
+6. Command and Control
+   - Description: The attacker establishes a command and control channel to remotely manipulate the compromised system without detection.
+   - Techniques Used: Creating communication channels, Sending commands to the installed malware
+
+7. Actions on Objectives
+   - Description: Finally, the attacker carries out their primary goal, which may include data theft, system disruption, or other malicious activities.
+   - Techniques Used: Data exfiltration, Encrypting files for ransom, Disrupting services
+
+
+Intro to Reconnaissance
+Reconnaissance is the initial phase of a penetration test or security assessment
+where the hacker gathers as much information as possible about a target
+system or network. This phase helps the ethical hacker understand the system's
+architecture, vulnerabilities, and potential points of entry, with the goal of identifying
+weaknesses before attempting any exploits.
+
+Types of Reconnaissance
+> Passive Reconnaissance
+> Active Reconnaissance
+
+Aspect: Definition
+- Passive Reconnaissance: Involves gathering information without direct interaction with the target.
+- Active Reconnaissance: Involves direct interaction with the target system to gather information.
+
+Aspect: Techniques Used
+- Passive Reconnaissance: Analyzing public information sources, social media, and using OSINT tools (e.g., Google).
+- Active Reconnaissance: Port scanning, vulnerability scanning, and network probing (e.g., using Nmap, Nessus).
+
+Aspect: Risk of Detection
+- Passive Reconnaissance: Lower risk of detection as it does not involve direct interaction with the target.
+- Active Reconnaissance: Higher risk of detection due to direct engagement with the target system.
+
+Aspect: Information Accuracy
+- Passive Reconnaissance: May yield less detailed information, relying on publicly available data.
+- Active Reconnaissance: Generally provides more accurate and detailed information about the target.
+
+Aspect: Resource Intensity
+- Passive Reconnaissance: Less resource-intensive; often uses readily available public information.
+- Active Reconnaissance: More resource-intensive and time-consuming due to active engagement methods.
+
+Aspect: Vulnerability Identification
+- Passive Reconnaissance: Limited ability to identify vulnerabilities since it does not interact with the target.
+- Active Reconnaissance: More effective at identifying specific vulnerabilities and weaknesses in systems.
+
+Aspect: Use Cases
+- Passive Reconnaissance: Useful for initial reconnaissance phases to gather background information stealthily.
+- Active Reconnaissance: Ideal for penetration testing where detailed system insights are needed.
+
+
+Google Dorking
+Google Dorking
+
+Google Dorking (also known as Google Hacking) refers to the use of advanced search operators in Google to find specific information that is not typically visible through regular search queries. It involves leveraging Google's powerful search engine to locate hidden data on websites, such as sensitive files, configuration files, or vulnerabilities that may have been accidentally exposed.
+
+
+Google Dorking Operators
+
+1. Operator: site
+   - Description: Restricts search results to a specific domain.
+   - Example Usage: site:example.com
+
+2. Operator: filetype
+   - Description: Searches for specific file types (e.g., PDF, DOC).
+   - Example Usage: filetype:pdf site:example.com
+
+3. Operator: inurl
+   - Description: Finds URLs containing a specific string.
+   - Example Usage: inurl:login
+
+4. Operator: intitle
+   - Description: Looks for pages with specific words in the title.
+   - Example Usage: intitle:"Google Dorking"
+
+5. Operator: allintitle
+   - Description: Searches for pages with all specified words in the title.
+   - Example Usage: allintitle:Google Dorking
+
+6. Operator: intext
+   - Description: Searches for specific text within the body of web pages.
+   - Example Usage: intext:"open source intelligence"
+
+---> SITE: GOOGLE HACKING DATABASE FOR MORE RESOURSE 
+
+
+WHOIS AND DNS RECON
+
+WHOIS Records
+
+WHOIS records provide detailed information about the registered owner of a domain name, including contact details, registration dates, and the domain's status. These records are accessible through WHOIS databases maintained by domain registrars and registry organizations.
+Site  - who.is
+kali linux tool - whois nameOfSite
+
+DNS (Domain Name System)
+
+DNS translates and maps alphabetic domain names like websites' web addresses or names to the numeric IP addresses of computers or servers. It is also capable of performing the reverse process. DNS uses the User Datagram Protocol (UDP), and its service operates on port number 53.
+
+Examples of Top-Level Domains (TLDs) include: .com, .gov, .edu, .org
+
+
+DNS Record Types
+
+1. A
+   - Description: Maps a domain to an IPv4 address.
+
+2. AAAA
+   - Description: Maps a domain to an IPv6 address.
+
+3. CNAME
+   - Description: Aliases one domain name to another.
+
+4. NS
+   - Description: Specifies the authoritative nameserver for a domain.
+
+5. SOA
+   - Description: Contains administrative information about the domain, like the primary nameserver and zone update settings.
+
+6. TXT
+   - Description: Stores text information, often used for verification.
+
+7. MX
+   - Description: Directs email to mail servers.
+
+
+dns tool for kali is - host nameOfSite, host -t recordtype nameOfSite
+nslookup nameOfSite, dig nameOfSite, dig +short nameOfSite, dig -t recordtype nameOfSite
+
+
+Social Media Recon 
+just explore there social media.
+and one tool for any details wnat ot find for anyone . - sherlock
