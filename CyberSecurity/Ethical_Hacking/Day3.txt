@@ -1,4 +1,4 @@
 Day 3
 
 wappalyzer extension for knowing backend of any website
-and "built with" 
+and "built with" and whatweb tool in kali linux 
