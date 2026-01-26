@@ -41,3 +41,13 @@ tool - gobuster dir , feroxbuster
 
 -> Vulnerabilities Scanning
 Vulnerability scanning is the process of identifying security weaknesses and flaws in systems and networks by using automated tools to scan for known vulnerabilities. It helps organizations detect potential entry points for attackers and prioritize remediation efforts to strengthen their security posture.
+
+| Scan Type           | Description                                                                 | Access Level             | Purpose                                                                 |
+|---------------------|------------------------------------------------------------------------------|---------------------------|-------------------------------------------------------------------------|
+| External Scans      | Target externally-facing IP addresses to identify vulnerabilities in perimeter and cloud systems. | Public-facing             | Assess security posture from an external perspective.                  |
+| Internal Scans      | Conducted within the organization's network to find vulnerabilities in internal systems and applications. | Internal network access   | Identify risks that could be exploited after a breach.                 |
+| Unauthenticated Scans | Perform scans without valid credentials, relying on publicly accessible information to find vulnerabilities. | No credentials required   | Detect basic weaknesses visible to external attackers.                 |
+| Authenticated Scans | Use valid credentials to access deeper layers of the system for a comprehensive vulnerability assessment. | Valid user credentials    | Uncover hidden vulnerabilities and compliance issues.                  |
+
+
+tool - nessus
