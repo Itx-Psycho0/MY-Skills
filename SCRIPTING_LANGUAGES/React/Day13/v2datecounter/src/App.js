@@ -43,6 +43,13 @@ function Couter(){
       </div>
 
       <h3>{`${h1} is ${date.toDateString()}`}</h3>
+
+      {count!==0 || step!==1?<div>
+        <button onClick={()=>{
+          setCount(0)
+          setStep(1)
+        }}>Reset</button>
+      </div>:null}
       
     </div>
 
