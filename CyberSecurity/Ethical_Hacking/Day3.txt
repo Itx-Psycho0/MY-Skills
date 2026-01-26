@@ -1,4 +1,43 @@
 Day 3
 
 wappalyzer extension for knowing backend of any website
-and "built with" and whatweb tool in kali linux 
+and "built with" and whatweb tool in kali linux
+
+SubDomains
+:- A subdomain is a part of a larger domain name. It helps organize and navigate different sections or areas of a website. In a web address (URL), the subdomain appears before the main domain name.
+ex- blog.example.com
+
+tool for subdomain :- subfinder , subdomain finder website
+
+-> Identifying Firewall
+firewall - A firewall is a security system designed to monitor and control the incoming and outgoing network traffic based on predetermined security rules. It acts as a barrier between a trusted internal network (like your home or office network) and untrusted external networks (like the internet).
+
+tool - wafw00f 
+
+-> Scanning with nMap
+ports-
+In computer networking, ports are like doorways or entry points that allow different types of data to flow in and out of a device or network. Each port is associated with a specific service or application, so different types of data are directed to the correct program.
+
+protocols-
+Protocols are sets of rules or standards that define how data is transmitted and received between devices. They ensure that devices (such as computers, smartphones, and servers) can communicate with each other in a way that everyone understands, regardless of the manufacturer or type of device.
+
+| Record Type | Protocol | Service Name         | Use                                                       |
+|-------------|----------|----------------------|------------------------------------------------------------|
+| 20          | TCP      | FTP Data Transfer     | Used for transferring files in FTP sessions.               |
+| 21          | TCP      | FTP Command Control   | Used for commands and control in FTP sessions.             |
+| 22          | TCP      | SSH                   | Used for secure remote login and command execution.        |
+| 25          | TCP      | SMTP                  | Used for sending emails between servers.                   |
+| 53          | UDP      | DNS                   | Used for resolving domain names to IP addresses.           |
+| 80          | TCP      | HTTP                  | Used for transmitting web pages over the internet.         |
+| 443         | TCP      | HTTPS                 | Used for web traffic, encrypting data between client/server.|
+
+
+tool - nmap 
+
+Directory BruteForcing:-
+Directories on a server refer to folders or containers where files are stored and organized. They help manage data and provide a structure that makes it easier to locate, access, and organize files. Just like folders on your computer, server directories help store and categorize files in a logical way.
+
+tool - gobuster dir , feroxbuster 
+
+-> Vulnerabilities Scanning
+Vulnerability scanning is the process of identifying security weaknesses and flaws in systems and networks by using automated tools to scan for known vulnerabilities. It helps organizations detect potential entry points for attackers and prioritize remediation efforts to strengthen their security posture.
