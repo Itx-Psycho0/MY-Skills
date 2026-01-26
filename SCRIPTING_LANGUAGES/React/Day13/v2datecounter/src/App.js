@@ -13,13 +13,6 @@ function Couter(){
   const [count, setCount] = useState(0);
   const [step, setStep] = useState(1);
 
-  function handlestep(){
-    setStep(step+1)
-  }
-  function handlestepminus(){
-    setStep(step-1)
-  }
-
   function handleCount(){
     setCount(count-step)
   }
@@ -39,13 +32,13 @@ function Couter(){
     <div>
       <h1>Date Counter</h1>
       <div>
-        <button onClick={handlestepminus}>-</button>
+        <input type='range' min={0} max={10} value={step} onChange={(e)=>setStep(Number(e.target.value))}/>
         <span>Step: {step}</span>
-        <button onClick={handlestep}>+</button>
       </div>
       <div>
+        
         <button onClick={handleCount}>-</button>
-        <span>Count: {count}</span>
+        <input type='text' value={count} onChange={(e)=>setCount(Number(e.target.value))}/>
         <button onClick={handleCountp}>+</button>
       </div>
 
