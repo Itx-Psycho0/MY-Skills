@@ -46,3 +46,7 @@ function AccordionItem({num, title, text }) {
     {isOpen && <div className='content-box'>{text}</div>}
   </div>);
 }
+
+// Children prop:-
+//children prop is like we have component that we do self closing but if do like this <button>then any jsx here</button> like closing the component like html and the if use children keyword as prop in that component we use this jsx like function button({children}){
+//       return <p>{children}</p> so all jsx written on component will be there.}
