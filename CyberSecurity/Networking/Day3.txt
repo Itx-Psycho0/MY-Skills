@@ -1,0 +1,9 @@
+// Day 3
+// Exploits
+
+tool - nmap , vsftpd exploits, exploite database web, rapid seven
+searsploit
+
+reverse shell vs bind shells
+
+Feature bind shell reverse shell
