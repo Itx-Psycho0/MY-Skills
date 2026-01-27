@@ -16,5 +16,20 @@ int main(){
     cout << marks[3] <<"\n";
     cout << marks[4] <<"\n";
     cout << markings <<"\n";
+    cout << sizeof(marks) <<"\n";
+    cout << sizeof(markings)/sizeof(int) <<"\n";
+    int arr[] = {5,15,22,1,-15,24};
+    int smallest = INT_MAX;
+    int largest = INT_MIN;
+    for(int i = 0; i < 5; i++){
+        if(arr[i] < smallest){
+            smallest = arr[i];
+        }
+        if(arr[i] > largest){
+            largest = arr[i];
+        }
+    
+    
+    }
     return 0;
 }
