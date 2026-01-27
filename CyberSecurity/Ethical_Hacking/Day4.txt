@@ -7,3 +7,5 @@ searsploit
 reverse shell vs bind shells
 
 Feature bind shell reverse shell
+
+staged vs stageless payload
