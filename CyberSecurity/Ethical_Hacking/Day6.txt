@@ -1,0 +1,21 @@
+Day 6
+commands
+
+cd  
+ls 
+pwd
+rm name of file for delete
+rm -r recursively 
+echo $SHEll for viewing SHEll
+mkdir name of folder for create
+mkdir -p full structure name of folder for create
+touch name of file for create
+cp name of file to backup file name
+mv for move file
+cat name of file for view content
+vi name of file for edit
+vim name of file for edit
+nano name of file for edit
+less name of file for view content in one line
+head and tail -n numberof line for view content in one line
+
