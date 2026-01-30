@@ -7,6 +7,18 @@
 #include <iostream>
 #include <vector>
 using namespace std;
+
+
+int singleNumber(vector<int>& nums){
+    int res = 0;
+    for(int i = 0; i < nums.size(); i++){
+        res ^= nums[i];  //Xor - 0-0 - 0
+    }
+    return res;
+
+}
+
+
 int main(){
     vector<int> vec;
     vec.push_back(1);
@@ -32,6 +44,14 @@ int main(){
         cout << x << " ";
     }
     cout << "\n";
+    vector<int> vec2 = {4,1,2,1,2};
+    cout << singleNumber(vec2) << "\n";
+    return 0;
+
+
+
+
 }
+
 
 //
