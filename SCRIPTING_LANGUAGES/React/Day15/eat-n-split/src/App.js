@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import React from 'react'
 
 
@@ -24,17 +25,31 @@ const initialFriends = [
 ];
 
 const App = () => {
+  const [showAddFriend, setShowAddFriend] = useState(false)
+  const [friends, setFriends] = useState(initialFriends)
+  function handleShowAddFriend(){
+    setShowAddFriend((show) => !show)
+  }
 
   return (
     <div className='app'>
       <div className='sidebar'>
         <FriendsList />
-        <FormAddFriend/>
-        <FormSplitBill/>
+        {showAddFriend &&<FormAddFriend/>}
+        <Button onClick={handleShowAddFriend}>
+          {showAddFriend ? 'Close' : 'Add friend'}
+        </Button>
       </div>
+        <FormSplitBill/>
     </div>
   )
 }
+function Button({children, onClick}){
+  return(
+    <button className='button' onClick={onClick}>
+      {children}
+    </button>
+  )}
 
 function FriendsList(){
   const friends = initialFriends;
@@ -61,19 +76,19 @@ function Friend({friend}){
         </p>
       )}
       {friend.balance === 0 && <p>You and {friend.name} are even</p>}
-      <button className='button'>Select</button>
+      <Button>Select</Button>
     
   </li>
 }
 
-function FormAddFriend(){
+function FormAddFriend({onClick}){
   return(
     <form className='form-add-friend'>
       <label>Friend name</label>
       <input type="text" />
       <label>Image URL</label>
       <input type="text" />
-      <button className='button'>Add</button>
+      <Button>Add</Button>
     </form>
   )
 }
@@ -81,14 +96,14 @@ function FormAddFriend(){
 function FormSplitBill(){
   return(
     <form className='form-split-bill'>
-      <h2>Split bill with</h2>
-      <label>Bill value</label>
+      <h2> Split bill with</h2>
+      <label> Bill value</label>
       <input type="text" />
-      <label>Your expense</label>
+      <label> Your expense</label>
       <input type="text" />
-      <label>Expense</label>
+      <label> Expense</label>
       <input type="text" disabled />
-      <label>Who is paying the bill</label>
+      <label> Who is paying the bill</label>
       <select>
         <option value="user">You</option>
         <option value="friend">Friend</option>
