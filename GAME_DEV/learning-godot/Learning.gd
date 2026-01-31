@@ -13,3 +13,23 @@ func _run() -> void:
     var age: int = 10 # it cant changs its type in future
     # Static typing
     print(age)
+
+    #if else elif same as python
+    #While and for loop also
+    #break continue
+    var arr : Array[String] = ["a","b","c","d"]
+    # arr.erase("b")
+    var rand : String = arr.pick_random()
+
+    arr.shuffle()
+    arr.size()
+
+    var dict: Dictionary = {
+        0:"a",
+        1:"b"
+    }
+
+    print("Hello %s, your age is %d"%(name,age))
+
+    #enum and constant and match case
+    enum Race {HHO,ELEF,HUMAN}
