@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://oujudofwyahm"]
+
+[ext_resource type="Script" uid="uid://dkava8y71mx0q" path="res://learn.gd" id="1_7ot8s"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_iq70a"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_c0wsm"]
+lightmap_size_hint = Vector2i(5, 64)
+radius = 3.13
+height = 19.392
+
+[node name="Starter" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(42.547234, 0, 0, 0, 1, 0, 0, 0, 34.324482, 0, 0, 0)
+mesh = SubResource("PlaneMesh_iq70a")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 46, 11.185, 0)
+fov = 58.7
+
+[node name="cap" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
+mesh = SubResource("CapsuleMesh_c0wsm")
+skeleton = NodePath("../MeshInstance3D")
+script = ExtResource("1_7ot8s")
