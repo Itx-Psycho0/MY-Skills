@@ -30,4 +30,30 @@ int main(){
             i++;
         }
     }
+
+    // majority element Brute force
+    vector<int> arr2 = {1,2,2,1,1};
+    for(int i = 0; i < arr2.size(); i++){
+        int count = 0;
+        for(int j = 0; j < arr2.size(); j++){
+            if(arr2[i]==arr2[j]){
+                count++;
+            }
+        }
+        if(count > arr2.size()/2){
+            cout << arr2[i] << endl;
+            break;
+        }
+    }
+
+    // majority element optimal - Moore's Voting Algorithm
+    int candidate = 0, count = 0;
+    for(int i = 0; i<arr2.size(); i++){
+        if(count==0){
+            candidate = arr2[i];
+        }
+        count += (arr2[i]==candidate) ? 1 : -1;
+    }
+    cout << candidate << endl;
+
 }
