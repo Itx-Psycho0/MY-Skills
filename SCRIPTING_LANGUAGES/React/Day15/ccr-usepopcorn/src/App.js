@@ -53,24 +53,24 @@ const average = (arr) =>
 
 export default function App() {
   
-  
+  const [movies, setMovies] = useState(tempMovieData);
 
   return (
     <>
-      <NavBar />
-      <Main />
+      <NavBar movies={movies} />
+      <Main movies={movies} />
     </>
   );
 }
 
 
-function NavBar() {
+function NavBar({movies}) {
   
   return (
     <nav className="nav-bar">
         <Logo />
         <Search />
-        <NumResults />
+        <NumResults movies={movies} />
       </nav>
   )
 }
@@ -84,10 +84,10 @@ function Logo() {
   )
 }
 
-function NumResults() {
+function NumResults({movies}) {
   return(
     <p className="num-results">
-          Found <strong>X</strong> results
+          Found <strong>{movies.length}</strong> results
         </p>
   )
 }
@@ -104,18 +104,18 @@ function Search() {
         />
   )
 }
-function Main(){
+function Main({movies}){
   
   
   return (
     <main className="main">
-       <ListBox />
+       <ListBox movies={movies} />
        <WatchedBox />
      </main>
   )
 }
 
-function ListBox(){
+function ListBox({movies}){
    const [isOpen1, setIsOpen1] = useState(true);
    
   return(
@@ -127,14 +127,14 @@ function ListBox(){
             {isOpen1 ? "–" : "+"}
           </button>
           {isOpen1 && (
-            <MovieList /> 
+            <MovieList movies={movies} /> 
           )}
         </div>
   )
 }
 
-function MovieList(){
-  const [movies, setMovies] = useState(tempMovieData);
+function MovieList({movies}){
+  
   return(
     <ul className="list">
               {movies?.map((movie) => (
@@ -243,3 +243,16 @@ function WatchedSummary({watched}){
   )
 }
 
+// stateless components -> they have no state recieve props and render UI based on props
+
+// stateful components -> they manage state and handle logic
+
+// Structural components -> define layout and structure of the app
+
+// Container components -> manage state and logic
+
+// Presentational components -> focus on rendering UI based on props
+
+// Prop drilling -> passing props through multiple levels of components
+
+// Component composition -> building complex components by combining simpler ones
