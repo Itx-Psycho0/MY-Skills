@@ -256,3 +256,4 @@ function WatchedSummary({watched}){
 // Prop drilling -> passing props through multiple levels of components
 
 // Component composition -> building complex components by combining simpler ones
+// passing component as children props in component composition.
