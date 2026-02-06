@@ -98,3 +98,18 @@ function DifferentContent() {
     </div>
   );
 }
+
+
+// render is triggered by updating the code --> then go to render phase where react compares the old virtual DOM with the new virtual DOM and do rendering inside in the react dont has visual changes yet --> then commit phase where react updates the real DOM to reflect the changes in the virtual DOM --> browser paints the screen with the updated DOM.
+
+// render dont have quick when state is updated its scheduled to be rendered but it is not rendered immediately, react batches multiple state updates together and renders them in one go for better performance. so when we click on the button to increment the likes, react will schedule a render but it will not render immediately, it will wait for the next tick of the event loop to see if there are any other state updates that can be batched together. if there are no other state updates, then react will render the component with the updated likes. if there are other state updates, then react will batch them together and render them in one go. this is why we see the likes incrementing by 1 when we click on the button, even though we have two buttons to increment the likes.
+
+// react render the entire thing not a part of the component, when we click on the button to increment the likes, react will render the entire TabContent component, not just the part that displays the likes. this is because react uses a virtual DOM to keep track of the state of the UI, and when a state update occurs, react will re-render the entire component to ensure that the UI is consistent with the state. however, react will only update the parts of the real DOM that have changed, so even though it re-renders the entire component, it will only update the part of the DOM that displays the likes. this is why we see a performance improvement when we use React, because it minimizes the number of updates to the real DOM by only updating what has changed.
+
+// rendering not a viewing the update or thing, it is only calling the function component to get the new virtual DOM, it is not updating the real DOM yet. react will compare the new virtual DOM with the old virtual DOM and determine what has changed, and then it will update the real DOM accordingly. so when we click on the button to increment the likes, react will call the TabContent function component to get the new virtual DOM, but it will not update the real DOM until it has compared the new virtual DOM with the old virtual DOM and determined what has changed. this is why we see a performance improvement when we use React, because it minimizes the number of updates to the real DOM by only updating what has changed.
+
+// render phase --> react elements  --> virtual dom --> reconciliation + diffing fiber tree --> fiber tree --> commit phase --> real dom --> browser paint
+
+// diffing algorithm --> compare old virtual dom with new virtual dom and determine what has changed --> update the real dom accordingly
+
+// react fiber --> data structure that react uses to keep track of the state of the UI --> allows react to break down the rendering work into smaller chunks and prioritize them based on their importance --> allows react to pause and resume rendering work as needed, which improves the responsiveness of the UI. 
