@@ -39,7 +39,7 @@ function Tabbed({ content }) {
       </div>
 
       {activeTab <= 2 ? (
-        <TabContent item={content.at(activeTab)} />
+        <TabContent item={content.at(activeTab)} key={content.at(activeTab).summary} />
       ) : (
         <DifferentContent />
       )}
@@ -65,7 +65,9 @@ function TabContent({ item }) {
   function handleInc() {
     setLikes(likes + 1);
   }
-
+  function handleUndo(){
+    
+  }
   return (
     <div className="tab-content">
       <h4>{item.summary}</h4>
@@ -113,3 +115,13 @@ function DifferentContent() {
 // diffing algorithm --> compare old virtual dom with new virtual dom and determine what has changed --> update the real dom accordingly
 
 // react fiber --> data structure that react uses to keep track of the state of the UI --> allows react to break down the rendering work into smaller chunks and prioritize them based on their importance --> allows react to pause and resume rendering work as needed, which improves the responsiveness of the UI. 
+
+// batching --> react batches multiple state updates together and renders them in one go for better performance --> when we click on the button to increment the likes, react will schedule a render but it will not render immediately, it will wait for the next tick of the event loop to see if there are any other state updates that can be batched together. if there are no other state updates, then react will render the component with the updated likes. if there are other state updates, then react will batch them together and render them in one go. this is why we see the likes incrementing by 1 when we click on the button, even though we have two buttons to increment the likes.
+
+// react will only update the parts of the real DOM that have changed, so even though it re-renders the entire component, it will only update the part of the DOM that displays the likes. this is why we see a performance improvement when we use React, because it minimizes the number of updates to the real DOM by only updating what has changed.
+
+// react will call the function component to get the new virtual DOM, but it will not update the real DOM until it has compared the new virtual DOM with the old virtual DOM and determined what has changed. this is why we see a performance improvement when we use React, because it minimizes the number of updates to the real DOM by only updating what has changed.
+
+// if you want to escape the batching behavior and force a render immediately, you can use the flushSync function from the react-dom package. this function allows you to flush any pending state updates and render the component immediately. however, it is generally not recommended to use this function unless you have a specific reason to do so, as it can lead to performance issues if used excessively. instead, it is usually better to let React handle the batching of state updates and rendering for optimal performance. 
+//using flushSync to force a render immediately
+// import { flushSync } from 'react-dom';
