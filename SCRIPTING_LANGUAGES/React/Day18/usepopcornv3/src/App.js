@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import StarRating from "./StarRating";
+import StarRating from "./stars";
 
 const tempMovieData = [
   {
@@ -515,3 +515,186 @@ function WatchedMovie({ movie, onDeleteWatched }) {
     </li>
   );
 }
+
+
+
+
+// Component(instance) Lifecycle :- Mounting, Updating, Unmounting
+
+// What is Side Effect ?
+// 1. Data fetching
+// 2. Subscriptions
+// 3. Manually changing the DOM in React components
+// 4. Timers (setTimeout, setInterval)
+// 5. Logging
+// A side effect is any application state change that is observable outside the component, or affects something outside the component, such as:
+// 1. Fetching data from an API and updating the component state with the response.
+// 2. Subscribing to a data stream or event and updating the component state when new data arrives.
+// 3. Manually manipulating the DOM, such as adding event listeners or changing element styles.
+// 4. Setting up timers to perform actions after a delay or at regular intervals.
+// 5. Logging information to the console for debugging purposes.
+
+// useEffect Hook :- It is used to perform side effects in functional components. It takes a function as an argument and runs it after the component renders. It can also return a cleanup function that runs before the component unmounts or before the effect runs again.
+
+// useEffect(() => {
+//    This code runs after the component renders
+//   console.log("Component rendered");
+
+//    Cleanup function (optional)
+//   return () => {
+//     This code runs before the component unmounts or before the effect runs again
+//     console.log("Component will unmount or effect will run again");
+//   };
+// }, [dependencies]); // The effect runs when any of the dependencies change. If the dependencies array is empty, the effect runs only once after the initial render.
+
+
+// Event handlers vs useEffect :- Event handlers are functions that are called in response to user interactions, such as clicks or form submissions. They are typically defined within the component and can update the component state directly. On the other hand, useEffect is used for side effects that occur as a result of state changes or component lifecycle events. It allows you to perform actions that are not directly tied to user interactions, such as fetching data or setting up subscriptions.
+
+/*
+function WatchedBox() {
+  const [watched, setWatched] = useState(tempWatchedData);
+  const [isOpen2, setIsOpen2] = useState(true);
+
+  return (
+    <div className="box">
+      <button
+        className="btn-toggle"
+        onClick={() => setIsOpen2((open) => !open)}
+      >
+        {isOpen2 ? "–" : "+"}
+      </button>
+
+      {isOpen2 && (
+        <>
+          <WatchedSummary watched={watched} />
+          <WatchedMoviesList watched={watched} />
+        </>
+      )}
+    </div>
+  );
+}
+*/
+
+// function Stars({
+//   maxRating = 5,
+//   color = "#fcc419",
+//   size = 48,
+//   className = "",
+//   messages = [],
+//   defaultRating = 0,
+//   onSetRating,
+// }) {
+//   const [rating, setRating] = useState(defaultRating);
+//   const [tempRating, setTempRating] = useState(0);
+
+//   function handleRating(rating) {
+//     setRating(rating);
+//     onSetRating(rating);
+//   }
+
+//   const textStyle = {
+//     lineHeight: "1",
+//     margin: "0",
+//     color,
+//     fontSize: `${size / 1.5}px`,
+//   };
+
+//   return (
+//     <div style={containerStyle} className={className}>
+//       <div style={starContainerStyle}>
+//         {Array.from({ length: maxRating }, (_, i) => (
+//           <Star
+//             key={i}
+//             full={tempRating ? tempRating >= i + 1 : rating >= i + 1}
+//             onRate={() => handleRating(i + 1)}
+//             onHoverIn={() => setTempRating(i + 1)}
+//             onHoverOut={() => setTempRating(0)}
+//             color={color}
+//             size={size}
+//           />
+//         ))}
+//       </div>
+//       <p style={textStyle}>
+//         {messages.length === maxRating
+//           ? messages[tempRating ? tempRating - 1 : rating - 1]
+//           : tempRating || rating || ""}
+//       </p>
+//     </div>
+//   );
+// }
+
+// function Star({ onRate, full, onHoverIn, onHoverOut, color, size }) {
+//   const starStyle = {
+//     width: `${size}px`,
+//     height: `${size}px`,
+//     display: "block",
+//     cursor: "pointer",
+//   };
+
+//   return (
+//     <span
+//       role="button"
+//       style={starStyle}
+//       onClick={onRate}
+//       onMouseEnter={onHoverIn}
+//       onMouseLeave={onHoverOut}
+//     >
+//       {full ? (
+//         <svg
+//           xmlns="http://www.w3.org/2000/svg"
+//           viewBox="0 0 24 24"
+//           fill={color}
+//           stroke={color}
+//           strokeWidth="2"
+//           strokeLinecap="round"
+//           strokeLinejoin="round"
+//         >
+//           <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+//         </svg>
+//       ) : (
+//         <svg
+//           xmlns="http://www.w3.org/2000/svg"
+//           viewBox="0 0 24 24"
+//           fill="none"
+//           stroke={color}
+//           strokeWidth="2"
+//           strokeLinecap="round"
+//           strokeLinejoin="round"
+//         >
+//           <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+//         </svg>
+//       )}
+//     </span>
+//   );
+// }
+
+// const containerStyle = {
+//   display: "flex",
+//   alignItems: "center",
+// };
+
+// const starContainerStyle = {
+//   display: "flex",
+// };
+
+
+
+// The Dependency Array in useEffect Hook :- The dependency array is the second argument passed to the useEffect hook. It is an array of values that the effect depends on. The effect will only re-run if any of the values in the dependency array change. If the dependency array is empty, the effect will only run once after the initial render. If the dependency array is not provided, the effect will run after every render. It is important to include all relevant dependencies in the array to avoid bugs and ensure that the effect runs correctly when those dependencies change.
+
+// Stale Closure in useEffect Hook :- A stale closure occurs when a function defined inside a useEffect hook captures and uses state or props that are outdated due to the way closures work in JavaScript. This can lead to bugs where the function is using old values instead of the current ones. To avoid stale closures, you can either include the relevant state or props in the dependency array of the useEffect hook, or you can use a ref to store the current value and access it within the function.
+
+// three different types of dependencies in useEffect Hook :- 1. State dependencies: These are the state variables that the effect depends on. When any of these state variables change, the effect will re-run. 2. Prop dependencies: These are the props that the effect depends on. When any of these props change, the effect will re-run. 3. Function dependencies: These are the functions that the effect depends on. When any of these functions change (e.g., due to being re-created on each render), the effect will re-run. It is important to include all relevant dependencies in the dependency array to ensure that the effect runs correctly when those dependencies change and to avoid bugs related to stale closures.
+// multiple dependencies in useEffect Hook :- When you have multiple dependencies in a useEffect hook, you can include them all in the dependency array. The effect will re-run whenever any of the dependencies change. For example:
+
+// useEffect(() => {
+//   This code runs after the component renders and whenever any of the dependencies change
+// }, [dependency1, dependency2, dependency3]);
+
+// In this example, the effect will run after the initial render and then re-run whenever dependency1, dependency2, or dependency3 changes. It is important to include all relevant dependencies in the array to ensure that the effect runs correctly when those dependencies change and to avoid bugs related to stale closures.
+
+// without dependency array in useEffect Hook :- If you use the useEffect hook without a dependency array, the effect will run after every render of the component. This means that the effect will execute not only after the initial render but also after every update to the component's state or props. This can lead to performance issues if the effect is doing something expensive, such as fetching data or manipulating the DOM, because it will run unnecessarily on every render. It is generally recommended to include a dependency array to control when the effect runs and to avoid performance issues. 
+
+// empty dependency array in useEffect Hook :- If you use the useEffect hook with an empty dependency array, the effect will only run once after the initial render of the component. This means that the effect will execute only when the component is first mounted and will not run again on subsequent renders or updates to the component's state or props. This is useful for effects that you only want to run once, such as fetching data when the component mounts or setting up a subscription. However, if your effect depends on any state or props, you should include those dependencies in the array to ensure that the effect runs correctly when those dependencies change.
+
+// When are effects executed in React ? :- Effects in React are executed after the component has rendered and the changes have been painted on the screen. This means that the effect function passed to useEffect will run after the DOM has been updated with the latest changes from the render. The timing of when effects are executed can be controlled using the dependency array, which allows you to specify when the effect should re-run based on changes to state or props. Additionally, if you return a cleanup function from the effect, it will be executed before the component unmounts or before the effect runs again on subsequent renders.
+// mount - commit - browser paints - useEffect runs - update - commit - layout effect - browser paints - useEffect runs - unmount - useEffect cleanup runs
