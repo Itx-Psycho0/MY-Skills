@@ -35,6 +35,11 @@ int simpleInterest(int p , int r, int t){
 int remainder(int a, int b){
     return a%b;
 }
+int postAndPreIncrement(int a){
+    cout << "Post-increment: " << a++ << endl; // returns a, then increments
+    cout << "Pre-increment: " << ++a << endl;  // increments a, then returns it
+    return 0;
+}
 
 
 int main(){
@@ -50,7 +55,7 @@ int main(){
     cout << convertToFahrenheit(25) << endl;
     cout << simpleInterest(1000, 5, 2) << endl;
     cout << remainder(10, 3) << endl;
-
+    postAndPreIncrement(5);
 
     return 0;
 
