@@ -2657,37 +2657,37 @@
 //  ║  CONNECTING TO MONGODB WITH MONGOOSE                                    ║
 //  ╚═══════════════════════════════════════════════════════════════════════════╝
 //
-//    // const mongoose = require('mongoose');
-//    //
-//    // // Connection string from .env file
-//    // const DB_URL = process.env.DATABASE_URL || 'mongodb://localhost:27017/myapp';
-//    //
-//    // mongoose.connect(DB_URL)
-//    //   .then(() => console.log('Connected to MongoDB successfully!'))
-//    //   .catch(err => {
-//    //     console.error('MongoDB connection error:', err.message);
-//    //     process.exit(1);  // Exit if database connection fails
-//    //   });
-//    //
-//    // // Connection events (optional but useful for debugging):
-//    // mongoose.connection.on('connected', () => {
-//    //   console.log('Mongoose connected to MongoDB');
-//    // });
-//    //
-//    // mongoose.connection.on('error', (err) => {
-//    //   console.error('Mongoose connection error:', err);
-//    // });
-//    //
-//    // mongoose.connection.on('disconnected', () => {
-//    //   console.log('Mongoose disconnected from MongoDB');
-//    // });
-//    //
-//    // // Graceful shutdown (close connection when app stops):
-//    // process.on('SIGINT', async () => {
-//    //   await mongoose.connection.close();
-//    //   console.log('MongoDB connection closed (app shutdown)');
-//    //   process.exit(0);
-//    // });
+   // const mongoose = require('mongoose');
+   //
+   // Connection string from .env file
+   // const DB_URL = process.env.DATABASE_URL || 'mongodb://localhost:27017/myapp';
+   //
+   // mongoose.connect(DB_URL)
+   //   .then(() => console.log('Connected to MongoDB successfully!'))
+   //   .catch(err => {
+   //     console.error('MongoDB connection error:', err.message);
+   //     process.exit(1);  // Exit if database connection fails
+   //   });
+   //
+   // Connection events (optional but useful for debugging):
+   // mongoose.connection.on('connected', () => {
+   //   console.log('Mongoose connected to MongoDB');
+   // });
+   //
+   // mongoose.connection.on('error', (err) => {
+   //   console.error('Mongoose connection error:', err);
+   // });
+   //
+   // mongoose.connection.on('disconnected', () => {
+   //   console.log('Mongoose disconnected from MongoDB');
+   // });
+   //
+   // Graceful shutdown (close connection when app stops):
+   // process.on('SIGINT', async () => {
+   //   await mongoose.connection.close();
+   //   console.log('MongoDB connection closed (app shutdown)');
+   //   process.exit(0);
+   // });
 //
 //
 //  ╔═══════════════════════════════════════════════════════════════════════════╗
