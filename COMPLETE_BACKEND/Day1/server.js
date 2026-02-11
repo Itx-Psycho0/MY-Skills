@@ -2705,75 +2705,75 @@
 //
 //  DEFINING A SCHEMA:
 //
-//    // const mongoose = require('mongoose');
-//    //
-//    // const userSchema = new mongoose.Schema({
-//    //   // ── Field definitions ──
-//    //   name: {
-//    //     type: String,            // Data type
-//    //     required: [true, 'A user must have a name'],  // Required + error msg
-//    //     trim: true,              // Remove whitespace from both ends
-//    //     minlength: [2, 'Name must be at least 2 characters'],
-//    //     maxlength: [50, 'Name cannot exceed 50 characters']
-//    //   },
-//    //
-//    //   email: {
-//    //     type: String,
-//    //     required: [true, 'Email is required'],
-//    //     unique: true,            // No two users with the same email
-//    //     lowercase: true,         // Auto-convert to lowercase
-//    //     match: [/^\S+@\S+\.\S+$/, 'Please enter a valid email']
-//    //   },
-//    //
-//    //   password: {
-//    //     type: String,
-//    //     required: [true, 'Password is required'],
-//    //     minlength: [8, 'Password must be at least 8 characters'],
-//    //     select: false            // NEVER include password in queries by default
-//    //   },
-//    //
-//    //   age: {
-//    //     type: Number,
-//    //     min: [0, 'Age cannot be negative'],
-//    //     max: [150, 'Age cannot exceed 150']
-//    //   },
-//    //
-//    //   role: {
-//    //     type: String,
-//    //     enum: ['user', 'admin', 'moderator'],  // Only these values allowed
-//    //     default: 'user'          // Default value if not provided
-//    //   },
-//    //
-//    //   active: {
-//    //     type: Boolean,
-//    //     default: true
-//    //   },
-//    //
-//    //   hobbies: [String],         // Array of strings
-//    //
-//    //   address: {                 // Nested object (sub-document)
-//    //     street: String,
-//    //     city: String,
-//    //     zip: String,
-//    //     country: { type: String, default: 'US' }
-//    //   },
-//    //
-//    //   // Reference to another collection (like a foreign key in SQL)
-//    //   posts: [{
-//    //     type: mongoose.Schema.Types.ObjectId,
-//    //     ref: 'Post'              // References the 'Post' model
-//    //   }],
-//    //
-//    //   profilePicture: {
-//    //     type: String,
-//    //     default: 'default.jpg'
-//    //   }
-//    // }, {
-//    //   // ── Schema Options ──
-//    //   timestamps: true,          // Auto-adds createdAt & updatedAt fields
-//    //   toJSON: { virtuals: true }, // Include virtual fields in JSON output
-//    //   toObject: { virtuals: true }
-//    // });
+   // const mongoose = require('mongoose');
+   //
+   // const userSchema = new mongoose.Schema({
+   //   // ── Field definitions ──
+   //   name: {
+   //     type: String,            // Data type
+   //     required: [true, 'A user must have a name'],  // Required + error msg
+   //     trim: true,              // Remove whitespace from both ends
+   //     minlength: [2, 'Name must be at least 2 characters'],
+   //     maxlength: [50, 'Name cannot exceed 50 characters']
+   //   },
+   //
+   //   email: {
+   //     type: String,
+   //     required: [true, 'Email is required'],
+   //     unique: true,            // No two users with the same email
+   //     lowercase: true,         // Auto-convert to lowercase
+   //     match: [/^\S+@\S+\.\S+$/, 'Please enter a valid email']
+   //   },
+   //
+   //   password: {
+   //     type: String,
+   //     required: [true, 'Password is required'],
+   //     minlength: [8, 'Password must be at least 8 characters'],
+   //     select: false            // NEVER include password in queries by default
+   //   },
+   //
+   //   age: {
+   //     type: Number,
+   //     min: [0, 'Age cannot be negative'],
+   //     max: [150, 'Age cannot exceed 150']
+   //   },
+   //
+   //   role: {
+   //     type: String,
+   //     enum: ['user', 'admin', 'moderator'],  // Only these values allowed
+   //     default: 'user'          // Default value if not provided
+   //   },
+   //
+   //   active: {
+   //     type: Boolean,
+   //     default: true
+   //   },
+   //
+   //   hobbies: [String],         // Array of strings
+   //
+   //   address: {                 // Nested object (sub-document)
+   //     street: String,
+   //     city: String,
+   //     zip: String,
+   //     country: { type: String, default: 'US' }
+   //   },
+   //
+   //   // Reference to another collection (like a foreign key in SQL)
+   //   posts: [{
+   //     type: mongoose.Schema.Types.ObjectId,
+   //     ref: 'Post'              // References the 'Post' model
+   //   }],
+   //
+   //   profilePicture: {
+   //     type: String,
+   //     default: 'default.jpg'
+   //   }
+   // }, {
+   //   // ── Schema Options ──
+   //   timestamps: true,          // Auto-adds createdAt & updatedAt fields
+   //   toJSON: { virtuals: true }, // Include virtual fields in JSON output
+   //   toObject: { virtuals: true }
+   // });
 //
 //  MONGOOSE DATA TYPES:
 //    ┌──────────────────────┬──────────────────────────────────────────────────┐
@@ -2794,14 +2794,14 @@
 //
 //  CREATING A MODEL FROM A SCHEMA:
 //
-//    // const User = mongoose.model('User', userSchema);
-//    //
-//    // 'User' = the model name (Mongoose auto-creates a collection called "users")
-//    // Convention: Model name is singular + capitalized → "User"
-//    //             Collection name is auto-pluralized + lowercased → "users"
-//    //
-//    // Export for use in other files:
-//    // module.exports = User;
+   // const User = mongoose.model('User', userSchema);
+   //
+   // 'User' = the model name (Mongoose auto-creates a collection called "users")
+   // Convention: Model name is singular + capitalized → "User"
+   //             Collection name is auto-pluralized + lowercased → "users"
+   //
+   // Export for use in other files:
+   // module.exports = User;
 //
 //
 //  ╔═══════════════════════════════════════════════════════════════════════════╗
@@ -2810,124 +2810,124 @@
 //
 //  ── CREATE (Insert documents) ──
 //
-//    // Method 1: Create and save (two steps)
-//    // const user = new User({
-//    //   name: 'John Doe',
-//    //   email: 'john@example.com',
-//    //   password: 'hashedPassword123',
-//    //   age: 25
-//    // });
-//    // await user.save();  // Saves to database
-//    //
-//    // Method 2: Create in one step (shorthand)
-//    // const user = await User.create({
-//    //   name: 'Jane Doe',
-//    //   email: 'jane@example.com',
-//    //   password: 'hashedPassword456',
-//    //   age: 28
-//    // });
-//    //
-//    // Method 3: Insert many documents at once
-//    // const users = await User.insertMany([
-//    //   { name: 'Alice', email: 'alice@mail.com', password: 'hashed1' },
-//    //   { name: 'Bob', email: 'bob@mail.com', password: 'hashed2' },
-//    //   { name: 'Charlie', email: 'charlie@mail.com', password: 'hashed3' }
-//    // ]);
+   // Method 1: Create and save (two steps)
+   // const user = new User({
+   //   name: 'John Doe',
+   //   email: 'john@example.com',
+   //   password: 'hashedPassword123',
+   //   age: 25
+   // });
+   // await user.save();  // Saves to database
+   //
+   // Method 2: Create in one step (shorthand)
+   // const user = await User.create({
+   //   name: 'Jane Doe',
+   //   email: 'jane@example.com',
+   //   password: 'hashedPassword456',
+   //   age: 28
+   // });
+   //
+   // Method 3: Insert many documents at once
+   // const users = await User.insertMany([
+   //   { name: 'Alice', email: 'alice@mail.com', password: 'hashed1' },
+   //   { name: 'Bob', email: 'bob@mail.com', password: 'hashed2' },
+   //   { name: 'Charlie', email: 'charlie@mail.com', password: 'hashed3' }
+   // ]);
 //
 //
 //  ── READ (Query/Find documents) ──
 //
-//    // Find ALL documents:
-//    // const users = await User.find();
-//    //
-//    // Find with FILTER:
-//    // const admins = await User.find({ role: 'admin' });
-//    //
-//    // Find ONE document:
-//    // const user = await User.findOne({ email: 'john@example.com' });
-//    //
-//    // Find by ID:
-//    // const user = await User.findById('507f1f77bcf86cd799439011');
-//    //
-//    // SELECT specific fields (projection):
-//    // const users = await User.find().select('name email -_id');
-//    //   // Returns only name and email, excludes _id
-//    //   // Minus (-) prefix = exclude that field
-//    //
-//    // SORTING:
-//    // const users = await User.find().sort({ createdAt: -1 });
-//    //   // -1 = descending (newest first)
-//    //   //  1 = ascending (oldest first)
-//    //   // String shorthand: .sort('-createdAt')  (minus = descending)
-//    //
-//    // PAGINATION:
-//    // const page = 1;
-//    // const limit = 10;
-//    // const skip = (page - 1) * limit;
-//    // const users = await User.find()
-//    //   .skip(skip)       // Skip the first N documents
-//    //   .limit(limit);    // Return only N documents
-//    //
-//    // COUNTING:
-//    // const count = await User.countDocuments({ role: 'admin' });
-//    //
-//    // CHECK IF EXISTS:
-//    // const exists = await User.exists({ email: 'john@example.com' });
-//    //   // Returns the _id if found, null if not
+   // Find ALL documents:
+   // const users = await User.find();
+   //
+   // Find with FILTER:
+   // const admins = await User.find({ role: 'admin' });
+   //
+   // Find ONE document:
+   // const user = await User.findOne({ email: 'john@example.com' });
+   //
+   // Find by ID:
+   // const user = await User.findById('507f1f77bcf86cd799439011');
+   //
+   // SELECT specific fields (projection):
+   // const users = await User.find().select('name email -_id');
+   //   // Returns only name and email, excludes _id
+   //   // Minus (-) prefix = exclude that field
+   //
+   // SORTING:
+   // const users = await User.find().sort({ createdAt: -1 });
+   //   // -1 = descending (newest first)
+   //   //  1 = ascending (oldest first)
+   //   // String shorthand: .sort('-createdAt')  (minus = descending)
+   //
+   // PAGINATION:
+   // const page = 1;
+   // const limit = 10;
+   // const skip = (page - 1) * limit;
+   // const users = await User.find()
+   //   .skip(skip)       // Skip the first N documents
+   //   .limit(limit);    // Return only N documents
+   //
+   // COUNTING:
+   // const count = await User.countDocuments({ role: 'admin' });
+   //
+   // CHECK IF EXISTS:
+   // const exists = await User.exists({ email: 'john@example.com' });
+   //   // Returns the _id if found, null if not
 //
 //
 //  ── UPDATE (Modify documents) ──
 //
-//    // Update ONE document:
-//    // const user = await User.findByIdAndUpdate(
-//    //   '507f1f77bcf86cd799439011',       // the ID to find
-//    //   { name: 'John Smith', age: 26 },  // the fields to update
-//    //   {
-//    //     new: true,            // Return the UPDATED document (not the old one)
-//    //     runValidators: true   // Run schema validators on the update
-//    //   }
-//    // );
-//    //
-//    // Update ONE with filter:
-//    // await User.findOneAndUpdate(
-//    //   { email: 'john@example.com' },
-//    //   { $set: { age: 26 } },
-//    //   { new: true }
-//    // );
-//    //
-//    // Update MANY documents:
-//    // await User.updateMany(
-//    //   { role: 'user' },          // Filter: all regular users
-//    //   { $set: { active: false }} // Set active to false
-//    // );
-//    //
-//    // MongoDB UPDATE OPERATORS:
-//    //   $set       → Set field value:    { $set: { name: 'New' } }
-//    //   $unset     → Remove a field:     { $unset: { phone: '' } }
-//    //   $inc       → Increment:          { $inc: { views: 1 } }
-//    //   $push      → Add to array:       { $push: { hobbies: 'coding' } }
-//    //   $pull      → Remove from array:  { $pull: { hobbies: 'gaming' } }
-//    //   $addToSet  → Add unique to array: { $addToSet: { tags: 'new' } }
-//    //   $rename    → Rename a field:     { $rename: { nm: 'name' } }
-//    //   $min       → Update if less:     { $min: { score: 50 } }
-//    //   $max       → Update if greater:  { $max: { score: 100 } }
+   // Update ONE document:
+   // const user = await User.findByIdAndUpdate(
+   //   '507f1f77bcf86cd799439011',       // the ID to find
+   //   { name: 'John Smith', age: 26 },  // the fields to update
+   //   {
+   //     new: true,            // Return the UPDATED document (not the old one)
+   //     runValidators: true   // Run schema validators on the update
+   //   }
+   // );
+   //
+   // Update ONE with filter:
+   // await User.findOneAndUpdate(
+   //   { email: 'john@example.com' },
+   //   { $set: { age: 26 } },
+   //   { new: true }
+   // );
+   //
+   // Update MANY documents:
+   // await User.updateMany(
+   //   { role: 'user' },          // Filter: all regular users
+   //   { $set: { active: false }} // Set active to false
+   // );
+   //
+   // MongoDB UPDATE OPERATORS:
+   //   $set       → Set field value:    { $set: { name: 'New' } }
+   //   $unset     → Remove a field:     { $unset: { phone: '' } }
+   //   $inc       → Increment:          { $inc: { views: 1 } }
+   //   $push      → Add to array:       { $push: { hobbies: 'coding' } }
+   //   $pull      → Remove from array:  { $pull: { hobbies: 'gaming' } }
+   //   $addToSet  → Add unique to array: { $addToSet: { tags: 'new' } }
+   //   $rename    → Rename a field:     { $rename: { nm: 'name' } }
+   //   $min       → Update if less:     { $min: { score: 50 } }
+   //   $max       → Update if greater:  { $max: { score: 100 } }
 //
 //
 //  ── DELETE (Remove documents) ──
 //
-//    // Delete ONE by ID:
-//    // const user = await User.findByIdAndDelete('507f1f77bcf86cd799439011');
-//    //
-//    // Delete ONE with filter:
-//    // await User.findOneAndDelete({ email: 'john@example.com' });
-//    //
-//    // Delete MANY:
-//    // const result = await User.deleteMany({ active: false });
-//    // console.log(`Deleted ${result.deletedCount} inactive users`);
-//    //
-//    // Delete ALL documents in a collection:
-//    // await User.deleteMany({});  // Empty filter = delete everything!
-//    // ⚠ Be VERY careful with this!
+   // Delete ONE by ID:
+   // const user = await User.findByIdAndDelete('507f1f77bcf86cd799439011');
+   //
+   // Delete ONE with filter:
+   // await User.findOneAndDelete({ email: 'john@example.com' });
+   //
+   // Delete MANY:
+   // const result = await User.deleteMany({ active: false });
+   // console.log(`Deleted ${result.deletedCount} inactive users`);
+   //
+   // Delete ALL documents in a collection:
+   // await User.deleteMany({});  // Empty filter = delete everything!
+   // ⚠ Be VERY careful with this!
 //
 //
 //  ╔═══════════════════════════════════════════════════════════════════════════╗
@@ -2937,24 +2937,24 @@
 //  MongoDB query operators start with $ (dollar sign):
 //
 //  COMPARISON:
-//    // $eq   → Equal:          User.find({ age: { $eq: 25 } })  (same as { age: 25 })
-//    // $ne   → Not equal:      User.find({ role: { $ne: 'admin' } })
-//    // $gt   → Greater than:   User.find({ age: { $gt: 18 } })
-//    // $gte  → Greater or eq:  User.find({ age: { $gte: 18 } })
-//    // $lt   → Less than:      User.find({ age: { $lt: 65 } })
-//    // $lte  → Less or equal:  User.find({ age: { $lte: 65 } })
-//    // $in   → In array:       User.find({ role: { $in: ['admin', 'mod'] } })
-//    // $nin  → Not in array:   User.find({ role: { $nin: ['banned'] } })
-//
+   // $eq   → Equal:          User.find({ age: { $eq: 25 } })  (same as { age: 25 })
+   // $ne   → Not equal:      User.find({ role: { $ne: 'admin' } })
+   // $gt   → Greater than:   User.find({ age: { $gt: 18 } })
+   // $gte  → Greater or eq:  User.find({ age: { $gte: 18 } })
+   // $lt   → Less than:      User.find({ age: { $lt: 65 } })
+   // $lte  → Less or equal:  User.find({ age: { $lte: 65 } })
+   // $in   → In array:       User.find({ role: { $in: ['admin', 'mod'] } })
+   // $nin  → Not in array:   User.find({ role: { $nin: ['banned'] } })
+
 //  LOGICAL:
-//    // $and  → All conditions:  User.find({ $and: [{ age: { $gte: 18 } }, { active: true }] })
-//    // $or   → Any condition:   User.find({ $or: [{ role: 'admin' }, { role: 'mod' }] })
-//    // $not  → Negate:          User.find({ age: { $not: { $lt: 18 } } })
-//    // $nor  → None match:     User.find({ $nor: [{ deleted: true }, { banned: true }] })
+   // $and  → All conditions:  User.find({ $and: [{ age: { $gte: 18 } }, { active: true }] })
+   // $or   → Any condition:   User.find({ $or: [{ role: 'admin' }, { role: 'mod' }] })
+   // $not  → Negate:          User.find({ age: { $not: { $lt: 18 } } })
+   // $nor  → None match:     User.find({ $nor: [{ deleted: true }, { banned: true }] })
 //
 //  ELEMENT:
-//    // $exists → Field exists:  User.find({ phone: { $exists: true } })
-//    // $type   → Field type:    User.find({ age: { $type: 'number' } })
+   // $exists → Field exists:  User.find({ phone: { $exists: true } })
+   // $type   → Field type:    User.find({ age: { $type: 'number' } })
 //
 //  ARRAY:
 //    // $size   → Array length:  User.find({ hobbies: { $size: 3 } })
