@@ -39,6 +39,10 @@ Welcome to my personal repository where I document my journey of learning new sk
 | **CyberSecurity**| `[./CyberSecurity]` | Beginner | In Progress | 2025 - 12 - 10 | — | - |
 | **React**| `[./React]` | Beginner | In Progress | 2025 - 12 - 30 | — | - |
 | **CSharp**| `[./C#]` | Beginner | In Progress | 2026 - 01 - 19 | — | - |
+| **Godot**| `[./Godot]` | Beginner | In Progress | 2026 - 01 - 25 | — | - |
+| **DBMS**| `[./DBMS]` | Beginner | In Progress | 2026 - 01 - 22 | — | - |
+
+
 
 ---
 
