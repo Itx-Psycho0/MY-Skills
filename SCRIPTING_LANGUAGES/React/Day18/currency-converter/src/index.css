@@ -1,13 +1,64 @@
-body {
+*{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, #c10fe5, #280be5);
+}
+.Container {
+  height: 200px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #ffffff00;
+  border: rgba(35, 35, 35, 0.18) solid 2px;
+  box-shadow:rgba(27, 26, 26, 0.08) 0px 4px 30px;
+  padding: 10px;
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+
+  
+}
+.Input {
+  width: 100%;
+  padding: 8px;
+  border: rgba(35, 35, 35, 0.18) solid 1px;
+  border-radius: 4px;
+  color: #ffffff;
+  background-color: #ffffff00;
+  margin: 0 0 2px 0 ;
+  box-shadow: rgba(24, 25, 25, 0.717) 0px 2px 3px;
+  backdrop-filter: blur(10px);
+}
+.Select {
+  width: 100%;
+  padding: 8px;
+  border: rgba(35, 35, 35, 0.18) solid 1px;
+  border-radius: 4px;
+  background-color: #ffffff00;
+  color: #090909;
+  margin: 2px;
+   box-shadow: rgba(24, 25, 25, 0.717) 0px 2px 3px;
+  backdrop-filter: blur(10px);
+}
+.ConvertedAmount {
+  color: #fff;
+  background-color: #ffffff00;
+  border: rgba(35, 35, 35, 0.18) solid 1px;
+  border-radius: 4px;
+  padding: 8px;
+  width: 100%;
+  margin: 2px;
+  box-shadow: rgba(24, 25, 25, 0.717) 0px 2px 3px;
+  backdrop-filter: blur(10px);
 }
