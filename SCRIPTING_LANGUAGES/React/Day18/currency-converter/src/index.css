@@ -11,7 +11,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle, #c10fe5, #280be5);
+  background: radial-gradient(circle, #464446, #070707);
 }
 .Container {
   height: 200px;
