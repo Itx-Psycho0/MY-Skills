@@ -1,7 +1,7 @@
 // Only importing what we actually need from React:
 // - useEffect: to run side effects (like fetching data from API)
 // - useState: to store and update data that the UI depends on
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 // ── Helper function: calculates the average of an array of numbers ──
 // Example: average([10, 20, 30]) → 20
