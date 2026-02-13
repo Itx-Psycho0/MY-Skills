@@ -1,7 +1,7 @@
 // Only importing what we actually need from React:
 // - useEffect: to run side effects (like fetching data from API)
 // - useState: to store and update data that the UI depends on
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 
 // ── Helper function: calculates the average of an array of numbers ──
 // Example: average([10, 20, 30]) → 20
@@ -21,7 +21,15 @@ export default function App() {
   const [movies, setMovies] = useState([]);
 
   // watched: movies the user has already watched and rated
-  const [watched, setWatched] = useState([]);
+  // const [watched, setWatched] = useState([]);
+
+  // Initialize "watched" state from localStorage, or start with empty array if nothing there
+   const [watched, setWatched] = useState(() => {
+    const storedValue = localStorage.getItem("watched");
+    return storedValue ? JSON.parse(storedValue) : [];
+  });
+
+
 
   // isLoading: true while we're waiting for the API response
   const [isLoading, setIsLoading] = useState(false);
@@ -52,13 +60,22 @@ export default function App() {
   // Takes the old watched list and adds the new movie at the end
   function handleAddWatched(movie) {
     setWatched((watched) => [...watched, movie]);
+
+    // localStorage.setItem("watched", JSON.stringify([...watched, movie]));
   }
 
   // ── Remove a movie from the "watched" list ──
   // Keeps every movie EXCEPT the one with matching id
   function handleDeleteWatched(id) {
     setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
+    // localStorage.setItem("watched", JSON.stringify(watched.filter((movie) => movie.imdbID !== id)));
   }
+
+
+  useEffect(() => {
+    localStorage.setItem("watched", JSON.stringify(watched));
+  }, [watched]);
+
 
   // ── Fetch movies from OMDB API whenever the search query changes ──
   useEffect(() => {
@@ -607,3 +624,9 @@ function StarRating({ maxRating = 5, size = 48, onSetRating }) {
   );
 }
 
+// {/* eslint-disable */} — inside curly braces command turns off ESLint warnings for this file (optional)
+
+
+// What is lazy evaluation? — It's when we delay doing a calculation until we actually need the result. In React, this can be useful for initializing state from localStorage, because we only want to read from localStorage once when the component first mounts, not on every render. By passing a function to useState (like useState(() => ...)), React will call that function only on the initial render to get the initial state value. This way we avoid unnecessary reads from localStorage on every render, which can improve performance.
+
+// Make sure to not mutate object and array state directly (like using push or splice), because React won't detect the change and won't re-render the component. Instead, always create a new array or object when updating state (like using spread operator [...watched, newMovie] or filter to create a new array without the deleted movie). This way React can see that the state has changed and will update the UI accordingly.
