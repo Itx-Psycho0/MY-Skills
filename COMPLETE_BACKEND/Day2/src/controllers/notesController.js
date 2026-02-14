@@ -23,11 +23,11 @@ const getNoteById = async (req, res) => {
 
 
 const createNote = async(req, res) => {
-  const { title, description } = req.body;
+  const { title, content } = req.body;
   try {
     const newNote = new Note({
       title,
-      description,
+      content,
     });
     const savedNote = await newNote.save();
     res.status(201).json(savedNote);
@@ -37,11 +37,11 @@ const createNote = async(req, res) => {
 }
 
 const updateNote = async (req, res) => {
-  const { title, description } = req.body;
+  const { title, content } = req.body;
   try {
     const updatedNote = await Note.findByIdAndUpdate(
       req.params.id,
-      { title, description },
+      { title, content },
       { new: true }
     );
     if (!updatedNote) {
