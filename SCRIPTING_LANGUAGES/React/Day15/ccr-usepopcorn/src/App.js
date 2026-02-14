@@ -1,7 +1,7 @@
 // Only importing what we actually need from React:
 // - useEffect: to run side effects (like fetching data from API)
 // - useState: to store and update data that the UI depends on
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // ── Helper function: calculates the average of an array of numbers ──
 // Example: average([10, 20, 30]) → 20
@@ -230,6 +230,23 @@ function Logo() {
 // ── Search input ──
 // "query" is the current text, "setQuery" updates it when user types
 function Search({ query, setQuery }) {
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
+
+    function handleKeyDown(e) {
+      if(document.activeElement === inputRef.current) return; // don't do anything if user is already typing in the input
+      if (e.key === "Enter") {
+        e.preventDefault();
+        inputRef.current.focus();
+        setQuery("");
+      }
+    }
+
+    // Cleanup: remove event listener when component unmounts
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [setQuery]);
   return (
     <input
       className="search"
@@ -237,6 +254,7 @@ function Search({ query, setQuery }) {
       placeholder="Search movies..."
       value={query}
       onChange={(e) => setQuery(e.target.value)}
+      ref={inputRef}
     />
   );
 }
@@ -323,6 +341,13 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
   // The rating the user gives this movie (starts empty)
   const [userRating, setUserRating] = useState("");
 
+  const counterRef = useRef(0);
+
+   useEffect(() => {
+    if (userRating)
+    counterRef.current++;
+  }, [userRating]);
+
   // Check if this movie is already in the watched list
   const isWatched = watched.map((m) => m.imdbID).includes(selectedId);
 
@@ -358,6 +383,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
       runtime: runtime ? Number(runtime.split(" ").at(0)) : 0,
       imdbRating: Number(imdbRating),
       userRating: Number(userRating),
+      countRatingDecisions: counterRef.current,
     };
     onAddWatched(newWatchedMovie);
     onCloseMovie();
