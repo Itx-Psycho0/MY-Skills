@@ -2,6 +2,7 @@
 // - useEffect: to run side effects (like fetching data from API)
 // - useState: to store and update data that the UI depends on
 import { useEffect, useRef, useState } from "react";
+import { useMovies } from "./useMovies";
 
 // ── Helper function: calculates the average of an array of numbers ──
 // Example: average([10, 20, 30]) → 20
@@ -18,7 +19,7 @@ const KEY = "51e1060d";
 // ═══════════════════════════════════════════════════════════
 export default function App() {
   // movies: the list of search results from the API
-  const [movies, setMovies] = useState([]);
+  // const [movies, setMovies] = useState([]);
 
   // watched: movies the user has already watched and rated
   // const [watched, setWatched] = useState([]);
@@ -32,10 +33,10 @@ export default function App() {
 
 
   // isLoading: true while we're waiting for the API response
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
 
   // error: stores any error message to show to the user
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
 
   // query: what the user typed in the search box
   const [query, setQuery] = useState("");
@@ -78,61 +79,7 @@ export default function App() {
 
 
   // ── Fetch movies from OMDB API whenever the search query changes ──
-  useEffect(() => {
-    // Create an AbortController so we can cancel the request
-    // if the user keeps typing (prevents race conditions where
-    // an old slow request overwrites a newer fast one)
-    const controller = new AbortController();
-
-    async function fetchMovies() {
-      try {
-        setIsLoading(true);
-        setError("");
-
-        // Call the OMDB API with our search query
-        const res = await fetch(
-          `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`,
-          { signal: controller.signal } // attach abort signal
-        );
-
-        // If the server returns a bad status code (like 500)
-        if (!res.ok)
-          throw new Error("Something went wrong with fetching movies");
-
-        const data = await res.json();
-
-        // OMDB returns { Response: "False" } when nothing matches
-        if (data.Response === "False") throw new Error("Movie not found");
-
-        // Success! Save the search results
-        setMovies(data.Search);
-        setError(""); // clear any previous error
-      } catch (err) {
-        // Ignore AbortError — that just means we cancelled on purpose
-        if (err.name !== "AbortError") {
-          setError(err.message);
-        }
-      } finally {
-        // Whether success or failure, stop showing the loading spinner
-        setIsLoading(false);
-      }
-    }
-
-    // Don't search if query is too short (less than 2 characters)
-    if (query.length < 2) {
-      setMovies([]);
-      setError("");
-      return;
-    }
-
-    // Close any open movie details before searching
-    handleCloseMovie();
-    fetchMovies();
-
-    // CLEANUP: if query changes again before fetch finishes,
-    // cancel the previous request to avoid stale data
-    return () => controller.abort();
-  }, [query]);
+  const { movies, isLoading, error } = useMovies(query );
   // ═══════════════════════════════════════════════════════════
   // RENDERING THE UI
   // The app has two main sections:
