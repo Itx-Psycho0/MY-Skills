@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"maps"
 	"slices"
+	"sync"
 	"time"
 )
 
@@ -348,6 +349,12 @@ func main() {
 	m1.Age = 36
 	fmt.Println(m1.Age)
 
+	go printNumbers()	
+	time.Sleep(1 * time.Second)
+	wg.Add(1)
+	go printNumbers2()
+	wg.Wait()
+
 	
 }
 
@@ -368,4 +375,63 @@ func (c Circle) Area() float64 {
 func (c Circle) Perimeter() float64 {
 	return 2 * 3.14 * c.Radius
 }
+
+// enumerated types
+type Day int
+const (
+	Monday Day = iota
+	Tuesday
+	Wednesday
+	Thursday
+	Friday
+	Saturday
+	Sunday
+)
+
+func (d Day) String() string {
+	return [...]string{"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"}[d]
+}
+
+// Generics
+func Max[T ordered](c, b T) T {
+	if c > b {
+		return c
+	}
+	return b
+}
+
+func Min[T integer](a, b T) T {
+	if a < b {
+		return a
+	}
+	return b
+}
+
+type integer interface {
+	int | int8 | int16 | int32 | int64 | uint | uint8 | uint16 | uint32 | uint64 | uintptr | float32 | float64
+}
+
+type ordered interface {
+	integer | string
+}
+
+
+// Goroutines 
+func printNumbers() {
+	for i := 1; i <= 5; i++ {
+		fmt.Println(i)
+	}
+}
+//go
+
+// WaitGroups
+var wg sync.WaitGroup
+func printNumbers2() {
+	for i := 1; i <= 5; i++ {
+		fmt.Println(i)
+	}
+	defer wg.Done()
+}
+
+
 

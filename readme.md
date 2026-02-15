@@ -41,6 +41,8 @@ Welcome to my personal repository where I document my journey of learning new sk
 | **CSharp**| `[./C#]` | Beginner | In Progress | 2026 - 01 - 19 | — | - |
 | **Godot**| `[./Godot]` | Beginner | In Progress | 2026 - 01 - 25 | — | - |
 | **DBMS**| `[./DBMS]` | Beginner | In Progress | 2026 - 01 - 22 | — | - |
+| **Backend**| `[./Backend]` | Beginner | In Progress | 2026 - 11 - 05 | — | - |
+| **Golang**| `[./GoLang]` | Beginner | In Progress | 2026 - 02 - 15 | — | - |
 
 
 
