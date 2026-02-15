@@ -4,9 +4,10 @@ import (
 	"fmt"
 	"maps"
 	"slices"
+	"time"
 )
 
-func main(){
+func main() {
 	fmt.Println("Hello, World!")
 	// simple values - int, float, string, bool
 	fmt.Println(1+1)
@@ -244,5 +245,127 @@ func main(){
 	fmt.Println(sum(1, 2, 3))
 	fmt.Println(sum(1, 2, 3, 4, 5))
 
+	// closures
+	counter := func() func() int {
+		count := 0
+		return func() int {
+			count++
+			return count
+		}
+	}
+	increment := counter()
+	fmt.Println(increment())
+	fmt.Println(increment())
+	fmt.Println(increment())
+	fmt.Println(increment())
+
+	// Pointers
+	var p *int // pointer to int
+	fmt.Println(p)
+	var num2 int = 10
+	p = &num2 // & operator to get address of num2
+	fmt.Println(p)
+	fmt.Println(*p)
+	*p = 20
+	fmt.Println(num2)
+
+
+	// structs
+	type Person struct {
+		Name string
+		Age  int
+		createdAt time.Time
+	}
+	p1 := Person{Name: "Alice", Age: 30, createdAt: time.Now()}
+	fmt.Println(p1)
+	fmt.Println(p1.Name)
+	fmt.Println(p1.Age)
+	p1.Age = 31
+	fmt.Println(p1.Age)
+	p2 := Person{Name: "Bob"}
+	fmt.Println(p2)
+	fmt.Println(p2.Name)
+	fmt.Println(p2.Age)
+	
+	// connect functions with structs
+	type Employee struct {
+		Person
+		Position string
+	}
+	e1 := Employee{Person: Person{Name: "Charlie", Age: 25}, Position: "Developer"}
+	fmt.Println(e1)
+	fmt.Println(e1.Name)
+	fmt.Println(e1.Age)
+	fmt.Println(e1.Position)
+	e1.Age = 26
+	fmt.Println(e1.Age)
+
+	changePosition := func(e *Employee, newPosition string) {
+		e.Position = newPosition
+	}
+	changePosition(&e1, "Manager")
+	fmt.Println(e1.Position)
+
+
+	// also connect functions with structs using function literals
+	// func(e *Employee)changePosition(position string) {
+	// 	e.Position = "Intern"
+	// }(e1)
+
+	// constructors
+	newPerson := func(name string, age int) Person {
+		return Person{Name: name, Age: age, createdAt: time.Now()}
+	}
+	p3 := newPerson("David", 28)
+	fmt.Println(p3)
+	fmt.Println(p3.Name)
+	fmt.Println(p3.Age)
+
+	// struct without name
+	language := struct {
+		name string
+		version float64
+	}{
+		name: "Go",
+		version: 1.18,
+	}
+	fmt.Println(language)
+	fmt.Println(language.name)
+	fmt.Println(language.version)
+
+	
+	// struct embedding
+	type Manager struct {
+		Employee
+		Department string
+	}
+	m1 := Manager{Employee: Employee{Person: Person{Name: "Eve", Age: 35}, Position: "Manager"}, Department: "HR"}
+	fmt.Println(m1)
+	fmt.Println(m1.Name)
+	fmt.Println(m1.Age)
+	fmt.Println(m1.Position)
+	fmt.Println(m1.Department)
+	m1.Age = 36
+	fmt.Println(m1.Age)
+
 	
 }
+
+// interfaces
+type Shape interface {
+	Area() float64
+	Perimeter() float64
+}
+
+type Circle struct {
+	Radius float64
+}
+
+func (c Circle) Area() float64 {
+	return 3.14 * c.Radius * c.Radius
+}
+
+func (c Circle) Perimeter() float64 {
+	return 2 * 3.14 * c.Radius
+}
+
