@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"slices"
+)
 
 func main(){
 	fmt.Println("Hello, World!")
@@ -131,5 +134,66 @@ func main(){
 	fmt.Println(len(slice))
 	fmt.Println(cap(slice))
 
-	
+	//nil slice
+	var nilSlice []int // this is a nil slice
+	fmt.Println(nilSlice)
+	fmt.Println(len(nilSlice))
+	fmt.Println(cap(nilSlice))
+
+
+	var s = make([]int, 5,10) // create slice with length 5 this is not nil slice
+	fmt.Println(s)
+	s = append(s, 1, 2, 3,4,5,6)
+	fmt.Println(s)
+	fmt.Println(len(s))
+	fmt.Println(cap(s))
+
+	//copy sliceCopy := make([]int, len(s))
+	sliceCopy := make([]int, len(s))
+	copy(sliceCopy, s)
+	fmt.Println(sliceCopy)
+	fmt.Println(len(sliceCopy))
+	fmt.Println(cap(sliceCopy))
+
+	// slice operator
+	slice3 := s[2:7] // slice from index 2 to 6
+	fmt.Println(slice3)
+	slice4 := s[:5] // slice from start to index 4
+	fmt.Println(slice4)
+	slice5 := s[5:] // slice from index 5 to end
+	fmt.Println(slice5)
+	slice6 := s[:] // slice of entire slice
+	fmt.Println(slice6)
+	fmt.Println(s)
+
+	// compare slices
+	slice7 := []int{1, 2, 3}
+	slice8 := []int{1, 2, 3}
+	fmt.Println(slice7 == nil)
+	fmt.Println(slices.Equal(slice7, slice8)) // use slices.Equal to compare slices
+
+	// 2d slices
+	matrix := [][]int{
+		{1, 2, 3},
+		{4, 5, 6},
+		{7, 8, 9},
+	}
+	fmt.Println(matrix)
+	fmt.Println(matrix[1][2])
+
+	// maps - key-value pairs
+	m := make(map[string]int)
+	m["one"] = 1
+	m["two"] = 2
+	fmt.Println(m)
+	fmt.Println(m["one"])
+	fmt.Println(len(m))
+	delete(m, "one")
+	fmt.Println(m)
+	_, ok := m["one"]
+	fmt.Println(ok)
+	_, ok = m["two"]
+	fmt.Println(ok)
+
+
 }
