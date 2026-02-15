@@ -47,5 +47,89 @@ func main(){
 		}
 		j++
 	}
+	for i:=range 3 {
+		fmt.Println(i)
+	}
+
+	// if-else statement
+	num := 10
+	if num%2 == 0 {
+		fmt.Println(num, "is even")
+	} else {
+		fmt.Println(num, "is odd")
+	}
+
+	if a := 5; a > 0 {
+		fmt.Println(a, "is positive")
+	} else {
+		fmt.Println(a, "is negative")
+	}
+	fmt.Println(a)
+
+	// ternary operator is not available in Go, use if-else instead
+	// switch statement
+	day := "Monday"
+	switch day {
+	case "Monday":
+		fmt.Println("Start of the week")
+	case "Friday":
+		fmt.Println("End of the week")
+	default:
+		fmt.Println("Midweek")
+	}
+	
+	// multiple condition switch
+	switch {
+	case day == "Monday" , day == "Tuesday":
+		fmt.Println("Start of the week")
+	case day == "Friday" , day == "Saturday":
+		fmt.Println("End of the week")
+	default:
+		fmt.Println("Midweek")
+	}
+
+	//Type switch
+	whoAmI := func(i interface{}) {
+		switch t := i.(type) {
+		case int:
+			fmt.Println("I am an integer:", t)
+		case string:
+			fmt.Println("I am a string:", t)
+		default:
+			fmt.Println("Unknown type")
+		}	
+	}
+	whoAmI(42)
+	whoAmI("Hello")
+	whoAmI(true)
+
+	// arrays 
+	var arr [5]int // fixed size array
+	arr[0] = 1
+	arr[1] = 2
+	fmt.Println(arr)
+	fmt.Println(len(arr))
+	arr2 := [3]string{"Go", "Python", "Java"}
+	fmt.Println(arr2)
+	arr3 := [...]float64{3.14, 2.718, 1.618}
+	fmt.Println(arr3)
+	arr4 := [2][3]int{{1, 2, 3}, {4, 5, 6}}
+	fmt.Println(arr4)
+
+	// slices - dynamic size array
+	slice := []int{1, 2, 3}
+	fmt.Println(slice)
+	fmt.Println(len(slice))
+	fmt.Println(cap(slice))
+	slice = append(slice, 4, 5)
+	fmt.Println(slice)
+	fmt.Println(len(slice))
+	fmt.Println(cap(slice))
+	slice2 := []int{6, 7, 8}
+	slice = append(slice, slice2...)
+	fmt.Println(slice)
+	fmt.Println(len(slice))
+	fmt.Println(cap(slice))
+
 	
 }
