@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"maps"
 	"slices"
 )
 
@@ -195,5 +196,53 @@ func main(){
 	_, ok = m["two"]
 	fmt.Println(ok)
 
+	// map without make
+	m2 := map[string]int{
+		"one": 1,
+		"two": 2,
+	}
+	fmt.Println(m2)
+	fmt.Println(m2["one"])
+	fmt.Println(len(m2))
+	delete(m2, "one")
+	fmt.Println(m2)
 
+	fmt.Println(maps.Equal(m,m2))
+
+
+	// range
+	for key, value := range m2 {
+		fmt.Println(key, value)
+	}
+	for _, value := range m2 {
+		fmt.Println(value)
+	}
+	for key := range m2 {
+		fmt.Println(key)
+	}
+
+
+	// functions
+	add := func(a, b int) int {
+		return a + b
+	}
+	fmt.Println(add(1, 2))
+
+	getLanguages := func() (string, string, string) {
+		return "Go", "Python", "Java"
+	}
+	fmt.Println(getLanguages())
+
+	// variadic function
+	sum := func(nums ...int) int {
+		total := 0
+		for _, num := range nums {
+			total += num
+		}
+		return total
+	}
+	fmt.Println(sum(1, 2, 3))
+	fmt.Println(sum(1, 2, 3, 4, 5))
+
+	
 }
