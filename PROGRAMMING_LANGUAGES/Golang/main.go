@@ -355,7 +355,13 @@ func main() {
 	go printNumbers2()
 	wg.Wait()
 
+
+	message := make(chan string) // create a channel
+	// fmt.Println(<-message) // receive message from channel
+	go processChan(message)
+	message <- "Hello, Channel!" // send message to channel
 	
+	time.Sleep(time.Second*2)
 }
 
 // interfaces
@@ -433,5 +439,8 @@ func printNumbers2() {
 	defer wg.Done()
 }
 
-
+// Channels
+func processChan(message chan string) {
+	fmt.Println(<-message)
+}
 
