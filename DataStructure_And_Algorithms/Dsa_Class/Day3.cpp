@@ -71,6 +71,102 @@ vector<int> maximumsumofsubarrayofsizek(vector<int> arr, int k){
     return result;
 }
 
+void printfun(int test){
+    if(test<1){
+        return;
+    }else{
+        cout<<test<<" ";
+        printfun(test-1);
+        cout<<test<<" ";
+        return;
+    }
+}
+
+void printNos(int n){
+    if (n==0){
+        return;
+    }else{
+        printNos(n-1);
+        cout << n << " ";
+
+    }
+}
+
+vector<int> mergeTwoSortedArrays(vector<int> arr1, vector<int> arr2){
+    vector<int> merged;
+    int i = 0, j = 0;
+    while (i < arr1.size() && j < arr2.size()) {
+        if (arr1[i] < arr2[j]) {
+            merged.push_back(arr1[i]);
+            i++;
+        } else {
+            merged.push_back(arr2[j]);
+            j++;
+        }
+    }
+    while (i < arr1.size()) {
+        merged.push_back(arr1[i]);
+        i++;
+    }
+    while (j < arr2.size()) {
+        merged.push_back(arr2[j]);
+        j++;
+    }
+    return merged;
+}
+
+vector<int>mergesortusingrecursion(vector<int> arr){
+    if(arr.size() <= 1){
+        return arr;
+    }
+    int mid = arr.size()/2;
+    vector<int> left(arr.begin(), arr.begin()+mid);
+    vector<int> right(arr.begin()+mid, arr.end());
+    left = mergesortusingrecursion(left);
+    right = mergesortusingrecursion(right);
+    return mergeTwoSortedArrays(left, right);
+}
+
+vector<int> quickSort(vector<int> arr){
+    if(arr.size() <= 1){
+        return arr;
+    }
+    int pivot = arr[arr.size()/2];
+    vector<int> left, right;
+    for(int i = 0; i<arr.size(); i++){
+        if(arr[i] < pivot){
+            left.push_back(arr[i]);
+        }else if(arr[i] > pivot){
+            right.push_back(arr[i]);
+        }
+    }
+    left = quickSort(left);
+    right = quickSort(right);
+    left.push_back(pivot);
+    left.insert(left.end(), right.begin(), right.end());
+    return left;
+}
+
+// vector<int> quicksortiterative(vector<int> arr){
+//     vector<int> stack;
+//     stack.push_back(0);
+//     stack.push_back(arr.size()-1);
+//     while (!stack.empty()) {
+//         int end = stack.back();
+//         stack.pop_back();
+//         int start = stack.back();
+//         stack.pop_back();
+//         if (start >= end) {
+//             continue;
+//         }
+//         int pivot = partition(arr, start, end);
+//         stack.push_back(start);
+//         stack.push_back(pivot - 1);
+//         stack.push_back(pivot + 1);
+//         stack.push_back(end);
+//     }
+//     return arr;
+// }
 int main(){
     vector<int> arr = {1,2,3,4,5};
     cout<<MaxEle(arr) << endl;
@@ -90,6 +186,25 @@ int main(){
 
     vector<int> maxSumArray = maximumsumofsubarrayofsizek(arr, 3);
     for (int val : maxSumArray) {
+        cout << val << " ";
+    }
+    cout << endl;
+    printfun(5);
+    cout << endl;
+    printNos(5);
+    cout << endl;
+    return 0;
+    vector<int> arr1 = {1,3,5,7,9};
+    vector<int> a2 = {2,4,6,8,10};
+    vector<int> mergedArr = mergeTwoSortedArrays(arr1, a2);
+    for (int val : mergedArr) {
+        cout << val << " ";
+    }
+    cout << endl;
+
+    vector<int> unsortedArr = {38, 27, 43, 3, 9, 82, 10};
+    vector<int> sortedArr = mergesortusingrecursion(unsortedArr);
+    for (int val : sortedArr) {
         cout << val << " ";
     }
     cout << endl;
