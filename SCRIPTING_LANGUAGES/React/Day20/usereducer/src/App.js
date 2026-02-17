@@ -1,10 +1,15 @@
 import React from 'react'
-import DateCounter from './DateCounter'
+import Header from './Header'
+import Main from './Main'
 
 const App = () => {
   return (
-    <div>
-      <DateCounter />
+    <div className='app'>
+      <Header/>
+      <Main>
+        <p>1/15</p>
+        <p>Questions</p>
+      </Main>
     </div>
   )
 }
