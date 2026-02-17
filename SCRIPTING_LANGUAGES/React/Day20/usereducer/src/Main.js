@@ -1,6 +1,6 @@
 
 
-function Main(children){
+function Main({ children }){
     return(
         <main className="main">
             {children}

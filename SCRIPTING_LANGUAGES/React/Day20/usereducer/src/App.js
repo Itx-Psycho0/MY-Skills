@@ -7,8 +7,8 @@ const App = () => {
     <div className='app'>
       <Header/>
       <Main>
-        <p>1/15</p>
-        <p>Questions</p>
+          <p>1/15</p>
+          <p>Questions</p>
       </Main>
     </div>
   )
