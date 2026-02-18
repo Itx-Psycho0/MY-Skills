@@ -1,4 +1,4 @@
-export const data = {
+{
   "questions": [
     {
       "question": "Which is the most popular JavaScript framework?",
@@ -136,4 +136,4 @@ export const data = {
       "points": 20
     }
   ]
-};
+}
