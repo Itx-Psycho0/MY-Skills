@@ -1,7 +1,7 @@
 import React, {  useEffect, useReducer } from 'react'
-import Header from '../Header'
-import Main from '../Main'
-import Loader from '../Loader'
+import Header from './Header'
+import Main from './Main'
+import Loader from './Loader'
 import Error from './Error'
 import StartScreen from './StartScreen'
 import Question from './Question'
@@ -33,6 +33,14 @@ const reducer = (state, action) => {
         ...state,
         status: 'active',
       }
+    case 'newAnswer':
+      const question = state.questions.at(state.index)
+      return{
+        ...state,
+        answer: action.payload,
+        points: action.payload === question.correctOption ? state.points + question.points : state.points,
+      }
+    
     default:
       throw new Error('Unknown action type')
   }
@@ -61,7 +69,7 @@ const App = () => {
           {status === 'loading' && <Loader/>}
           {status === 'error' && <Error/>}
           {status === 'ready' && <StartScreen numQuestions={numQuestions} dispatch={dispatch}/>}
-          {status === 'active' && <Question question={questions[index]}/>}
+          {status === 'active' && <Question question={questions[index]} dispatch={dispatch} answer={answer}/>}
       </Main>
     </div>
   )
