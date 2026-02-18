@@ -7,6 +7,7 @@ import StartScreen from './StartScreen'
 import Question from './Question'
 import NextButton from './NextButton'
 import Progress from './Progress'
+import FinishedScreen from './FinishedScreen'
 
 const initialState = {
   questions: [],
@@ -49,7 +50,12 @@ const reducer = (state, action) => {
         answer: null,
       }
 
-    
+    case 'finish':
+      return{
+        ...state,
+        status: 'finished',
+        highscore: state.points > state.highscore ? state.points : state.highscore,
+      }
     default:
       throw new Error('Unknown action type')
   }
@@ -84,9 +90,10 @@ const App = () => {
             <Progress index={index} numQuestions={numQuestions} points={points} 
             maxPossiblePoints={maxPossiblePoints} answer={answer}/>
             <Question question={questions[index]} dispatch={dispatch} answer={answer}/>
-          <NextButton dispatch={dispatch} answer={answer}/>
+          <NextButton dispatch={dispatch} answer={answer} index={index} numQuestions={numQuestions}/>
           </>)
           }
+          {status === 'finished' && <FinishedScreen points={points} maxPossiblePoints={maxPossiblePoints} highscore={highscore}/>}
       </Main>
     </div>
   )
