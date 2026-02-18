@@ -5,6 +5,8 @@ import Loader from './Loader'
 import Error from './Error'
 import StartScreen from './StartScreen'
 import Question from './Question'
+import NextButton from './NextButton'
+import Progress from './Progress'
 
 const initialState = {
   questions: [],
@@ -40,6 +42,13 @@ const reducer = (state, action) => {
         answer: action.payload,
         points: action.payload === question.correctOption ? state.points + question.points : state.points,
       }
+    case 'nextQuestion':
+      return{
+        ...state,
+        index: state.index + 1,
+        answer: null,
+      }
+
     
     default:
       throw new Error('Unknown action type')
@@ -52,6 +61,7 @@ const App = () => {
   const numQuestions = questions.length
 
   console.log(numQuestions)
+  const maxPossiblePoints = questions.reduce((acc, question) => acc + question.points, 0)
 
   useEffect(() => {
     fetch('http://localhost:8000/questions')
@@ -69,7 +79,14 @@ const App = () => {
           {status === 'loading' && <Loader/>}
           {status === 'error' && <Error/>}
           {status === 'ready' && <StartScreen numQuestions={numQuestions} dispatch={dispatch}/>}
-          {status === 'active' && <Question question={questions[index]} dispatch={dispatch} answer={answer}/>}
+          {status === 'active' && (
+            <>
+            <Progress index={index} numQuestions={numQuestions} points={points} 
+            maxPossiblePoints={maxPossiblePoints} answer={answer}/>
+            <Question question={questions[index]} dispatch={dispatch} answer={answer}/>
+          <NextButton dispatch={dispatch} answer={answer}/>
+          </>)
+          }
       </Main>
     </div>
   )
