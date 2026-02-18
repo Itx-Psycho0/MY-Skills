@@ -167,6 +167,33 @@ vector<int> quickSort(vector<int> arr){
 //     }
 //     return arr;
 // }
+
+int removeDuplicates(vector<int> arr){
+    int i = 0;
+    for(int j= 1; j<arr.size();j++){
+        if(arr[i] != arr[j]){
+            i++;
+            arr[i] = arr[j];
+        }
+    }
+    return i+1;
+}
+
+vector<int> binarySearchusingRecursion(vector<int> arr, int target, int left, int right){
+    if(left > right){
+        return {-1}; 
+    }else{
+        int mid = left + (right-left)/2;
+        if(arr[mid] == target){
+            return {mid};
+        }else if(arr[mid] < target){
+            return binarySearchusingRecursion(arr, target, mid+1, right);
+        }else{
+            return binarySearchusingRecursion(arr, target, left, mid-1);
+        }
+    }
+}
+
 int main(){
     vector<int> arr = {1,2,3,4,5};
     cout<<MaxEle(arr) << endl;
@@ -193,7 +220,7 @@ int main(){
     cout << endl;
     printNos(5);
     cout << endl;
-    return 0;
+
     vector<int> arr1 = {1,3,5,7,9};
     vector<int> a2 = {2,4,6,8,10};
     vector<int> mergedArr = mergeTwoSortedArrays(arr1, a2);
@@ -208,6 +235,18 @@ int main(){
         cout << val << " ";
     }
     cout << endl;
+
+
+    vector<int> unsortedArr2 = {10, 7, 8, 9, 1, 5};
+    vector<int> sortedArr2 = quickSort(unsortedArr2);
+    for (int val : sortedArr2) {
+        cout << val << " ";
+    }
+    cout << endl;
+
+    vector<int> arrWithDuplicates = {1, 1, 2, 2, 3, 4, 4, 5};
+    int newLength = removeDuplicates(arrWithDuplicates);
+    cout << "New length: " << newLength << endl;
     return 0;
 
 }
