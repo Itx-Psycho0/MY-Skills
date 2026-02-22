@@ -3,9 +3,26 @@ const multer = require('multer');
 const uploadFile = require('./services/storage.service');
 const postModel = require('./models/post.model');
 const cors = require('cors');
+
 const app = express();
-app.use(cors());
+
+// CORS configuration
+const allowedOrigins = process.env.FRONTEND_URL
+  ? process.env.FRONTEND_URL.split(',')
+  : ['http://localhost:5173'];
+
+app.use(cors({
+  origin: allowedOrigins,
+  methods: ['GET', 'POST'],
+  credentials: true
+}));
+
 app.use(express.json());
+
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
+});
 const upload = multer({storage: multer.memoryStorage()});
 app.post("/create-post", upload.single("image"), async (req, res) => {
     try {
