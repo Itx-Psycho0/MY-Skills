@@ -3,7 +3,7 @@ services:
   - type: web
     name: posthub-api
     runtime: node
-    rootDir: Backend
+    rootDir: COMPLETE_BACKEND/Day3/Backend
     buildCommand: npm install
     startCommand: npm start
     envVars:
@@ -20,7 +20,7 @@ services:
   - type: web
     name: posthub-frontend
     runtime: static
-    rootDir: Frontend
+    rootDir: COMPLETE_BACKEND/Day3/Frontend
     buildCommand: npm install && npm run build
     staticPublishPath: dist
     envVars:
