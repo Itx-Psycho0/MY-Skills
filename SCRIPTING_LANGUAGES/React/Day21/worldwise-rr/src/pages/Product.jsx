@@ -1,8 +1,10 @@
+import PageNav from "../components/PageNav"
 
 const Product = () => {
   return (
     <div>
-      Worldwise Product Page
+        <PageNav />
+      <h1>Worldwise Product Page</h1>
     </div>
   )
 }
