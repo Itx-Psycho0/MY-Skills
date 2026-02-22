@@ -31,7 +31,10 @@ const CreatePost = () => {
 
     return (
         <section className='create-post-section' >
-            <h1>Create post</h1>
+            <div className='nav-bar'>
+                <h1>Create post</h1>
+                <button onClick={() => navigate('/feed')}>View Feed</button>
+            </div>
 
             <form onSubmit={handleSubmit} >
 
