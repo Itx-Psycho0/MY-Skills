@@ -1,39 +1,65 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Product from "./pages/Product.jsx"
-import Homepage from "./pages/Homepage.jsx"
-import Pricing from "./pages/Pricing.jsx"
-import PageNotFound from "./pages/PageNotFound.jsx"
-import AppLayout from "./pages/AppLayout.jsx"
-import Login from "./pages/Login.jsx"
+import { lazy, Suspense } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-const App = () => {
+import { CitiesProvider } from "./contexts/CitiesContext";
+import { AuthProvider } from "./contexts/FakeAuthContext";
+import ProtectedRoute from "./pages/ProtectedRoute";
+
+import CityList from "./components/CityList";
+import CountryList from "./components/CountryList";
+import City from "./components/City";
+import Form from "./components/Form";
+import SpinnerFullPage from "./components/SpinnerFullPage";
+
+// import Product from "./pages/Product";
+// import Pricing from "./pages/Pricing";
+// import Homepage from "./pages/Homepage";
+// import Login from "./pages/Login";
+// import AppLayout from "./pages/AppLayout";
+// import PageNotFound from "./pages/PageNotFound";
+
+const Homepage = lazy(() => import("./pages/Homepage"));
+const Product = lazy(() => import("./pages/Product"));
+const Pricing = lazy(() => import("./pages/Pricing"));
+const Login = lazy(() => import("./pages/Login"));
+const AppLayout = lazy(() => import("./pages/AppLayout"));
+const PageNotFound = lazy(() => import("./pages/PageNotFound"));
+
+// dist/assets/index-59fcab9b.css   30.56 kB │ gzip:   5.14 kB
+// dist/assets/index-f7c12d89.js   572.44 kB │ gzip: 151.29 kB
+
+function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="product" element={<Product />} />
-        <Route path="pricing" element={<Pricing/>}/>
-        <Route path="login" element={<Login/>} />
-        <Route path="app" element={<AppLayout/>} />
-        <Route path="*" element={<PageNotFound />} />
-
-      </Routes>
-      
-    </BrowserRouter>
-  )
+    <AuthProvider>
+      <CitiesProvider>
+        <BrowserRouter>
+          <Suspense fallback={<SpinnerFullPage />}>
+            <Routes>
+              <Route index element={<Homepage />} />
+              <Route path="product" element={<Product />} />
+              <Route path="pricing" element={<Pricing />} />
+              <Route path="login" element={<Login />} />
+              <Route
+                path="app"
+                element={
+                  <ProtectedRoute>
+                    <AppLayout />
+                  </ProtectedRoute>
+                }
+              >
+                <Route index element={<Navigate replace to="cities" />} />
+                <Route path="cities" element={<CityList />} />
+                <Route path="cities/:id" element={<City />} />
+                <Route path="countries" element={<CountryList />} />
+                <Route path="form" element={<Form />} />
+              </Route>
+              <Route path="*" element={<PageNotFound />} />
+            </Routes>
+          </Suspense>
+        </BrowserRouter>
+      </CitiesProvider>
+    </AuthProvider>
+  );
 }
 
-export default App
-
-
-// Routing in React is the process of navigating between different components or pages in a React application. It allows you to create a single-page application (SPA) where users can navigate through different views without needing to reload the entire page. React Router is a popular library used for routing in React applications, providing a simple and declarative way to manage navigation and rendering of components based on the URL.
-
-// With routing, we match different urls to different ui views(react components):routes
-
-// routes are defined in a central place and then used to navigate between different views. This allows for a more organized and maintainable codebase, as well as a better user experience with faster navigation and smoother transitions between pages.
-
-// In React, we can use the React Router library to implement routing. React Router provides a set of components and hooks that allow us to define routes and navigate between them. We can define routes using the <Route> component, which takes a path and a component to render when the path matches the current URL. We can also use the <Link> component to create links that navigate to different routes without causing a full page reload.
-
-// Overall, routing in React is an essential part of building modern web applications, allowing us to create dynamic and interactive user interfaces that can navigate between different views seamlessly.
-
-// Single Page Application(SPA) is a web application that loads a single HTML page and dynamically updates the content as the user interacts with the app. In an SPA, all the necessary code (HTML, CSS, JavaScript) is loaded once, and subsequent interactions with the app do not require a full page reload. Instead, the app uses JavaScript to manipulate the DOM and update the content on the page based on user actions or changes in data. This results in a smoother and faster user experience, as only the relevant parts of the page are updated rather than reloading the entire page. SPAs are commonly built using frameworks like React, Angular, or Vue.js.
+export default App;
