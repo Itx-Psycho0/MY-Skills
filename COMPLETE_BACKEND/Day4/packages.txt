@@ -1,0 +1,4 @@
+npm i cookie-parser
+npm i jsonwebtoken   
+npm i dotenv 
+npm i express mongoose
