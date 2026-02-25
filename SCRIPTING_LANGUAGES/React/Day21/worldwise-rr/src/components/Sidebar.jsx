@@ -3,17 +3,21 @@ import AppNav from "./AppNav";
 import Logo from "./Logo";
 import styles from "./Sidebar.module.css";
 
-const Sidebar = () => {
+function Sidebar() {
   return (
     <div className={styles.sidebar}>
-      <Logo/>
-      <AppNav/>
-      <Outlet/>
+      <Logo />
+      <AppNav />
+
+      <Outlet />
+
       <footer className={styles.footer}>
-        <p className={styles.copyright}>Copyright &copy; {new Date().getFullYear()} by WorldWise Inc.</p>
+        <p className={styles.copyright}>
+          &copy; Copyright {new Date().getFullYear()} by WorldWise Inc.
+        </p>
       </footer>
     </div>
-  )
+  );
 }
 
-export default Sidebar
+export default Sidebar;
