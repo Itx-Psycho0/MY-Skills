@@ -34,3 +34,41 @@ for i in str:
         res = q[0]
         break
 print(res)
+
+
+
+from collections import deque
+class stack:
+    def __init__(self):
+        self.q1 = deque()
+        self.q2 = deque()
+    
+    def append(self, x):
+        self.q1.append(x)
+        for i in range(len(self.q1)-1):
+            self.q1.append(self.q1.popleft())
+    
+    def pop(self):
+        return self.q1.popleft()
+    
+
+    # def pop(self):
+    #     if not self.q1:
+    #         return None
+    #     while len(self.q1) > 1:
+    #         self.q2.append(self.q1.popleft())
+    #     res = self.q1.popleft()
+    #     self.q1, self.q2 = self.q2, self.q1
+    #     return res
+
+    
+s = stack()
+s.append(1)
+s.append(2)
+s.append(3)
+print(s.pop())
+print(s.pop())
+print(s.pop())
+print(s.pop())
+print(s.pop())
+    
