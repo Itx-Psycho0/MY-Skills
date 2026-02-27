@@ -25,19 +25,21 @@ func main() {
 	test1(false, true)
 	test1(true, false)
 	test1(false, false)
+
+	
 		dbErrors := []error{
 		errors.New("out of memory"),
 		errors.New("cpu is pegged"),
 		errors.New("networking issue"),
 		errors.New("invalid syntax"),
 	}
-	test("Error on database server", dbErrors, colonDelimit)
+	test2("Error on database server", dbErrors, colonDelimit)
 
 	mailErrors := []error{
 		errors.New("email too large"),
 		errors.New("non alphanumeric symbols found"),
 	}
-	test("Error on mail server", mailErrors, commaDelimit)
+	test2("Error on mail server", mailErrors, commaDelimit)
 }
 
 func test(s1 string, s2 string) {
