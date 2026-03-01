@@ -4,23 +4,33 @@ import { PerspectiveCamera } from '@react-three/drei'
 import {HackerRoom} from '../components/HackerRoom'
 import CanvasLoader from '../components/CanvasLoader'
 import { Suspense } from 'react'
-import { Leva, useControls} from 'leva'
+import { Leva} from 'leva'
 import { useMediaQuery } from 'react-responsive'
+import { calculateSizes } from '../constants'
+import Target from '../components/Target'
+import ReactLogo from '../components/ReactLogo'
+import HeroCamera from '../components/HeroCamera'
+import Cube from '../components/Cube'
+import Rings from '../components/Rings'
 
 
 const Hero = () => {
-    const controls = useControls(
-        'HackerRoom', {
-            positionX: { value: 2.5, min: -10, max: 10, step: 0.01 },
-            positionY: { value: 2.5, min: -10, max: 10, step: 0.01 },
-            positionZ: { value: 2.5, min: -10, max: 10, step: 0.01 },
-            rotationX: { value: 2.5, min: -10, max: 10, step: 0.01 },
-            rotationY: { value: 2.5, min: -10, max: 10, step: 0.01 },
-            rotationZ: { value: 2.5, min: -10, max: 10, step: 0.01 },
-            scale: { value: 2.5, min: 0.1, max: 10, step: 0.01 },
-        }
-    )
+    // const controls = useControls(
+    //     'HackerRoom', {
+    //         positionX: { value: 2.5, min: -10, max: 10, step: 0.01 },
+    //         positionY: { value: 2.5, min: -10, max: 10, step: 0.01 },
+    //         positionZ: { value: 2.5, min: -10, max: 10, step: 0.01 },
+    //         rotationX: { value: 2.5, min: -10, max: 10, step: 0.01 },
+    //         rotationY: { value: 2.5, min: -10, max: 10, step: 0.01 },
+    //         rotationZ: { value: 2.5, min: -10, max: 10, step: 0.01 },
+    //         scale: { value: 2.5, min: 0.1, max: 10, step: 0.01 },
+    //     }
+    // )
     const isMobile = useMediaQuery({maxWidth: 768})
+    const isTablet = useMediaQuery({minWidth: 768, maxWidth: 1024})
+    const isSmall = useMediaQuery({maxWidth: 440})
+
+    const sizes = calculateSizes(isMobile, isTablet, isSmall)
   return (
     <section className='min-h-screen w-full flex flex-col relative '>
         <div className='w-full mx-auto flex flex-col sm:mt-36 mt-20 c-space gap-3'>
@@ -32,14 +42,23 @@ const Hero = () => {
         <Canvas className='w-full h-full'>
             <Suspense fallback={<CanvasLoader/>}>
                 <ambientLight intensity={0.5} />
-                <PerspectiveCamera makeDefault position={[0, 0, 30]} />
-                <HackerRoom 
+                <PerspectiveCamera makeDefault position={[0, 0, 20]} />
+                <HeroCamera isMobile={isMobile} isTablet={isTablet} isSmall={isSmall}>
+           <HackerRoom 
                 // scale={0.09} 
                 // position={[0, -6, 0]} 
                 // rotation={[0, Math.PI , 0]}
-                position={[2, -8, 2]} 
-                rotation={[0.4, -3, 0]}
-                scale={isMobile? 0.07: 0.1}/>
+                position={sizes.deskPosition} 
+                rotation={[0, -Math.PI, 0]}
+                scale={sizes.deskScale}/>
+                </HeroCamera>
+
+                <group>
+                  {/* <Target position={sizes.targetPosition} /> */}
+                  <ReactLogo position={sizes.reactLogoPosition} />
+                   <Cube position={sizes.cubePosition} /> 
+                  <Rings position={sizes.ringPosition} />
+                </group>
                 <ambientLight intensity={1}/>
                 <directionalLight position={[10,10,10]} intensity={1} />
             </Suspense>
@@ -49,5 +68,4 @@ const Hero = () => {
     </section>
   )
 }
-
-export default Hero
+export default Hero;
