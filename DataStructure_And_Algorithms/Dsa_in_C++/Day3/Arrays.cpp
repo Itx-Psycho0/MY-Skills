@@ -84,10 +84,25 @@ int secondLargestElement(vector<int> arr){
     return secondMax;
 }
 
+int checkSOrted(vector<int> arr){
+    int n = arr.size();
+    // for(int i = 1; i < n; i++){
+    //     if(arr[i] < arr[i-1]){
+    //         return 0; // Not sorted
+    //     }
+    // }
+
+    for(int i = 0; i < n-1; i++){
+        if(arr[i] > arr[i+1]){
+            return 0; // not sorted
+        }
+    }
+    return 1; // sorted
+}
 
 
 int main(){
-    vector<int> arr = {1, 2, 3, 4, 5};
+    vector<int> arr = {5,4,3,2,1};
     int ele = 3;
     int index = linerSearch(arr, ele);
     if(index != -1){
@@ -120,5 +135,11 @@ int main(){
     int secondMaxElement = secondLargestElement(arr);
     cout << "Second largest element in the array: " << secondMaxElement << endl;
     
+    int isSorted = checkSOrted(arr);
+    if(isSorted == 1){
+        cout << "Array is sorted." << endl;
+    } else {
+        cout << "Array is not sorted." << endl;
+    }
     return 0;
 }
