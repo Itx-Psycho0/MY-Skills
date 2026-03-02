@@ -193,3 +193,107 @@ print(soldier_two.num_weapons)
 
 
 
+
+
+#===========================================================
+
+
+
+# Multiple Objects
+# Remember, an object is an "instance" of a class.
+
+# In object-oriented programming, an instance is a concrete occurrence of any object... "Instance" is synonymous with "object" as they are each a particular value... "Instance" emphasizes the distinct identity of the object. The creation of an instance is called instantiation.
+
+# I can create a Wall class (you can think of a class as a "blueprint" or a "template" for an object) like this:
+
+class Wall:
+    def __init__(self, depth, height, width):
+        self.depth = depth
+        self.height = height
+        self.width = width
+
+# Then I can create three different "instances" of the class. Or, in other words, I can create three separate objects, each with their own properties independent of each other:
+
+wall_maria = Wall(1, 2, 3)
+wall_rose = Wall(4, 5, 6)
+wall_sina = Wall(9, 8, 7)
+
+#==============================================================
+
+
+
+#Practice
+
+class Archer:
+    def __init__(self, name, health, num_arrows):
+        self.name = name
+        self.health = health
+        self.num_arrows = num_arrows
+
+    def take_hit(self):
+        self.health -= 1
+        if self.health <= 0:
+            raise Exception(f"{self.name} is dead")
+
+    def shoot(self, target):
+        if self.num_arrows <= 0:
+            raise Exception(f"{self.name} can't shoot")
+
+        self.num_arrows -= 1
+        print(f"{self.name} shoots {target.name}")
+        target.take_hit()
+
+
+    def get_status(self):
+        return self.name, self.health, self.num_arrows
+
+    def print_status(self):
+        print(f"{self.name} has {self.health} health and {self.num_arrows} arrows")
+
+
+
+
+
+#=============================================================
+
+
+
+# Class Variables vs. Instance Variables
+# We've already worked with both class variables and instance variables, but we haven't really talked about the difference.
+
+# Instance Variables
+# Instance variables vary from object to object and are declared in the constructor. They're more common:
+
+class Wall:
+    def __init__(self):
+        self.height = 10 # instance variable (per object)
+
+south_wall = Wall()
+south_wall.height = 20 # only updates this instance of a wall
+print(south_wall.height)
+# prints "20"
+
+north_wall = Wall()
+print(north_wall.height)
+# prints "10"
+
+# Class Variables
+# Class variables are shared between instances of the same class and are declared at the top level of a class definition. They're less common:
+
+class Wall:
+    height = 10 # class variable (shared across all instances)
+
+south_wall = Wall()
+print(south_wall.height)
+# prints "10"
+
+Wall.height = 20 # updates all instances of a Wall
+
+print(south_wall.height)
+# prints "20"
+
+# In other languages these types of variables are often called static variables.
+
+# Which Should I Use?
+# Generally speaking, stay away from class variables. Just like global variables, class variables are usually a bad idea because they make it hard to keep track of which parts of your program are making updates. However, it is important to understand how they work because you may see them in the wild.
+
