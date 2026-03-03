@@ -101,6 +101,55 @@ int checkSOrted(vector<int> arr){
 }
 
 
+
+
+// Reverse an array
+vector <int> reverseArray(vector<int> arr){
+    int n = arr.size();
+    int left = 0;
+    int right = n-1;
+    while(left < right){
+        swap(arr[left], arr[right]);
+        left++;
+        right--;
+    }
+    return arr;
+}
+
+
+// Remove duplicates from a sorted array
+vector<int> removeDuplicates(vector<int> arr){
+    int n = arr.size();
+    int i = 1;
+    for(int j = 1; j < n; j++){
+        if(arr[j] != arr[j-1]){
+            arr[i] = arr[j];
+            i++;
+        }
+    }
+    arr.resize(i);
+    return arr;
+}
+
+
+// Leader of an array
+vector<int> leaderOfArray(vector<int> arr){
+    int n = arr.size();
+    vector<int> leaders;
+    int maxFromRight = arr[n-1];
+    leaders.push_back(maxFromRight);
+    for(int i = n-2; i >= 0; i--){
+        if(arr[i] > maxFromRight){
+            maxFromRight = arr[i];
+            leaders.push_back(maxFromRight);
+        }
+    }
+    return leaders;
+}
+
+
+
+
 int main(){
     vector<int> arr = {5,4,3,2,1};
     int ele = 3;
@@ -141,5 +190,27 @@ int main(){
     } else {
         cout << "Array is not sorted." << endl;
     }
+
+    vector<int> reversedArr = reverseArray(arr);
+    cout << "Reversed array: ";
+    for(int i = 0; i < reversedArr.size(); i++){
+        cout << reversedArr[i] << " ";
+    }
+    cout << endl;
+
+    vector<int> sortedArr = {1,2,2,3,4,4,5};
+    vector<int> uniqueArr = removeDuplicates(sortedArr);
+    cout << "Array after removing duplicates: ";
+    for(int i = 0; i < uniqueArr.size(); i++){
+        cout << uniqueArr[i] << " ";
+    }
+    cout << endl;
+
+    vector<int> leaders = leaderOfArray(arr);
+    cout << "Leaders in the array: ";
+    for(int i = 0; i < leaders.size(); i++){
+        cout << leaders[i] << " ";
+    }
+    cout << endl;
     return 0;
 }
