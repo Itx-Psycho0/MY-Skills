@@ -297,3 +297,38 @@ print(south_wall.height)
 # Which Should I Use?
 # Generally speaking, stay away from class variables. Just like global variables, class variables are usually a bad idea because they make it hard to keep track of which parts of your program are making updates. However, it is important to understand how they work because you may see them in the wild.
 
+# Practice
+class Book:
+    def __init__(self, title, author):
+        self.title = title
+        self.author = author
+
+
+class Library:
+    def __init__(self, name):
+        self.name = name
+        self.books = []   # must be plural and empty list
+
+    def add_book(self, book):
+        self.books.append(book)
+
+    def remove_book(self, book):
+        new_books = []
+
+        for b in self.books:
+            # keep books that DON'T match both title and author
+            if not (b.title == book.title and b.author == book.author):
+                new_books.append(b)
+
+        self.books = new_books
+
+    def search_books(self, search_string):
+        results = []
+        search_string = search_string.lower()
+
+        for b in self.books:
+            if (search_string in b.title.lower() or
+                search_string in b.author.lower()):
+                results.append(b)
+
+        return results
