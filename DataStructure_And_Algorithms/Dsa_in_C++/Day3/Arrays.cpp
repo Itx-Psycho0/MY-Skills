@@ -131,6 +131,20 @@ vector<int> removeDuplicates(vector<int> arr){
     return arr;
 }
 
+// Move Zeros to the end of the array
+vector<int> moveZerosToEnd(vector<int> arr){
+    int n = arr.size();
+    int i = 0;
+    for(int j = 0; j < n; j++){
+        if(arr[j] != 0){
+            swap(arr[i], arr[j]);
+            i++;
+        }
+    }
+    return arr;
+}
+
+
 
 // Leader of an array
 vector<int> leaderOfArray(vector<int> arr){
@@ -147,8 +161,22 @@ vector<int> leaderOfArray(vector<int> arr){
     return leaders;
 }
 
-
-
+// Maximum sum of subarray size k
+int maxSumOfSubarray(vector<int> arr, int k){
+    int n = arr.size();
+    int sum = 0;
+    for(int i = 0; i < k; i++){
+        sum += arr[i];
+    }
+    int maxSum = sum;
+    for(int i = k; i < n; i++){
+        sum = sum - arr[i-k] + arr[i];
+        if(sum > maxSum){
+            maxSum = sum;
+        }
+    }
+    return maxSum;
+}
 
 int main(){
     vector<int> arr = {5,4,3,2,1};
