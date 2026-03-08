@@ -41,3 +41,46 @@ def max_sum_subarray(arr, k):
     return max_sum
 
 
+# Linked List
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+a = Node(5)
+b= Node(10)
+c= Node(15)
+a.next = b
+b.next = c
+
+print(a.data)
+print(a.next.data)
+print(a.next.next.data)
+
+
+#Traverse
+def traverse(head):
+    current = head
+    while current:
+        print(current.data)
+        current = current.next
+
+traverse(a)
+
+new_node = Node(20)
+new_node.next = a
+head = new_node
+
+# Insert at end
+def insert_end(head, data):
+    new_node = Node(data)
+    if not head:
+        return new_node
+    current = head
+    while current.next:
+        current = current.next
+    current.next = new_node
+    return head 
+
+
+# Stack
