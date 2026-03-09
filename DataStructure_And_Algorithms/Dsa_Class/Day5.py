@@ -83,4 +83,36 @@ def insert_end(head, data):
     return head 
 
 
-# Stack
+# write the code here
+def merge(arr,l,mid,r):
+    left=arr[l:mid+1]
+    right=arr[mid+1:r+1]
+    i,j,k=0,0,l
+    m,n=len(left),len(right)
+    while(i<m and j<n):
+        if(left[i]<right[j]):
+            arr[k]=left[i]
+            i+=1
+        else:
+            arr[k]=right[j]
+            j+=1
+        k+=1
+    while(i<m):
+        arr[k]=left[i]
+        i+=1
+        k+=1
+    while(j<n):
+        arr[k]=right[j]
+        j+=1
+        k+=1
+def merge_sort(arr,l,r):
+    if l<r:
+        mid=(l+r)//2
+        merge_sort(arr,l,mid)
+        merge_sort(arr,mid+1,r)
+        merge(arr,l,mid,r)
+        
+n=int(input())
+arr=list(map(int,input().split()))
+merge_sort(arr,0,len(arr)-1)
+print(*arr)
