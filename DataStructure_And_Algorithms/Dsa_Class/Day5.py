@@ -116,3 +116,10 @@ n=int(input())
 arr=list(map(int,input().split()))
 merge_sort(arr,0,len(arr)-1)
 print(*arr)
+
+
+# factorial
+def fact(n):
+    if n<=1:
+        return 1
+    return n*fact(n-1)
