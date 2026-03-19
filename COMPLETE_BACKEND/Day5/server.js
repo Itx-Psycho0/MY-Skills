@@ -21,6 +21,9 @@ async function fetchData() {
 
 // Content-type (mime type) is a header in HTTP that indicates the media type of the resource being sent in the response. It tells the client how to interpret the data being received. For example, if the server is sending JSON data, it would set the Content-Type header to application/json. If it's sending an HTML page, it would set it to text/html. Setting the correct Content-Type is important for ensuring that the client can properly handle and display the data received from the server. For instance, if the server sends a JSON response but sets the Content-Type to text/plain, the client may not be able to parse the JSON data correctly. Therefore, it's crucial to set the appropriate Content-Type header based on the type of data being sent in the response to ensure proper communication between the server and client.
 
+
+// same origin policy is a security feature implemented by web browsers that restricts web pages from making requests to a different domain than the one that served the web page. This policy is in place to prevent malicious websites from accessing sensitive data on other domains without the user's consent. For example, if a web page served from example.com tries to make an AJAX request to api.example.com, the browser will block the request unless api.example.com explicitly allows it through CORS (Cross-Origin Resource Sharing) headers. The same-origin policy helps protect users from cross-site scripting (XSS) attacks and other types of malicious activities by ensuring that web pages can only interact with resources from their own origin unless explicitly allowed by the server.
+
 const PORT = 8000;
 
 // const animal = {
