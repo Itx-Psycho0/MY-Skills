@@ -1,5 +1,8 @@
 import http from 'node:http'
 import {data} from './data.js'
+import { sendJSONResponse } from './sendJSONResponse.js';
+import { getDataByPathParams } from './getDataByPathParams.js';
+
 // http module is used to create a server and handle HTTP requests and responses. it provides functionalities to create a web server, listen for incoming requests, and send responses back to clients. It is a core module in Node.js and is commonly used for building web applications and APIs and it allows data to be transferred over the HTTP protocol, which is the foundation of data communication on the web. It enables the server to receive requests from clients (such as web browsers) and send back responses, which can include HTML, JSON, or other types of data. The http module provides methods for handling different HTTP methods (GET, POST, PUT, DELETE, etc.) and allows developers to create dynamic web applications and APIs that can interact with clients over the internet.
 
 async function fetchData() {
@@ -19,23 +22,29 @@ async function fetchData() {
 
 const PORT = 8000;
 
-const animal = {
-    type: 'dog',
-    name: 'max',
-    age: 3
+// const animal = {
+//     type: 'dog',
+//     name: 'max',
+//     age: 3
 
-}
+// }
 
 const server = http.createServer(async (req,res) => {
     const rdata = await fetchData();
     if (req.url === '/api' && req.method === 'GET') {
         // res.write('Hello from the server! using write method \n');
 
-        res.setHeader('Content-Type', 'application/json');
-        res.statusCode = 200;
-        res.end((JSON.stringify(rdata)),() => {
-            console.log('Response sent to the client');
-        });
+        sendJSONResponse(res,200,rdata);
+    }else if(req.url.startsWith('/api/continent') && req.method === 'GET') {
+        const continent = req.url.split('/').pop();
+        const filteredData = getDataByPathParams(rdata, 'continent', continent);
+        sendJSONResponse(res,200,filteredData);
+    }else if(req.url.startsWith('/api/country') && req.method === 'GET') {
+        const country = req.url.split('/').pop();
+        const filteredData = getDataByPathParams(rdata, 'country', country);
+        sendJSONResponse(res,200,filteredData);
+    }else {
+        sendJSONResponse(res,404,{message: 'Route not found'});
     }
 })
 
