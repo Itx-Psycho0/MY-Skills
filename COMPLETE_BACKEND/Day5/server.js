@@ -2,6 +2,7 @@ import http from 'node:http'
 import {data} from './data.js'
 import { sendJSONResponse } from './sendJSONResponse.js';
 import { getDataByPathParams } from './getDataByPathParams.js';
+import { getDataByQueryParams } from './getDataByQueryParams.js';
 
 // http module is used to create a server and handle HTTP requests and responses. it provides functionalities to create a web server, listen for incoming requests, and send responses back to clients. It is a core module in Node.js and is commonly used for building web applications and APIs and it allows data to be transferred over the HTTP protocol, which is the foundation of data communication on the web. It enables the server to receive requests from clients (such as web browsers) and send back responses, which can include HTML, JSON, or other types of data. The http module provides methods for handling different HTTP methods (GET, POST, PUT, DELETE, etc.) and allows developers to create dynamic web applications and APIs that can interact with clients over the internet.
 
@@ -30,11 +31,17 @@ const PORT = 8000;
 // }
 
 const server = http.createServer(async (req,res) => {
+
+
+    const urlObj = new URL(req.url, `http://${req.headers.host}`);
+
+    const queryObj = Object.fromEntries(urlObj.searchParams);
     const rdata = await fetchData();
-    if (req.url === '/api' && req.method === 'GET') {
+    if (urlObj.pathname === '/api' && req.method === 'GET') {
+        const filterdDestinations = getDataByQueryParams(rdata, queryObj);
         // res.write('Hello from the server! using write method \n');
 
-        sendJSONResponse(res,200,rdata);
+        sendJSONResponse(res,200,filterdDestinations);
     }else if(req.url.startsWith('/api/continent') && req.method === 'GET') {
         const continent = req.url.split('/').pop();
         const filteredData = getDataByPathParams(rdata, 'continent', continent);
