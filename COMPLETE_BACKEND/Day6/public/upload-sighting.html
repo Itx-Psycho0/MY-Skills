@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="From the Other Side - recording paranormal sightings">
+    <link rel="stylesheet" href="/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Frijole&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>From the Other Side: Upload</title>
+</head>
+
+<body>
+    <header>
+        <div class="top-header">
+            <img class="logo-img" src="/images/candle-logo.png" alt="site logo">
+            <nav id="main-navigation">
+                <ul role="list">
+                    <li role="listitem"><a href="/">Home</a></li>
+                    <li role="listitem"><a href="/sightings.html">Read</a></li>
+                    <li role="listitem"><a href="/upload-sighting.html">Upload</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="site-header">
+            <a href="/" class="site-title-page">From the Other Side</a>
+        </div>
+    </header>
+    <main class="form-container" aria-labelledby="form-title">
+        <h1 class="form-title" id="form-title">Add Sighting</h1>
+        <form id="eventForm">
+            <!-- Title Field -->
+            <label for="title" class="lab-title">Title:</label>
+            <input type="text" id="title" name="title" placeholder="A ghostly encounter" class="input-title">
+
+            <!-- Textarea Field -->
+            <label for="details" class="lab-details">Details:</label>
+            <textarea id="details" name="details" rows="5"
+                placeholder="I was trying to get to sleep when..." class="input-details"></textarea>
+            <!-- Time/Date Field -->
+            <label for="datetime" class="lab-date-time">Time/Date:</label>
+            <input type="datetime-local" id="datetime" name="datetime" class="input-date-time">
+            <!-- Location Field -->
+            <label for="location" class="lab-location">Location:</label>
+            <input type="text" id="location" name="location" placeholder="London, UK" class="input-location">
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn">submit</button>
+            <div class="form-message">
+                <p class="form-message-text">All sightings will be published on our <a href="./sightings.html">sightings</a> page.</p>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; From The Other Side. All rights reserved.</p>
+    </footer>
+    <script type="module" src="upload-sighting.js"></script>
+</body>
+
+</html>
