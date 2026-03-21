@@ -1,26 +1,24 @@
-/*
-Challenge 2:
-
-1. Create and export a function called 'serveStatic'. 
-   It should take in the base directory as a parameter.
-
-2. Build a path to index.html in the 'public' folder and save it to a const 'filePath'. 
-   (Which node module will you need to import to do this? Which method joins the path together?)
-
-3. Log 'filePath' to the console.
-*/
-
 import path from 'node:path';
 import fs from 'node:fs/promises';
 import { sendResponse } from './sendResponse.js';
+import { getContentType } from './getContentType.js';
+
 export async function serveStatic(req,res, baseDir) {
-   const filePath = path.join(baseDir, 'public', 'index.html');
+   const publicDir = path.join(baseDir, 'public');
+   const filePath = path.join(publicDir, req.url === '/' ? 'index.html' : req.url);
+   const ext = path.extname(filePath);
+   const contentType = getContentType(ext);
    try{
       const content = await fs.readFile(filePath);
-      sendResponse(res, 'text/html', 200, content);
+      sendResponse(res, contentType, 200, content);
    }catch(error){
-      console.log(error);
-      sendResponse(res, 'text/plain', 404, 'File not found');
+      if(error.code === 'ENOENT'){
+         const notFoundPath = path.join(publicDir, '404.html');
+         const notFoundContent = await fs.readFile(notFoundPath);
+         sendResponse(res, 'text/html', 404, notFoundContent);
+      }else{
+         sendResponse(res, 'text/html', 500, `<html><h1>Internal Server Error: ${error.code}</h1></html>`);
+      }
    }
 };
 
