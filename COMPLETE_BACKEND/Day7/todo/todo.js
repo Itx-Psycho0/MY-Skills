@@ -24,10 +24,20 @@ const listTasks = () => {
         console.log("No tasks found.");
         return;
     }
-    console.log("Tasks:");
+    console.log("Tasks:",tasks);
     tasks.forEach((task, index) => {
         console.log(`${index + 1}. ${task}`);
     });
+}
+const deleteTask = (index) => {
+    const tasks = loadTasks();
+    if(index < 1 || index > tasks.length){
+        console.log("Invalid task number.");
+        return;
+    }
+    const removedTask = tasks.splice(index - 1, 1);
+    fs.writeFileSync(filePath, JSON.stringify(tasks));
+    console.log(`Task removed: ${removedTask[0]}`);
 }
 
 const command = process.argv[2];
