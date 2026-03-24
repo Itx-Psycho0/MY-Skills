@@ -1,0 +1,16 @@
+{
+  "name": "simpleserver",
+  "version": "1.0.0",
+  "description": "\"TRY EXPRESS SERVER FROM MY SELF WITHOUT HELP\"",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "node",
+    "psycho"
+  ],
+  "author": "psycho",
+  "license": "ISC"
+}
