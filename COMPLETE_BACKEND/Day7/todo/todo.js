@@ -53,3 +53,13 @@ if(command === "add"){
     console.log("Invalid command");
 }
 
+
+fs.appendFile(filePath, "[]", (err) => {
+    if (err) {
+        console.error("Error creating tasks file:", err);
+    } else {
+        console.log("Tasks file created successfully.");
+    }
+});
+
+
