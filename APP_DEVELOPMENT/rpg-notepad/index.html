@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuestScribe — RPG Notepad & Task Tracker</title>
+    <meta name="description" content="QuestScribe: A gamified notepad and task tracker with RPG mechanics. Level up your productivity by completing quests and earning XP.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=MedievalSharp&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Particle Canvas -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Ambient Glow Orbs -->
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-rune-circle">
+                <svg viewBox="0 0 200 200" class="rune-svg">
+                    <circle cx="100" cy="100" r="90" class="rune-outer" />
+                    <circle cx="100" cy="100" r="70" class="rune-inner" />
+                    <polygon points="100,20 170,145 30,145" class="rune-triangle" />
+                </svg>
+            </div>
+            <h1 class="loading-title">QuestScribe</h1>
+            <p class="loading-subtitle">Preparing your adventure...</p>
+            <div class="loading-bar">
+                <div class="loading-bar-fill" id="loading-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="app" class="app hidden">
+        <!-- Sidebar Navigation -->
+        <nav id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 40 40" fill="none">
+                            <path d="M20 4L36 14V30L20 36L4 30V14L20 4Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M20 12L28 17V27L20 30L12 27V17L20 12Z" fill="currentColor" opacity="0.3"/>
+                            <circle cx="20" cy="20" r="4" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <span class="logo-text">QuestScribe</span>
+                </div>
+            </div>
+
+            <div class="sidebar-nav">
+                <button class="nav-btn active" data-view="dashboard" id="nav-dashboard">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7" rx="1"/>
+                        <rect x="14" y="3" width="7" height="7" rx="1"/>
+                        <rect x="3" y="14" width="7" height="7" rx="1"/>
+                        <rect x="14" y="14" width="7" height="7" rx="1"/>
+                    </svg>
+                    <span>Dashboard</span>
+                </button>
+                <button class="nav-btn" data-view="quests" id="nav-quests">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                        <polyline points="10 9 9 9 8 9"/>
+                    </svg>
+                    <span>Quests</span>
+                </button>
+                <button class="nav-btn" data-view="notepad" id="nav-notepad">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                    </svg>
+                    <span>Notepad</span>
+                </button>
+                <button class="nav-btn" data-view="character" id="nav-character">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span>Character</span>
+                </button>
+                <button class="nav-btn" data-view="achievements" id="nav-achievements">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="8" r="7"/>
+                        <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                    </svg>
+                    <span>Trophies</span>
+                </button>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="mini-character-preview" id="mini-character">
+                    <div class="mini-avatar">⚔️</div>
+                    <div class="mini-info">
+                        <span class="mini-name" id="mini-char-name">Adventurer</span>
+                        <span class="mini-level" id="mini-char-level">Lvl 1</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main id="main-content" class="main-content">
+
+            <!-- ==================== DASHBOARD VIEW ==================== -->
+            <section id="view-dashboard" class="view active">
+                <div class="view-header">
+                    <div>
+                        <h1 class="view-title">Dashboard</h1>
+                        <p class="view-subtitle">Welcome back, <span id="dash-char-name">Adventurer</span></p>
+                    </div>
+                    <div class="header-actions">
+                        <div class="streak-badge" id="streak-badge">
+                            <span class="streak-icon">🔥</span>
+                            <span class="streak-count" id="streak-count">0</span>
+                            <span class="streak-label">day streak</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <!-- XP Progress Card -->
+                    <div class="dash-card xp-card" id="dash-xp-card">
+                        <div class="card-glow"></div>
+                        <div class="xp-card-content">
+                            <div class="xp-level-display">
+                                <div class="level-badge" id="dash-level-badge">
+                                    <span class="level-number" id="dash-level-num">1</span>
+                                </div>
+                                <div class="xp-details">
+                                    <h3>Level <span id="dash-level-text">1</span></h3>
+                                    <p class="xp-subtitle" id="dash-class-name">Novice Scribe</p>
+                                </div>
+                            </div>
+                            <div class="xp-bar-container">
+                                <div class="xp-bar">
+                                    <div class="xp-bar-fill" id="dash-xp-fill" style="width: 0%"></div>
+                                    <div class="xp-bar-shimmer"></div>
+                                </div>
+                                <div class="xp-numbers">
+                                    <span id="dash-xp-current">0</span> / <span id="dash-xp-max">100</span> XP
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stats Cards Row -->
+                    <div class="dash-card stat-card" id="stat-quests">
+                        <div class="stat-icon">⚔️</div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="stat-quests-num">0</span>
+                            <span class="stat-label">Active Quests</span>
+                        </div>
+                    </div>
+                    <div class="dash-card stat-card" id="stat-completed">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="stat-completed-num">0</span>
+                            <span class="stat-label">Completed</span>
+                        </div>
+                    </div>
+                    <div class="dash-card stat-card" id="stat-notes">
+                        <div class="stat-icon">📜</div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="stat-notes-num">0</span>
+                            <span class="stat-label">Notes</span>
+                        </div>
+                    </div>
+                    <div class="dash-card stat-card" id="stat-trophies">
+                        <div class="stat-icon">🏆</div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="stat-trophies-num">0</span>
+                            <span class="stat-label">Trophies</span>
+                        </div>
+                    </div>
+
+                    <!-- Recent Quests -->
+                    <div class="dash-card wide-card recent-quests-card">
+                        <h3 class="card-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            Active Quests
+                        </h3>
+                        <div class="recent-quests-list" id="recent-quests-list">
+                            <div class="empty-state-mini">
+                                <p>No active quests. Start your adventure!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Activity Feed -->
+                    <div class="dash-card activity-card">
+                        <h3 class="card-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                            </svg>
+                            Activity Log
+                        </h3>
+                        <div class="activity-list" id="activity-list">
+                            <div class="empty-state-mini">
+                                <p>Your journey begins now...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== QUESTS VIEW ==================== -->
+            <section id="view-quests" class="view">
+                <div class="view-header">
+                    <div>
+                        <h1 class="view-title">Quest Board</h1>
+                        <p class="view-subtitle">Manage your tasks as epic quests</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-primary" id="btn-new-quest">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                            New Quest
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quest Filters -->
+                <div class="quest-filters" id="quest-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="main">⚔️ Main</button>
+                    <button class="filter-btn" data-filter="side">🛡️ Side</button>
+                    <button class="filter-btn" data-filter="daily">🌟 Daily</button>
+                    <button class="filter-btn" data-filter="epic">🐉 Epic</button>
+                </div>
+
+                <!-- Quest Difficulty Legend -->
+                <div class="difficulty-legend">
+                    <span class="diff-item diff-easy">● Easy (10 XP)</span>
+                    <span class="diff-item diff-medium">● Medium (25 XP)</span>
+                    <span class="diff-item diff-hard">● Hard (50 XP)</span>
+                    <span class="diff-item diff-legendary">● Legendary (100 XP)</span>
+                </div>
+
+                <!-- Quest List -->
+                <div class="quest-list" id="quest-list">
+                    <div class="empty-state" id="quests-empty">
+                        <div class="empty-icon">📋</div>
+                        <h3>No Quests Yet</h3>
+                        <p>Create your first quest to begin your adventure!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== NOTEPAD VIEW ==================== -->
+            <section id="view-notepad" class="view">
+                <div class="view-header">
+                    <div>
+                        <h1 class="view-title">Notepad</h1>
+                        <p class="view-subtitle">Your personal grimoire of knowledge</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-primary" id="btn-new-note">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                            New Note
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Note Categories -->
+                <div class="note-categories" id="note-categories">
+                    <button class="cat-btn active" data-category="all">
+                        <span class="cat-icon">📚</span> All
+                    </button>
+                    <button class="cat-btn" data-category="work">
+                        <span class="cat-icon">💼</span> Work
+                    </button>
+                    <button class="cat-btn" data-category="personal">
+                        <span class="cat-icon">🏠</span> Personal
+                    </button>
+                    <button class="cat-btn" data-category="study">
+                        <span class="cat-icon">📖</span> Study
+                    </button>
+                    <button class="cat-btn" data-category="creative">
+                        <span class="cat-icon">🎨</span> Creative
+                    </button>
+                    <button class="cat-btn" data-category="health">
+                        <span class="cat-icon">💚</span> Health
+                    </button>
+                    <button class="cat-btn" data-category="code">
+                        <span class="cat-icon">💻</span> Code
+                    </button>
+                </div>
+
+                <!-- Search -->
+                <div class="note-search">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                    </svg>
+                    <input type="text" id="note-search-input" placeholder="Search your notes..." />
+                </div>
+
+                <!-- Notes Grid -->
+                <div class="notes-grid" id="notes-grid">
+                    <div class="empty-state" id="notes-empty">
+                        <div class="empty-icon">📝</div>
+                        <h3>No Notes Yet</h3>
+                        <p>Start writing to fill your grimoire with knowledge!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== CHARACTER VIEW ==================== -->
+            <section id="view-character" class="view">
+                <div class="view-header">
+                    <div>
+                        <h1 class="view-title">Character Sheet</h1>
+                        <p class="view-subtitle">Your hero's progression</p>
+                    </div>
+                </div>
+
+                <div class="character-sheet">
+                    <div class="char-main-card">
+                        <div class="char-avatar-section">
+                            <div class="char-avatar-ring">
+                                <div class="char-avatar" id="char-avatar">⚔️</div>
+                            </div>
+                            <div class="char-name-edit">
+                                <input type="text" id="char-name-input" value="Adventurer" maxlength="20" class="char-name-input" />
+                                <span class="char-class" id="char-class">Novice Scribe</span>
+                            </div>
+                        </div>
+
+                        <div class="char-level-section">
+                            <div class="char-level-badge" id="char-level-badge">
+                                <span class="char-level-num" id="char-level-num">1</span>
+                            </div>
+                            <div class="char-xp-section">
+                                <div class="char-xp-bar">
+                                    <div class="char-xp-fill" id="char-xp-fill" style="width: 0%"></div>
+                                </div>
+                                <p class="char-xp-text"><span id="char-xp-current">0</span> / <span id="char-xp-max">100</span> XP</p>
+                            </div>
+                        </div>
+
+                        <!-- Avatar Selection -->
+                        <div class="avatar-selection">
+                            <h4>Choose Your Avatar</h4>
+                            <div class="avatar-grid" id="avatar-grid">
+                                <button class="avatar-option active" data-avatar="⚔️">⚔️</button>
+                                <button class="avatar-option" data-avatar="🧙">🧙</button>
+                                <button class="avatar-option" data-avatar="🏹">🏹</button>
+                                <button class="avatar-option" data-avatar="🛡️">🛡️</button>
+                                <button class="avatar-option" data-avatar="🗡️">🗡️</button>
+                                <button class="avatar-option" data-avatar="🔮">🔮</button>
+                                <button class="avatar-option" data-avatar="🧝">🧝</button>
+                                <button class="avatar-option" data-avatar="🐉">🐉</button>
+                                <button class="avatar-option" data-avatar="🦅">🦅</button>
+                                <button class="avatar-option" data-avatar="🌟">🌟</button>
+                                <button class="avatar-option" data-avatar="👑">👑</button>
+                                <button class="avatar-option" data-avatar="🔥">🔥</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RPG Stats -->
+                    <div class="char-stats-card">
+                        <h3 class="card-title">⚡ Stats</h3>
+                        <div class="stats-grid">
+                            <div class="stat-row">
+                                <span class="stat-name">🗡️ Strength</span>
+                                <div class="stat-bar-container">
+                                    <div class="stat-bar stat-str" id="stat-bar-str" style="width: 10%"></div>
+                                </div>
+                                <span class="stat-val" id="stat-val-str">1</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-name">🧠 Intelligence</span>
+                                <div class="stat-bar-container">
+                                    <div class="stat-bar stat-int" id="stat-bar-int" style="width: 10%"></div>
+                                </div>
+                                <span class="stat-val" id="stat-val-int">1</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-name">💨 Agility</span>
+                                <div class="stat-bar-container">
+                                    <div class="stat-bar stat-agi" id="stat-bar-agi" style="width: 10%"></div>
+                                </div>
+                                <span class="stat-val" id="stat-val-agi">1</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-name">❤️ Vitality</span>
+                                <div class="stat-bar-container">
+                                    <div class="stat-bar stat-vit" id="stat-bar-vit" style="width: 10%"></div>
+                                </div>
+                                <span class="stat-val" id="stat-val-vit">1</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-name">🍀 Luck</span>
+                                <div class="stat-bar-container">
+                                    <div class="stat-bar stat-luk" id="stat-bar-luk" style="width: 10%"></div>
+                                </div>
+                                <span class="stat-val" id="stat-val-luk">1</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-name">✨ Wisdom</span>
+                                <div class="stat-bar-container">
+                                    <div class="stat-bar stat-wis" id="stat-bar-wis" style="width: 10%"></div>
+                                </div>
+                                <span class="stat-val" id="stat-val-wis">1</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lifetime Stats -->
+                    <div class="char-lifetime-card">
+                        <h3 class="card-title">📊 Lifetime Stats</h3>
+                        <div class="lifetime-grid">
+                            <div class="lifetime-stat">
+                                <span class="lt-value" id="lt-total-xp">0</span>
+                                <span class="lt-label">Total XP Earned</span>
+                            </div>
+                            <div class="lifetime-stat">
+                                <span class="lt-value" id="lt-quests-done">0</span>
+                                <span class="lt-label">Quests Completed</span>
+                            </div>
+                            <div class="lifetime-stat">
+                                <span class="lt-value" id="lt-notes-written">0</span>
+                                <span class="lt-label">Notes Written</span>
+                            </div>
+                            <div class="lifetime-stat">
+                                <span class="lt-value" id="lt-best-streak">0</span>
+                                <span class="lt-label">Best Streak</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== ACHIEVEMENTS VIEW ==================== -->
+            <section id="view-achievements" class="view">
+                <div class="view-header">
+                    <div>
+                        <h1 class="view-title">Trophy Hall</h1>
+                        <p class="view-subtitle">Achievements unlocked on your journey</p>
+                    </div>
+                    <div class="header-actions">
+                        <div class="trophy-counter">
+                            <span class="trophy-icon">🏆</span>
+                            <span id="trophy-count-display">0 / 0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="achievements-grid" id="achievements-grid">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- ==================== MODALS ==================== -->
+    <!-- Quest Modal -->
+    <div class="modal-overlay" id="quest-modal">
+        <div class="modal quest-modal-content">
+            <div class="modal-header">
+                <h2 id="quest-modal-title">New Quest</h2>
+                <button class="modal-close" id="quest-modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="quest-title-input">Quest Name</label>
+                    <input type="text" id="quest-title-input" placeholder="Slay the Bug Dragon..." maxlength="80" />
+                </div>
+                <div class="form-group">
+                    <label for="quest-desc-input">Description</label>
+                    <textarea id="quest-desc-input" placeholder="Describe the quest..." rows="3" maxlength="300"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="quest-type-input">Type</label>
+                        <select id="quest-type-input">
+                            <option value="main">⚔️ Main Quest</option>
+                            <option value="side">🛡️ Side Quest</option>
+                            <option value="daily">🌟 Daily</option>
+                            <option value="epic">🐉 Epic</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="quest-diff-input">Difficulty</label>
+                        <select id="quest-diff-input">
+                            <option value="easy">Easy (10 XP)</option>
+                            <option value="medium">Medium (25 XP)</option>
+                            <option value="hard">Hard (50 XP)</option>
+                            <option value="legendary">Legendary (100 XP)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Sub-tasks (Optional)</label>
+                    <div class="subtasks-container" id="subtasks-container"></div>
+                    <button class="btn btn-ghost btn-sm" id="btn-add-subtask">+ Add Sub-task</button>
+                </div>
+                <div class="form-group">
+                    <label for="quest-due-input">Due Date (Optional)</label>
+                    <input type="date" id="quest-due-input" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-ghost" id="quest-modal-cancel">Cancel</button>
+                <button class="btn btn-primary" id="quest-modal-save">Accept Quest</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Note Modal -->
+    <div class="modal-overlay" id="note-modal">
+        <div class="modal note-modal-content">
+            <div class="modal-header">
+                <h2 id="note-modal-title">New Note</h2>
+                <button class="modal-close" id="note-modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="note-title-input">Title</label>
+                    <input type="text" id="note-title-input" placeholder="Note title..." maxlength="100" />
+                </div>
+                <div class="form-group">
+                    <label for="note-category-input">Category</label>
+                    <select id="note-category-input">
+                        <option value="work">💼 Work</option>
+                        <option value="personal">🏠 Personal</option>
+                        <option value="study">📖 Study</option>
+                        <option value="creative">🎨 Creative</option>
+                        <option value="health">💚 Health</option>
+                        <option value="code">💻 Code</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="note-content-input">Content</label>
+                    <textarea id="note-content-input" placeholder="Pour your thoughts here..." rows="10"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="note-color-input">Accent Color</label>
+                    <div class="color-picker" id="note-color-picker">
+                        <button class="color-option active" data-color="#a78bfa" style="background:#a78bfa"></button>
+                        <button class="color-option" data-color="#f472b6" style="background:#f472b6"></button>
+                        <button class="color-option" data-color="#34d399" style="background:#34d399"></button>
+                        <button class="color-option" data-color="#60a5fa" style="background:#60a5fa"></button>
+                        <button class="color-option" data-color="#fbbf24" style="background:#fbbf24"></button>
+                        <button class="color-option" data-color="#fb923c" style="background:#fb923c"></button>
+                        <button class="color-option" data-color="#f87171" style="background:#f87171"></button>
+                        <button class="color-option" data-color="#4ade80" style="background:#4ade80"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-ghost" id="note-modal-cancel">Cancel</button>
+                <button class="btn btn-danger hidden" id="note-modal-delete">Delete</button>
+                <button class="btn btn-primary" id="note-modal-save">Save Note</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Level Up Modal -->
+    <div class="modal-overlay" id="levelup-modal">
+        <div class="modal levelup-modal-content">
+            <div class="levelup-particles" id="levelup-particles"></div>
+            <div class="levelup-content">
+                <div class="levelup-badge">
+                    <span class="levelup-icon">⬆️</span>
+                </div>
+                <h2 class="levelup-title">LEVEL UP!</h2>
+                <p class="levelup-level">Level <span id="levelup-level-num">2</span></p>
+                <p class="levelup-class" id="levelup-class-name">Apprentice Scribe</p>
+                <div class="levelup-rewards" id="levelup-rewards"></div>
+                <button class="btn btn-primary btn-lg" id="levelup-dismiss">Continue Adventure</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Achievement Unlocked Toast -->
+    <div id="achievement-toast" class="achievement-toast hidden">
+        <div class="toast-icon">🏆</div>
+        <div class="toast-content">
+            <span class="toast-title">Achievement Unlocked!</span>
+            <span class="toast-name" id="toast-achievement-name"></span>
+        </div>
+    </div>
+
+    <!-- XP Gain Toast -->
+    <div id="xp-toast-container" class="xp-toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
