@@ -34,22 +34,22 @@ int linerSearch(vector<int> arr, int ele){
 
 
 // Deleting an element from an array
-// int deleteElement(vector<int> arr, int ele){
-//     int n = arr.size();
-//     int i;
-//     for(i = 0; i < n; i++){
-//         if(arr[i] == ele){
-//             break;
-//         }
-//     }
-//     if(i == n){
-//         return -1; // Element not found
-//     }
-//     for(int j = i; j < n-1; j++){
-//         arr[j] = arr[j+1];
-//     }
-//     return (n-1); // Return new size of the array
-// }
+int deleteElement(vector<int> arr, int ele){
+    int n = arr.size();
+    int i;
+    for(i = 0; i < n; i++){
+        if(arr[i] == ele){
+            break;
+        }
+    }
+    if(i == n){
+        return -1; // Element not found
+    }
+    for(int j = i; j < n-1; j++){
+        arr[j] = arr[j+1];
+    }
+    return (n-1); // Return new size of the array
+}
 
 
 // Largest Element in an array
