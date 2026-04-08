@@ -120,15 +120,18 @@ vector <int> reverseArray(vector<int> arr){
 // Remove duplicates from a sorted array
 vector<int> removeDuplicates(vector<int> arr){
     int n = arr.size();
-    int i = 1;
-    for(int j = 1; j < n; j++){
-        if(arr[j] != arr[j-1]){
-            arr[i] = arr[j];
-            i++;
+    if(n == 0){
+        return arr;
+    }
+    vector<int> uniqueArr;
+    uniqueArr.push_back(arr[0]);
+    for(int i = 1; i < n; i++){
+        if(arr[i] != arr[i-1]){
+            uniqueArr.push_back(arr[i]);
         }
     }
-    arr.resize(i);
-    return arr;
+    return uniqueArr;
+
 }
 
 // Move Zeros to the end of the array
@@ -177,6 +180,8 @@ int maxSumOfSubarray(vector<int> arr, int k){
     }
     return maxSum;
 }
+
+
 
 
 
