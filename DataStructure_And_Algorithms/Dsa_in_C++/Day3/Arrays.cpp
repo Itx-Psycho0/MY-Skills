@@ -72,7 +72,7 @@ int largestElement(vector<int> arr){
 int secondLargestElement(vector<int> arr){
     int n = arr.size();
     int max = arr[0];
-    int secondMax = INT_MIN;
+    int secondMax = -1;
     for(int i = 1; i < n; i++){
         if(arr[i] > max){
             secondMax = max;
