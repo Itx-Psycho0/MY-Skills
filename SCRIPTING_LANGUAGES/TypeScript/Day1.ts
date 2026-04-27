@@ -34,8 +34,532 @@
 // The resulting JavaScript code can then be executed in any JavaScript environment.
 
 // Example TypeScript Code
-let message: string = "Hello, TypeScript!";
-console.log(message);
+// let message: string = "Hello, TypeScript!";
+// console.log(message);
 
 // Output:
 // Hello, TypeScript!
+
+//Annotation :- Type annotations in TypeScript allow developers to explicitly specify the types of variables, function parameters, and return values. This helps catch type-related errors during development and provides better code readability and maintainability. Type annotations are denoted using a colon (:) followed by the type.
+
+// Annotating types for variables
+let num1: number = 10;
+let num2: number = 20;
+let sum: number = num1 + num2;
+console.log(`The sum of ${num1} and ${num2} is ${sum}.`);
+
+
+// Type Inference :- Type inference is a feature in TypeScript that allows the compiler to automatically determine the type of a variable based on its initial value. When you declare a variable without an explicit type annotation, TypeScript will infer the type from the assigned value. This can help reduce verbosity while still providing type safety.
+
+// Example of type inference
+let message = 12;
+// message = "Hello, TypeScript!"; // This will cause a type error because 'message' was inferred to be of type 'number' based on its initial value.
+console.log(message);
+
+
+// Any type :- The 'any' type in TypeScript is a special type that allows a variable to hold any value without type checking. When a variable is declared with the 'any' type, it can be assigned values of any type, and TypeScript will not perform any type checking on it. This can be useful in situations where you want to opt out of type checking for a specific variable, but it should be used with caution as it can lead to potential runtime errors if not used properly.
+
+// Example of using 'any' type
+let flexibleVariable: any = 42; // Initially assigned a number
+console.log(flexibleVariable); // Output: 42
+flexibleVariable = "Now I'm a string!"; // Reassigned to a string
+console.log(flexibleVariable); // Output: Now I'm a string!
+
+// function parameters annotation
+function greet(name: string): string {
+    return `Hello, ${name}!`;
+}
+console.log(greet("Alice")); // Output: Hello, Alice!
+// function return type annotation
+function add(a: number, b: number): number {
+    return a + b;
+}
+console.log(add(5, 10)); // Output: 15
+
+// Default Parameters :- In TypeScript, you can specify default values for function parameters. If a parameter is not provided when the function is called, the default value will be used. This can help simplify function calls and provide fallback values for optional parameters.
+
+// Example of default parameters
+function greetWithDefault(name: string = "Guest"): string {
+    return `Hello, ${name}!`;
+}
+console.log(greetWithDefault()); // Output: Hello, Guest!
+console.log(greetWithDefault("Alice")); // Output: Hello, Alice!
+
+//void type :- The 'void' type in TypeScript is used to indicate that a function does not return a value. When a function is declared with a return type of 'void', it means that the function is intended to perform some action but does not produce a meaningful result that can be used by the caller. Functions with a 'void' return type typically have side effects, such as modifying variables, logging output, or performing other operations without returning any data.
+
+// Example of a function with 'void' return type
+function logMessage(message: string): void {
+    console.log(message);
+}
+logMessage("This is a void function."); // Output: This is a void function.
+
+
+// Never type :- The 'never' type in TypeScript represents a value that never occurs. It is used to indicate that a function will never return a value, either because it always throws an error or because it has an infinite loop. The 'never' type is a subtype of all other types, meaning that it can be assigned to any type, but no type can be assigned to 'never' except for itself.
+
+// Example of a function with 'never' return type
+function throwError(message: string): never {
+    throw new Error(message);
+}
+// throwError("This function never returns."); // This will always throw an error
+
+// Example of a function with an infinite loop
+function infiniteLoop(): never {
+    while (true) {
+        // This loop will never terminate
+    }
+}
+
+// Note: The 'never' type is typically used in scenarios where you want to indicate that a function will never successfully complete, such as in error handling or when defining functions that are meant to run indefinitely.
+
+let x: never;
+// x = 10; // Error: Type 'number' is not assignable to type 'never'.
+// x = "Hello"; // Error: Type 'string' is not assignable to type 'never'.
+
+// x = infiniteLoop(); // This is valid because 'infiniteLoop' returns 'never'
+
+
+// Arrays Types
+let numbers: number[] = [1, 2, 3, 4, 5];
+let strings: string[] = ["Hello", "TypeScript", "Arrays"];
+let mixed: (number | string)[] = [1, "Two", 3, "Four"];
+
+
+// Multidimensional Arrays
+let matrix: number[][] = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+
+// Object Types
+interface Person {
+    name: string;
+    age: number;
+    isStudent: boolean;
+}
+// let person2: Person = {
+//     name: "Alice",
+//     age: 30,
+//     isStudent: false
+// };
+
+// Alternatively, you can define an object type inline without using an interface
+const man : { name: string; age: number; isStudent: boolean } = {
+    name: "Bob",
+    age: 25,
+    isStudent: true
+};
+
+// object annontation on function parameters
+function printPersonInfo(): {name: string; age: number; isStudent: boolean} {
+    return {
+        name: "Charlie",
+        age: 28,
+        isStudent: false
+    };
+}
+
+printPersonInfo();
+
+
+// type alias :- Type aliases in TypeScript allow you to create a new name for a type. This can be useful for simplifying complex types, improving code readability, and creating reusable type definitions. A type alias is defined using the 'type' keyword followed by the name of the alias and the type it represents.
+
+// Example of a type alias
+type Point = {
+    x: number;
+    y: number;
+};
+function printPoint(point: Point): void {
+    console.log(`Point coordinates: (${point.x}, ${point.y})`);
+}
+const myPoint: Point = { x: 10, y: 20 };
+printPoint(myPoint); // Output: Point coordinates: (10, 20)
+
+
+// optional properties :- In TypeScript, you can define optional properties in an interface or type alias using the '?' symbol. Optional properties are properties that may or may not be present in an object. When a property is marked as optional, it means that it is not required for an object to conform to the interface or type definition. This can be useful when you want to allow for flexibility in the structure of objects while still providing type safety.
+
+// Example of optional properties in an interface
+interface User {
+    username: string;
+    email: string;
+    age?: number; // Optional property
+}
+const user1: User = {
+    username: "john_doe",
+    email: "john.doe@example.com"
+};
+
+const user2: User = {
+    username: "jane_smith",
+    email: "jane.smith@example.com",
+    age: 30
+};
+
+
+// readonly properties :- In TypeScript, you can define readonly properties in an interface or type alias using the 'readonly' keyword. Readonly properties are properties that can only be assigned a value once, either during initialization or in the constructor of a class. Once a value is assigned to a readonly property, it cannot be changed. This can be useful for creating immutable objects or ensuring that certain properties remain constant throughout the lifecycle of an object.
+
+// Example of readonly properties in an interface
+interface Car {
+    readonly make: string;
+    readonly model: string;
+    year: number;
+}
+const myCar: Car = {
+    make: "Toyota",
+    model: "Corolla",
+    year: 2020
+};
+// myCar.make = "Honda"; // Error: Cannot assign to 'make' because it is a read-only property.
+myCar.year = 2021; // This is allowed because 'year' is not a readonly property
+
+
+// Intersection Types :- Intersection types in TypeScript allow you to combine multiple types into a single type that has all the properties and methods of the combined types. This is done using the '&' operator. Intersection types are useful when you want to create a new type that represents the combination of two or more existing types, allowing you to leverage the features of each type while ensuring type safety.
+
+// Example of intersection types
+interface A {
+    propA: string;
+}
+interface B {
+    propB: number;
+}
+type AB = A & B; // Intersection type that combines A and B
+const obj: AB = {
+    propA: "Hello",
+    propB: 42
+};
+console.log(obj.propA); // Output: Hello
+console.log(obj.propB); // Output: 42
+
+
+// union types :- Union types in TypeScript allow you to specify that a variable or parameter can be one of several types. This is done using the '|' operator. Union types are useful when you want to allow for multiple possible types for a variable or parameter while still maintaining type safety. When a variable is declared with a union type, it can hold values of any of the specified types, and TypeScript will perform type checking based on the possible types.
+
+// Example of union types
+function printId(id: number | string): void {
+    console.log(`ID: ${id}`);
+}
+printId(123); // Output: ID: 123
+printId("abc"); // Output: ID: abc
+
+
+
+//Literal Types :- Literal types in TypeScript allow you to specify that a variable or parameter can only have a specific set of values. This is done by using string literals, numeric literals, or boolean literals as types. Literal types are useful when you want to restrict the possible values of a variable or parameter to a specific set of options, providing better type safety and improving code readability.
+
+
+// Example of literal types
+type Direction = "North" | "South" | "East" | "West";
+function move(direction: Direction): void {
+    console.log(`Moving ${direction}`);
+}
+move("North"); // Output: Moving North
+move("South"); // Output: Moving South
+// move("Up"); // Error: Argument of type '"Up"' is not assignable to parameter of type 'Direction'.
+
+// tuple types :- Tuple types in TypeScript allow you to define an array with a fixed number of elements, where each element can have a different type. This is useful when you want to represent a collection of values that are related but may have different types. A tuple is defined using square brackets [] and specifying the types of each element in the order they appear.
+
+// Example of tuple types
+let personInfo: [string, number, boolean] = ["Alice", 30, true];
+console.log(personInfo[0]); // Output: Alice
+console.log(personInfo[1]); // Output: 30
+console.log(personInfo[2]); // Output: true
+
+// Enums :- Enums in TypeScript are a way to define a set of named constants. They allow you to create a collection of related values that can be used as a type. Enums can be numeric or string-based, and they provide a way to give more meaningful names to values, improving code readability and maintainability.
+
+// Example of numeric enums
+enum Directions {
+    North,
+    South,
+    East,
+    West
+}
+console.log(Directions.North); // Output: 0
+console.log(Directions.South); // Output: 1
+console.log(Directions.East); // Output: 2
+console.log(Directions.West); // Output: 3
+
+// Example of string enums
+enum Status {
+    Active = "ACTIVE",
+    Inactive = "INACTIVE"
+}
+console.log(Status.Active); // Output: ACTIVE
+console.log(Status.Inactive); // Output: INACTIVE
+
+// TypeScript provides a powerful type system that allows developers to write safer and more maintainable code. By using features like type annotations, type inference, and various type constructs, you can catch errors early in the development process and improve the overall quality of your code.
+
+// why we use enums and when to use them?
+// Enums are used to define a set of named constants that represent a specific category of values. They provide a way to give more meaningful names to values, improving code readability and maintainability. You should use enums when you have a fixed set of related values that you want to represent as a type, such as directions, status codes, or user roles. Enums can help prevent errors by ensuring that only valid values are used and can make your code more self-documenting.
+
+// classes :- Classes in TypeScript are a blueprint for creating objects. They encapsulate data and behavior related to that data. A class can have properties (data) and methods (functions) that operate on that data. TypeScript classes also support features like inheritance, access modifiers, and constructors, making it easier to create complex and reusable code structures.
+
+// Example of a class in TypeScript
+class Person {
+    name: string;
+    age: number;
+    constructor(name: string, age: number) {
+        this.name = name;
+        this.age = age;
+    }
+    greet(): void {
+        console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+    }   
+}
+const person1 = new Person("Alice", 30);
+person1.greet(); // Output: Hello, my name is Alice and I am 30 years old.
+
+
+//Access Modifiers :- In TypeScript, access modifiers are keywords that determine the visibility and accessibility of class members (properties and methods). The three main access modifiers are 'public', 'private', and 'protected'.
+// 1. Public: Members declared as 'public' are accessible from anywhere, both inside and outside the class. This is the default access level if no modifier is specified.
+// 2. Private: Members declared as 'private' are only accessible within the class they are defined in. They cannot be accessed from outside the class or from derived classes.
+// 3. Protected: Members declared as 'protected' are accessible within the class they are defined in and in any derived classes, but not from outside the class hierarchy.
+
+// Example of access modifiers in a class
+class Employee {
+    public name: string; // Public property
+    private salary: number; // Private property
+    protected department: string; // Protected property
+    constructor(name: string, salary: number, department: string) {
+        this.name = name;
+        this.salary = salary;
+        this.department = department;
+    }
+    public getSalary(): number {
+        return this.salary;
+    }
+    protected getDepartment(): string {
+        return this.department;
+    }
+}
+const employee1 = new Employee("Bob", 50000, "Engineering");
+console.log(employee1.name); // Output: Bob
+// console.log(employee1.salary); // Error: Property 'salary' is private and only accessible within class 'Employee'.
+// console.log(employee1.department); // Error: Property 'department' is protected and only accessible within class 'Employee' and its subclasses.
+console.log(employee1.getSalary()); // Output: 50000
+
+
+// getters and setters :- Getters and setters in TypeScript are special methods that allow you to control access to the properties of a class. A getter is a method that retrieves the value of a property, while a setter is a method that sets the value of a property. Getters and setters can be used to add validation logic, perform calculations, or encapsulate the internal representation of a property while providing a public interface for accessing it.
+
+// Example of getters and setters in a class
+class Rectangle {
+    private _width: number;
+    private _height: number;
+    constructor(width: number, height: number) {
+        this._width = width;
+        this._height = height;
+    }
+    get width(): number {
+        return this._width;
+    }
+    set width(value: number) {
+        if (value <= 0) {
+            throw new Error("Width must be a positive number");
+        }
+        this._width = value;
+    }
+    get height(): number {
+        return this._height;
+    }
+    set height(value: number) {
+        if (value <= 0) {
+            throw new Error("Height must be a positive number");
+        }
+        this._height = value;
+    }
+    get area(): number {
+        return this._width * this._height;
+    }
+}
+const rect = new Rectangle(10, 5);
+console.log(rect.area); // Output: 50
+rect.width = 15;
+console.log(rect.area); // Output: 75
+// rect.height = -5; // This will throw an error: Height must be a positive number
+console.log(rect.area); // Output: 75 (height remains unchanged due to the error)
+
+
+// Interfaces :- Interfaces in TypeScript are a way to define the structure of an object. They specify the properties and methods that an object must have, without providing any implementation details. Interfaces can be used to enforce a contract for objects, ensuring that they adhere to a specific shape. They can also be used to define the types of function parameters and return values, making it easier to work with complex data structures and improving code readability.
+
+// Example of an interface in TypeScript
+interface Person {
+    name: string;
+    age: number;
+    greet(): void;
+}
+// const person3: Person = {
+//     name: "Charlie",
+//     age: 28,
+
+//     greet() {
+//         console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+//     }
+// };
+// person3.greet(); // Output: Hello, my name is Charlie and I am 28 years old.
+
+// interfaces can also be used to define the shape of function parameters and return values
+interface AddFunction {
+    (a: number, b: number): number;
+}   
+const add2: AddFunction = (x, y) => x + y;
+console.log(add2(5, 10)); // Output: 15
+
+// Interfaces can also be extended to create new interfaces that inherit properties and methods from existing ones
+interface Employee1 extends Person {
+    employeeId: number;
+}
+// const employee2: Employee1 = {
+//     name: "Dave",
+//     age: 35,
+//     employeeId: 12345,
+//     greet() {
+//         console.log(`Hello, my name is ${this.name}, I am ${this.age} years old, and my employee ID is ${this.employeeId}.`);
+//     }
+// };
+// employee2.greet(); // Output: Hello, my name is Dave, I am 35 years old, and my employee ID is 12345.
+
+// Interface for classes
+
+interface Shape {
+    area(): number;
+}
+class Circle implements Shape {
+    radius: number;
+    constructor(radius: number) {
+        this.radius = radius;
+    }
+    area(){
+        return Math.PI * this.radius * this.radius;
+    }
+}
+const circle = new Circle(5);
+console.log(circle.area()); // Output: 78.53981633974483
+
+
+// Declaration Merging :- Declaration merging in TypeScript is a feature that allows multiple declarations with the same name to be merged into a single declaration. This can occur with interfaces, namespaces, and modules. When TypeScript encounters multiple declarations with the same name, it combines their members into a single declaration, allowing you to extend existing types or add new functionality without modifying the original declaration.
+
+// Example of declaration merging with interfaces
+interface User {
+    username: string;
+}
+interface User {
+    email: string;
+}
+const user: User = {
+    username: "john_doe",
+    email: "john.doe@example.com"
+};
+console.log(user.username); // Output: john_doe
+console.log(user.email); // Output: john.doe@example.com
+
+
+// Generics :- Generics in TypeScript are a powerful feature that allows you to create reusable components and functions that can work with a variety of types. A generic type is defined using angle brackets <> and can be used to specify a placeholder for a type that will be provided when the component or function is used. Generics enable you to write flexible and type-safe code, as they allow you to work with different types while still maintaining type safety.
+
+// Example of a generic function
+function identity<T>(arg: T): T {
+    return arg;
+}
+console.log(identity<string>("Hello, Generics!")); // Output: Hello, Generics!
+console.log(identity<number>(42)); // Output: 42
+
+
+
+//Type Narrowing :- Type narrowing in TypeScript is the process of refining the type of a variable within a specific block of code based on certain conditions. This allows you to work with more specific types and access properties or methods that are only available on those types. Type narrowing can be achieved using type guards, which are expressions that check the type of a variable at runtime and narrow its type accordingly.
+
+// Example of type narrowing using type guards
+function printId1(id: number | string): void {
+    if (typeof id === "number") {
+        console.log(`ID is a number: ${id}`);
+    } else {
+        console.log(`ID is a string: ${id}`);
+    }
+}
+printId1(123); // Output: ID is a number: 123
+printId1("abc"); // Output: ID is a string: abc
+
+// TypeScript provides various type guards, such as 'typeof', 'instanceof', and user-defined type guards, to help with type narrowing and ensure that your code is type-safe while still being flexible enough to handle different types.
+
+
+// Example of type narrowing using 'instanceof' type guard
+class Dog {
+    bark() {
+        console.log("Woof!");
+    }
+}
+class Cat {
+    meow() {
+        console.log("Meow!");
+    }
+}
+function makeAnimalSound(animal: Dog | Cat): void {
+    if (animal instanceof Dog) {
+        animal.bark();
+    } else {
+        animal.meow();
+    }
+}
+
+const myDog = new Dog();
+const myCat = new Cat();
+makeAnimalSound(myDog); // Output: Woof!
+makeAnimalSound(myCat); // Output: Meow!
+
+// TypeScript's type narrowing features allow you to write code that can handle multiple types while still providing type safety and access to type-specific properties and methods, making your code more robust and maintainable.
+
+// TypeScript's type system and features like type annotations, type inference, interfaces, classes, and generics provide a powerful way to write safer and more maintainable code. By leveraging these features, you can catch errors early in the development process and create complex applications with confidence.
+
+// Example of type narrowing using a intersection type guard
+interface Bird {
+    fly(): void;
+}
+interface Fish {
+    swim(): void;
+}
+ function move1(animal: Bird | Fish): void {
+    if ("fly" in animal) {
+        animal.fly();
+    } else {
+        animal.swim();
+    }
+}
+
+const myBird: Bird = {
+    fly() {
+        console.log("The bird is flying.");
+    }
+};
+const myFish: Fish = {
+    swim() {
+        console.log("The fish is swimming.");
+    }
+};
+move1(myBird); // Output: The bird is flying.
+move1(myFish); // Output: The fish is swimming.
+
+
+//tsconfig.json file is used to configure the TypeScript compiler options for a project. It allows you to specify various settings such as the target JavaScript version, module system, type checking options, and more. The tsconfig.json file is typically located at the root of a TypeScript project and is used by the TypeScript compiler (tsc) to determine how to compile the TypeScript code into JavaScript. By configuring the tsconfig.json file, you can customize the behavior of the TypeScript compiler to suit the needs of your project and ensure that your code is compiled correctly.
+
+// Example of a tsconfig.json file
+/*
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "lib": ["es6"],
+        "types": [],
+        "strict": true,
+        "esModuleInterop": true
+    }
+}
+*/
+
+// The tsconfig.json file can include various compiler options, such as:
+// - "target": Specifies the target JavaScript version (e.g., "es5", "es6", "es2015").
+// - "module": Specifies the module system to use (e.g., "commonjs", "esnext").
+// - "lib": Specifies the library files to include in the compilation (e.g., ["es6", "dom"]).
+// - "types": Specifies the type declaration files to include in the compilation.
+// - "strict": Enables strict type checking options.
+// - "esModuleInterop": Enables compatibility with CommonJS modules.
+
+// By configuring the tsconfig.json file, you can ensure that your TypeScript code is compiled according to your project's requirements and that you have the necessary type checking and compatibility settings in place.
+// TypeScript's type system and features like type annotations, type inference, interfaces, classes, and generics provide a powerful way to write safer and more maintainable code. By leveraging these features, you can catch errors early in the development process and create complex applications with confidence.
+
+// In summary, TypeScript is a powerful superset of JavaScript that adds static typing and other features to enhance the development experience. It allows developers to write safer and more maintainable code by providing a robust type system, improved IDE support, and compatibility with existing JavaScript code. By understanding the basics of TypeScript and its features, you can start building applications with confidence and take advantage of the benefits it offers.
+// TypeScript is a powerful tool for building large-scale applications, and its features can help improve code quality and maintainability. By using TypeScript, you can catch errors early in the development process, enhance code readability, and create more robust applications that are easier to maintain over time.
