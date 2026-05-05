@@ -1,0 +1,16 @@
+{
+  "name": "classwork",
+  "version": "1.0.0",
+  "description": "learn for interview",
+  "license": "ISC",
+  "author": "psycho",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "router": "^2.2.0"
+  }
+}
