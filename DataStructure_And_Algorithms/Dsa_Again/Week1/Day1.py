@@ -24,3 +24,15 @@ result = linear_search(arr, target)
 if result != -1:
     print(f"Element {target} found at index: {result}")
 else:    print(f"Element {target} not found in the array.") 
+
+
+# done asymptotic analysis , growth rate , time complexity and spcae complexity , recursion tree overview , notation - big O notation , big omega notation , big theta notation , little o notation , little omega notation
+
+# time complexity chart
+# O(1) - Constant Time
+# O(log n) - Logarithmic Time
+# O(n) - Linear Time
+# O(n log n) - Linearithmic Time
+# O(n^2) - Quadratic Time
+# O(2^n) - Exponential Time
+# O(n!) - Factorial Time    
