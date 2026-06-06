@@ -402,7 +402,9 @@ print("Normalized matrix:\n", normalized_matrix)
 # Replace all values greater than 80 with 80 (clipping)
 clipped_matrix = np.clip(matrix, None, 80)
 print("Clipped matrix (values greater than 80 replaced with 80):\n", clipped_matrix)
+
 # using boolean indexing
 clipped_matrix_boolean = matrix.copy()
 clipped_matrix_boolean[clipped_matrix_boolean > 80] = 80
 print("Clipped matrix using boolean indexing:\n", clipped_matrix_boolean)
+
