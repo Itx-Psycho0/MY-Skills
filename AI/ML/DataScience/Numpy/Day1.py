@@ -345,3 +345,64 @@ matrix_multiplication_matmul = np.matmul(arr1, arr2)
 print("Matrix multiplication using np.matmul():\n", matrix_multiplication_matmul)  # Output: [[19 22] [43 50]]
 
 # Linear algebra operations are fundamental in machine learning for performing calculations on data, such as calculating the dot product of weight matrices and input data during forward passes in neural networks, or calculating the inverse of a matrix for solving linear equations in regression models. They are also used for dimensionality reduction techniques like Principal Component Analysis (PCA) and Singular Value Decomposition (SVD) for feature extraction and data compression.
+
+# performance optimization - Numpy is optimized for performance and can significantly speed up computations compared to pure Python code. It uses efficient algorithms and data structures under the hood, and it can take advantage of multi-threading and parallel processing on modern hardware. This makes it a popular choice for machine learning tasks that involve large datasets and complex computations, as it can help reduce training time and improve the efficiency of model development.
+
+# Performance tips for Numpy:
+# 1. Use vectorized operations instead of explicit loops for better performance.
+
+# 2. Avoid unnecessary copying of arrays by using views instead of copies when possible.
+# Always check if you need a copy or a view
+a = np.array([1, 2, 3, 4, 5])
+
+b = a[1:4]   # this is a VIEW — modifying b modifies a
+b[0] = 99
+print(a)     # [1 99 3 4 5]  — a was modified!
+
+c = a[1:4].copy()   # this is a COPY — safe to modify
+c[0] = 0
+print(a)     # [1 99 3 4 5]  — a unchanged
+
+# 3. Use in-place operations (e.g., arr += 1) to modify arrays without creating new ones.
+
+# 4. Use the appropriate data types for your arrays to save memory and improve performance (e.g., use float32 instead of float64 if high precision is not required).
+
+# 5. Take advantage of Numpy's built-in functions and methods, which are optimized for performance, instead of writing custom implementations for common operations.
+
+# 6. Consider using Numpy's broadcasting feature to perform operations on arrays of different shapes and sizes without the need for explicit loops, which can improve performance.
+
+# 7. If you are working with large datasets, consider using Numpy's memory-mapped arrays (numpy.memmap) to efficiently read and write data from disk without loading the entire dataset into memory at once.
+
+# 8. If you are performing heavy computations, consider using Numpy's support for multi-threading and parallel processing to take advantage of modern hardware capabilities for improved performance.
+
+# 9. Use Numpy's profiling tools (e.g., %timeit in Jupyter notebooks) to identify performance bottlenecks in your code and optimize accordingly.
+
+# 10. keepdims=True - when performing aggregate functions, you can use the keepdims parameter to maintain the dimensions of the original array, which can be useful for broadcasting and further operations without the need for reshaping.
+
+# practice 
+# Create a (5, 4) matrix of random integers between 1 and 100. Then find the row with the maximum sum, normalize every column to have mean 0 and std 1, and replace all values greater than 80 with 80 (clipping). Each of these should be one or two lines using what you learned here. If you find yourself writing a for loop, stop — there's a vectorized way.
+
+matrix = np.random.randint(1,101,(5,4))
+print("Original matrix:\n", matrix)
+
+# Find the row with the maximum sum
+sum_rows = np.sum(matrix, axis=1)
+print("Row sums:", sum_rows)
+max_row_index = np.argmax(sum_rows)
+print("Index of row with maximum sum:", max_row_index)
+
+# Normalize every column to have mean 0 and std 1
+col_mean = np.mean(matrix, axis=0)
+print("Column means:", col_mean)
+col_std = np.std(matrix, axis=0)
+print("Column standard deviations:", col_std)
+normalized_matrix = (matrix - col_mean) / col_std
+print("Normalized matrix:\n", normalized_matrix)
+
+# Replace all values greater than 80 with 80 (clipping)
+clipped_matrix = np.clip(matrix, None, 80)
+print("Clipped matrix (values greater than 80 replaced with 80):\n", clipped_matrix)
+# using boolean indexing
+clipped_matrix_boolean = matrix.copy()
+clipped_matrix_boolean[clipped_matrix_boolean > 80] = 80
+print("Clipped matrix using boolean indexing:\n", clipped_matrix_boolean)
