@@ -63,3 +63,49 @@ def count_trailing_zeros(n):
 # example usage
 n = 100
 print(f"The number of trailing zeros in {n}! is: {count_trailing_zeros(n)}")
+
+# 6. GCD
+def gcd(a,b):
+    res = min(a,b)
+    while res>0:
+        if a%res == 0 and b%res == 0:
+                return res
+        res-=1
+
+# example usage
+a = 48
+b = 18
+print(f"The GCD of {a} and {b} is: {gcd(a,b)}")
+
+# by second method - Euclidean Algorithm
+def gcd_euclidean(a,b):
+    while b:
+        a, b = b, a % b
+    return a
+
+# example usage
+a = 48
+b = 18
+print(f"The GCD of {a} and {b} by second method is: {gcd_euclidean(a,b)}")
+
+# 7. LCM
+def lcm(a,b):
+    return (a*b)//gcd_euclidean(a,b)
+
+# example usage
+a = 48
+b = 18
+print(f"The LCM of {a} and {b} is: {lcm(a,b)}")
+
+# second method to calculate LCM
+def lcm_second_method(a,b):
+    res = max(a,b)
+    while True:
+        if res%a == 0 and res%b == 0:
+            return res
+        res+=1
+
+# example usage
+a = 48
+b = 18
+print(f"The LCM of {a} and {b} by second method is: {lcm_second_method(a,b)}")
