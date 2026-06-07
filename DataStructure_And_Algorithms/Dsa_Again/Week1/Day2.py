@@ -64,7 +64,7 @@ def count_trailing_zeros(n):
 n = 100
 print(f"The number of trailing zeros in {n}! is: {count_trailing_zeros(n)}")
 
-# 6. GCD
+# 5. GCD
 def gcd(a,b):
     res = min(a,b)
     while res>0:
@@ -88,7 +88,7 @@ a = 48
 b = 18
 print(f"The GCD of {a} and {b} by second method is: {gcd_euclidean(a,b)}")
 
-# 7. LCM
+# 6. LCM
 def lcm(a,b):
     return (a*b)//gcd_euclidean(a,b)
 
@@ -109,3 +109,56 @@ def lcm_second_method(a,b):
 a = 48
 b = 18
 print(f"The LCM of {a} and {b} by second method is: {lcm_second_method(a,b)}")
+
+# 7  . prime number
+def is_prime(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+# second way
+def is_prime_second_method(n):
+    if n <= 1:
+        return False
+    if n <= 3:
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+
+# 8. prime factors of a number
+
+# first method - by trial division
+def prime_factors(n):
+    factors = []
+    for i in range(2, int(n**0.5) + 1):
+        while n % i == 0:
+            factors.append(i)
+            n //= i
+    if n > 1:
+        factors.append(n)
+    return factors
+
+# example usage
+n = 60
+print(f"The prime factors of {n} are: {prime_factors(n)}")
+
+# second method - naive method
+def prime_factors_naive(n):
+    factors=[]
+    for i in range(2,n+1):
+        if n%i == 0 and is_prime(i):
+            factors.append(i)
+    return factors
+
+# example usage
+n = 60
+print(f"The prime factors of {n} by second method are: {prime_factors_naive(n)}")
