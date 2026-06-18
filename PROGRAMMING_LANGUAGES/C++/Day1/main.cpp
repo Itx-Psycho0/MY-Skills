@@ -90,8 +90,8 @@ int main()
     cout << "Size of bool: " << sizeof(bool) << " bytes" << sizeof(isTrue) << endl; // Output the size of bool in bytes
 
     // they show 0 and 1 for false and true respectively when printed to the console.
-    // what if we want to print true and false instead of 1 and 0? We can use the std::boolalpha manipulator to achieve this. When std::boolalpha is used, it will print true and false for boolean values instead of 1 and 0.
-    cout << std::boolalpha; // Enable boolalpha to print true/false instead of 1/0
+    // what if we want to print true and false instead of 1 and 0? We can use the boolalpha manipulator to achieve this. When boolalpha is used, it will print true and false for boolean values instead of 1 and 0.
+    cout << boolalpha; // Enable boolalpha to print true/false instead of 1/0
     cout << "isTrue: " << isTrue << endl;
     cout << "isFalse: " << isFalse << endl;
 
@@ -619,12 +619,109 @@ int main()
 
     // do-while loop
     cout << "Do-While loop:" << endl;
-    int num = 0;
+    int num1 = 0;
     do
     {
-        cout << "Number: " << num << endl;
-        num++;
-    } while (num < 5);
+        cout << "Number: " << num1 << endl;
+        num1++;
+    } while (num1 < 5);
+
+    // for-each loop (range-based for loop)
+    cout << "For-each loop:" << endl;
+    int arr1[5] = {10, 20, 30, 40, 50};
+    for (int element : arr1) // For each element in arr1
+    {
+        cout << "Element: " << element << endl; // Output the value of the current element
+    }
+
+    // Arrays
+    int arr[5] = {1, 2, 3, 4, 5}; // Declaration and initialization of an array of integers with 5 elements
+    // how much size array occupies in memory
+    cout << "Size of array: " << sizeof(arr) << " bytes" << endl; // Output the size of the array in bytes -> 24 how? because each int occupies 4 bytes and there are 5 elements in the array, so total size is 4 * 5 = 20 bytes. But it may be more than that due to padding and alignment requirements of the system.
+    cout << "Array elements: ";
+    for (int i = 0; i < 5; i++)
+    {
+        cout << arr[i] << " "; // Output each element of the array followed by a space
+    }
+    cout << endl;
+
+    // size of array using sizeof operator
+    int arr2[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};      // Declaration and initialization of an array of integers with 10 elements
+    int arr2_size = sizeof(arr2) / sizeof(arr2[0]); // Calculate the number of elements in the array by dividing the total size of the array by the size of one element
+    cout << "Size of arr2: " << arr2_size << " elements" << endl;
+
+    // Character Arrays
+    char str[20] = "Hello, World!";             // Declaration and initialization of a character array (string) with a maximum size of 20 characters
+    cout << "Character Array: " << str << endl; // Output the character array (string)
+    // \0
+    char str2[20] = {'H', 'e', 'l', 'l', 'o', '\0'}; // Declaration and initialization of a character array (string) with explicit null terminator
+    cout << "Character Array 2: " << str2 << endl;   // Output the character array (string)
+
+    // Declare array
+    //  char message [5]  {"Hello"};
+    // int data[5] {1,2,3,3,3};
+
+    // cout << "data : " << data << endl;
+
+    // Print out the array through looping
+    /*
+    cout << "message : ";
+    for( auto c : message){
+        cout << c ;
+    }
+    cout << endl;
+    */
+
+    /*
+     //Change characters in our array
+     message[1] = 'a';
+
+     //Print out the array through looping
+     cout << "message : ";
+     for( auto c : message){
+         cout << c ;
+     }
+     cout << endl;
+     */
+
+    // Will probably print garbage after your char array
+    /*
+    cout << "message : " << message << endl;
+    */
+
+    // If a character array is null terminated, it's called as C-String
+    /*
+    char message1 [] {'H','e','l','l','o','\0'};
+    cout << "message1 : " << message1 << endl;
+    cout << "sizeof(message1) : " << sizeof(message1) << endl;
+    */
+
+    /*
+     char message2 [6] {'H','e','l','l','o'};
+     cout << "message2 : " << message2 << endl;
+     cout << "sizeof(message2) : " << sizeof(message2) << endl;
+
+     char message3 [] {'H','e','l','l','o'}; // This is not a c string ,
+                                             //as there is not null character
+     cout << "message3 : " << message3 << endl;
+     cout << "sizeof(message3) : " << sizeof(message3) << endl;
+     */
+
+    // String literal
+    /*
+    char message4 [] {"Hello"};
+    cout << "message4 : " << message4 << endl;
+    cout << "sizeof(message4) : " << sizeof(message4) << endl;
+    */
+
+    // Can't safely print out arrays other than those of characters
+    int numbers[]{1, 2, 3, 4, 5};
+    cout << "numbers :  " << numbers << endl;
+
+    // Bounds of an array
+    /*
+    cout << "numbers[5] : " << numbers[5] << endl; // This is out of bounds access, as the valid indices for the array are 0 to 4
+    */
 
     return 0; // Return statement indicating successful execution
 }
