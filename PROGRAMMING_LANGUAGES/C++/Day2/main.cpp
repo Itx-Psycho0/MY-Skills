@@ -240,5 +240,12 @@ int main()
     cout << "Value of const_ref: " << const_ref << endl; // Output the value of const_ref, which is the same as const_var
     // const_ref = 200; // Compiler error: Cannot modify a constant reference
     cout << "Value of const_ref after attempting to modify: " << const_ref << endl; // Output the value of const_ref
+
+    // Character manipulation
+    cout << isalpha('A') << endl; // Check if 'A' is an alphabetic character (returns 1 for true)
+    cout << isdigit('5') << endl; // Check if '5' is a digit character (returns 1 for true)
+    cout << isspace(' ') << endl; // Check if ' ' is a whitespace character (returns 1 for true)
+    cout << toupper('a') << endl; // Convert 'a' to uppercase (returns 'A')
+    cout << tolower('B') << endl; // Convert 'B' to lowercase (returns 'b')
     return 0;
 }
