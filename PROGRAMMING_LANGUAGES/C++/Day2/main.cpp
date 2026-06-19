@@ -1,6 +1,9 @@
 // Pointers
 #include <iostream>
 using namespace std;
+
+int add(int a, int b); // Function declaration for the add function
+void printMessage();   // Function declaration for the printMessage function
 int main()
 {
     // pointers are king of variable that store memory address of another variable.
@@ -247,5 +250,24 @@ int main()
     cout << isspace(' ') << endl; // Check if ' ' is a whitespace character (returns 1 for true)
     cout << toupper('a') << endl; // Convert 'a' to uppercase (returns 'A')
     cout << tolower('B') << endl; // Convert 'B' to lowercase (returns 'b')
+
+    // one definition rule : A variable, function, or object can only be defined once in a program. If you try to define it multiple times, you will get a compilation error. However, you can declare it multiple times as long as there is only one definition.
+    // but for classes, you can have multiple definitions as long as they are identical and in different translation units (source files). This is because classes are typically defined in header files that are included in multiple source files. The compiler will ensure that only one definition of the class is used during the linking phase.
+
+    printMessage();       // Call the printMessage function to print a message
+    int res = add(5, 10); // Call the add function with arguments 5 and 10, and store the result in resu
+
     return 0;
+}
+
+// functions : A function is a block of code that performs a specific task. It can take input parameters, perform operations, and return a value. Functions help in organizing code, promoting reusability, and improving readability. In C++, functions are defined with a return type, a name, and a parameter list. They can be called from other parts of the program to execute the defined task.
+
+void printMessage()
+{
+    cout << "This is a simple function that prints a message." << endl;
+}
+
+int add(int a, int b)
+{
+    return a + b; // Return the sum of a and b
 }
