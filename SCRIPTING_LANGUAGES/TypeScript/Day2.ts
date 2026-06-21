@@ -155,4 +155,23 @@ const product1: Product = {
     price: 999.99,
 };
 
+//=============================================================================
+//Sets
+const uniqueNumbers: Set<number> = new Set([1, 2, 3, 4, 5]);
+uniqueNumbers.add(6);
+uniqueNumbers.delete(3);
+console.log(uniqueNumbers.has(2));
+
+
+//=============================================================================
+//Maps
+const userRoles: Map<string, string> = new Map();
+userRoles.set("Alice", "Admin");
+userRoles.set("Bob", "User");
+console.log(userRoles.get("Alice"));
+
+userRoles.delete("Bob");
+console.log(userRoles.has("Bob"));
+
+
 
