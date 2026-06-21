@@ -339,3 +339,28 @@ const myFish = {
 };
 move1(myBird); // Output: The bird is flying.
 move1(myFish); // Output: The fish is swimming.
+//tsconfig.json file is used to configure the TypeScript compiler options for a project. It allows you to specify various settings such as the target JavaScript version, module system, type checking options, and more. The tsconfig.json file is typically located at the root of a TypeScript project and is used by the TypeScript compiler (tsc) to determine how to compile the TypeScript code into JavaScript. By configuring the tsconfig.json file, you can customize the behavior of the TypeScript compiler to suit the needs of your project and ensure that your code is compiled correctly.
+// Example of a tsconfig.json file
+/*
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "lib": ["es6"],
+        "types": [],
+        "strict": true,
+        "esModuleInterop": true
+    }
+}
+*/
+// The tsconfig.json file can include various compiler options, such as:
+// - "target": Specifies the target JavaScript version (e.g., "es5", "es6", "es2015").
+// - "module": Specifies the module system to use (e.g., "commonjs", "esnext").
+// - "lib": Specifies the library files to include in the compilation (e.g., ["es6", "dom"]).
+// - "types": Specifies the type declaration files to include in the compilation.
+// - "strict": Enables strict type checking options.
+// - "esModuleInterop": Enables compatibility with CommonJS modules.
+// By configuring the tsconfig.json file, you can ensure that your TypeScript code is compiled according to your project's requirements and that you have the necessary type checking and compatibility settings in place.
+// TypeScript's type system and features like type annotations, type inference, interfaces, classes, and generics provide a powerful way to write safer and more maintainable code. By leveraging these features, you can catch errors early in the development process and create complex applications with confidence.
+// In summary, TypeScript is a powerful superset of JavaScript that adds static typing and other features to enhance the development experience. It allows developers to write safer and more maintainable code by providing a robust type system, improved IDE support, and compatibility with existing JavaScript code. By understanding the basics of TypeScript and its features, you can start building applications with confidence and take advantage of the benefits it offers.
+// TypeScript is a powerful tool for building large-scale applications, and its features can help improve code quality and maintainability. By using TypeScript, you can catch errors early in the development process, enhance code readability, and create more robust applications that are easier to maintain over time.
