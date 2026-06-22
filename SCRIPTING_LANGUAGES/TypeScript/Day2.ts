@@ -174,4 +174,71 @@ userRoles.delete("Bob");
 console.log(userRoles.has("Bob"));
 
 
+//=============================================================================
+//Readonly Properties
+type ReadonlyUser = {
+    readonly name: string;
+    readonly age: number;
+};
+
+const readonlyUser: ReadonlyUser = {
+    name: "Charlie",
+    age: 25,
+};
+
+// readonlyUser.name = "Dave"; // Error: Cannot assign to 'name' because it is a read-only property.
+// readonlyUser.age = 30; // Error: Cannot assign to 'age' because it is a read-only property.
+// readonly vs const: readonly is a TypeScript type modifier that makes properties of an object immutable, while const is a JavaScript keyword that prevents reassignment of a variable. readonly allows you to create objects with properties that cannot be changed after they are set, while const ensures that the variable itself cannot be reassigned to a different value.
+
+
+//=============================================================================
+// as const
+const directions = ["up", "down", "left", "right"] as const;
+type DirectionLiteral = typeof directions[number];
+
+function moveDirection(direction: DirectionLiteral) {
+    console.log(`Moving ${direction}`);
+}
+
+moveDirection("up"); // Valid
+// moveDirection("forward"); // Error: Argument of type '"forward"' is not assignable to parameter of type 'DirectionLiteral'.
+
+
+//Object.freeze() is a method in JavaScript that prevents modifications to an object. When an object is frozen, you cannot add, remove, or change its properties. This is useful for creating immutable objects.
+//The Object.freeze() method is a built-in JavaScript function that prevents modifications to the top level of an object at runtime. It makes the object immutable, but it does not affect TypeScript's type system.
+
+const defaultPreferences = Object.freeze({
+    name: "Kreese",
+    doNotDisturb: false,
+    outOfOffice: false,
+});
+
+
+//Satifies Operator
+type UserProfile = {
+    name: string;
+    age: number;
+    isAdmin: boolean;
+};
+
+const userProfile = {
+    name: "Eve",
+    age: 28,
+    isAdmin: true,
+} satisfies UserProfile;
+
+// The satisfies operator is a TypeScript feature that allows you to check if an object conforms to a specific type without actually assigning it to that type. It is used for type checking and can help catch errors at compile time. In the example above, the userProfile object is checked against the UserProfile type to ensure it has the correct structure and types for its properties.
+
+
+
+//==============================================================================
+//Tuples
+type Point = [number, number];
+
+const point: Point = [10, 20];
+
+const [x, y] = point;
+console.log(`X: ${x}, Y: ${y}`);
+
+// Tuples allow you to define an array with a fixed number of elements where each element can have a different type. In the example above, the Point type is defined as a tuple with two elements: the first element is a number representing the x-coordinate, and the second element is a number representing the y-coordinate.
 
