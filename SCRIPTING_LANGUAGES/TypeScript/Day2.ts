@@ -242,3 +242,72 @@ console.log(`X: ${x}, Y: ${y}`);
 
 // Tuples allow you to define an array with a fixed number of elements where each element can have a different type. In the example above, the Point type is defined as a tuple with two elements: the first element is a number representing the x-coordinate, and the second element is a number representing the y-coordinate.
 
+
+//==============================================================================
+//Intersection Types
+type Admin = {
+    name: string;
+    privileges: string[];
+};
+
+type Employee = {
+    name: string;
+    startDate: Date;
+};
+
+type ElevatedEmployee = Admin & Employee;
+
+const elevatedEmployee: ElevatedEmployee = {
+    name: "Frank",
+    privileges: ["manage-users", "edit-content"],
+    startDate: new Date("2020-01-01"),
+};
+
+// Intersection types allow you to combine multiple types into one. In the example above, the ElevatedEmployee type is an intersection of the Admin and Employee types, meaning it has all the properties of both types.    
+
+
+//==============================================================================
+//never Type
+function throwError(message: string): never {
+    throw new Error(message);
+}
+
+function infiniteLoop(): never {
+    while (true) {
+        // Loop forever
+    }
+}
+
+// The never type represents values that never occur. It is used for functions that always throw an error or have an infinite loop, indicating that they will never return a value. In the example above, the throwError function throws an error and does not return anything, while the infiniteLoop function runs indefinitely without returning.
+
+
+//=============================================================================
+//Interfaces
+interface UserInterface {
+    name: string;
+    age: number;
+    isAdmin: boolean;
+}
+
+const userInterface: UserInterface = {
+    name: "Grace",
+    age: 32,
+    isAdmin: false,
+};
+
+// Interfaces in TypeScript are used to define the structure of an object. They can be implemented by classes or used to type-check objects. In the example above, the UserInterface defines the properties that a user object should have, and the userInterface variable is typed accordingly
+
+
+//Extending Interfaces
+interface AdminInterface extends UserInterface {
+    privileges: string[];
+}
+
+const adminInterface: AdminInterface = {
+    name: "Hank",
+    age: 40,
+    isAdmin: true,
+    privileges: ["manage-users", "edit-content"],
+};
+
+// Extending interfaces allows you to create a new interface that inherits properties from an existing interface. In the example above, the AdminInterface extends the UserInterface, adding a new property called privileges. This means that any object of type AdminInterface must have all the properties of UserInterface as well as the additional privileges property.
