@@ -382,3 +382,72 @@ enum Class {
 // Enums are slightly easier to refactor because if you change the value of a label (e.g. "Hearts" to "hearts"), you don't have to change the string literal in every place you use it.
 // If you're using numerical enums, then the reverse mapping can be useful I guess.
 // CardSuit.Hearts provides more context than just "Hearts". That said, any good editor is going to say type CardSuit on hover, so it's not a huge win.
+
+
+//=============================================================================
+//Type Narrowing
+// Type narrowing is the process of refining the type of a variable within a specific scope. TypeScript uses control flow analysis to determine the type of a variable based on the code that has been executed. This allows for more precise type checking and can help catch errors at compile time.
+
+function printId(id: number | string) {
+    if (typeof id === "string") {
+        console.log(`ID is a string: ${id.toUpperCase()}`);
+    } else {
+        console.log(`ID is a number: ${id.toFixed(2)}`);
+    }
+}
+
+printId("abc123");
+printId(456);
+
+// unknown Type Narrowing
+function processValue(value: unknown) {
+    if (typeof value === "string") {
+        console.log(`Value is a string: ${value.toUpperCase()}`);
+    } else if (typeof value === "number") {
+        console.log(`Value is a number: ${value.toFixed(2)}`);
+    } else {
+        console.log("Value is of an unknown type.");
+    }
+}
+
+processValue("hello");
+processValue(42);
+processValue(true);
+
+
+//=============================================================================
+//In Operator Narrowing
+type AdminUser = {
+    name: string;
+    privileges: string[];
+};
+
+type RegularUser = {
+    name: string;
+    startDate: Date;
+};
+
+type UserType = AdminUser | RegularUser;
+
+function printUserInfo(user: UserType) {
+    console.log(`Name: ${user.name}`);
+    if ("privileges" in user) {
+        console.log(`Privileges: ${user.privileges.join(", ")}`);
+    }
+    if ("startDate" in user) {
+        console.log(`Start Date: ${user.startDate.toDateString()}`);
+    }
+}
+
+const adminUser: AdminUser = {
+    name: "Alice",
+    privileges: ["manage-users", "edit-content"],
+};
+
+const regularUser: RegularUser = {
+    name: "Bob",
+    startDate: new Date("2022-01-01"),
+};
+
+printUserInfo(adminUser);
+printUserInfo(regularUser); 
