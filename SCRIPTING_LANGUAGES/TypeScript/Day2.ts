@@ -311,3 +311,74 @@ const adminInterface: AdminInterface = {
 };
 
 // Extending interfaces allows you to create a new interface that inherits properties from an existing interface. In the example above, the AdminInterface extends the UserInterface, adding a new property called privileges. This means that any object of type AdminInterface must have all the properties of UserInterface as well as the additional privileges property.
+
+
+//=============================================================================
+//Enums
+//Enums are a set of defined constants. 
+enum Direction1 {
+    North, // 0
+    East, // 1
+    South, // 2
+    West, // 3
+}
+
+let myDirection: Direction1 = Direction1.North;
+console.log(myDirection); // Outputs: 0
+
+
+// Enum Compilation
+// Unlike most TypeScript features, enums generate additional JavaScript code at runtime. Let's see what happens when we compile this enum (we'll talk about how to compile manually later):
+
+enum Class {
+    Rogue,
+    Mage,
+    Warrior,
+    Priest,
+}
+
+// We get a JavaScript object that looks like this:
+
+// var Class;
+// (function (Class) {
+//   Class[(Class["Rogue"] = 0)] = "Rogue";
+//   Class[(Class["Mage"] = 1)] = "Mage";
+//   Class[(Class["Warrior"] = 2)] = "Warrior";
+//   Class[(Class["Priest"] = 3)] = "Priest";
+// })(Class || (Class = {}));
+
+// This generated code creates the bidirectional mapping that we talked about before:
+
+// From name to value: Class["Rogue"] = 0
+// From value to name: Class[0] = "Rogue"
+// String Enum Compilation
+// Strings compile in a similar way:
+
+// enum Class {
+//   Rogue = "Rogue",
+//   Mage = "Mage",
+//   Warrior = "Warrior",
+//   Priest = "Priest",
+// }
+
+// Compiles to:
+
+// var Class;
+// (function (Class) {
+//   Class["Rogue"] = "Rogue";
+//   Class["Mage"] = "Mage";
+//   Class["Warrior"] = "Warrior";
+//   Class["Priest"] = "Priest";
+// })(Class || (Class = {}));
+
+// String enums do not support reverse mapping - the compiled JavaScript only maps from name to string value, not the other way around.
+
+
+//Pros of Unions
+// Unions are what you use for complex types, so it feels consistent to use them for primitives as well
+// Unions don't add any additional runtime code
+// It's less verbose to write a union
+// Pros of Enums
+// Enums are slightly easier to refactor because if you change the value of a label (e.g. "Hearts" to "hearts"), you don't have to change the string literal in every place you use it.
+// If you're using numerical enums, then the reverse mapping can be useful I guess.
+// CardSuit.Hearts provides more context than just "Hearts". That said, any good editor is going to say type CardSuit on hover, so it's not a huge win.
