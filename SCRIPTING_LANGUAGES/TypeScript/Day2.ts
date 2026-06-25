@@ -450,4 +450,14 @@ const regularUser: RegularUser = {
 };
 
 printUserInfo(adminUser);
-printUserInfo(regularUser); 
+printUserInfo(regularUser);
+
+
+// as Operator Narrowing
+function processInput(input: string | number) {
+    const processedInput = input as string; // Type assertion
+    console.log(`Processed Input: ${processedInput.toUpperCase()}`);
+}
+
+processInput("hello");
+// processInput(42); // This will cause a runtime error because 42 is not a string.
