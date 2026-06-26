@@ -136,3 +136,45 @@ class ExecutiveMember {
     }
 
 }
+
+
+//================================================================================
+// Partial <t> 
+
+//Partial<T> only makes the top-level properties optional.
+type PartialVehicle = Partial<Vehicle>;
+function updateVehicle(vehicle: Vehicle, updates: PartialVehicle) {
+    return { ...vehicle, ...updates };
+}
+
+const myVehicle: Vehicle = { make: "Toyota", model: "Camry" };
+const updatedVehicle = updateVehicle(myVehicle, { model: "Corolla" });
+console.log(updatedVehicle); // Output: { make: 'Toyota', model: 'Corolla' }
+
+
+//================================================================================
+// Required <t>
+
+//Required<T> makes all properties required. but only top-level properties are affected. Nested objects are not affected.
+type RequiredVehicle = Required<Vehicle>;
+const myRequiredVehicle: RequiredVehicle = { make: "Honda", model: "Civic" };
+// const myIncompleteVehicle: RequiredVehicle = { make: "Honda" }; // Error: Property 'model' is missing
+
+//================================================================================
+// Readonly <t>
+
+//Readonly<T> makes all properties readonly.
+type ReadonlyVehicle = Readonly<Vehicle>;
+const myReadonlyVehicle: ReadonlyVehicle = { make: "Ford", model: "Mustang" };
+// myReadonlyVehicle.make = "Chevrolet"; // Error: Cannot assign to 'make' because it is a read-only property
+
+
+//================================================================================
+//Record <K, T>
+
+//Record<K, T> constructs an object type whose property keys are K and whose property values are T.
+type VehicleRecord = Record<string, Vehicle>;
+const myVehicleRecord: VehicleRecord = {
+    car1: { make: "Nissan", model: "Altima" },
+    car2: { make: "Chevrolet", model: "Malibu" },
+};
