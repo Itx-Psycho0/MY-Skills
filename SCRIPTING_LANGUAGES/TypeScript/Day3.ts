@@ -178,3 +178,86 @@ const myVehicleRecord: VehicleRecord = {
     car1: { make: "Nissan", model: "Altima" },
     car2: { make: "Chevrolet", model: "Malibu" },
 };
+
+
+//================================================================================
+//Pick <T, K>
+
+//Pick<T, K> constructs a type by picking the set of properties K from T.
+type VehicleMake = Pick<Vehicle, "make">;
+const myVehicleMake: VehicleMake = { make: "Subaru" };
+// const myIncompleteVehicleMake: VehicleMake = { model: "Outback" }; // Error: Property 'make' is missing
+
+
+//================================================================================
+//Omit <T, K>
+
+//Omit<T, K> constructs a type by picking all properties from T and then removing K.
+type VehicleWithoutModel = Omit<Vehicle, "model">;
+const myVehicleWithoutModel: VehicleWithoutModel = { make: "Mazda" };
+// const myIncompleteVehicleWithoutModel: VehicleWithoutModel = { model: "CX-5" }; // Error: Property 'make' is missing
+
+
+//================================================================================//generics
+
+// Generic Functions
+function identity<T>(arg: T): T {
+    return arg;
+}
+
+const output1 = identity<string>("Hello, TypeScript!");
+const output2 = identity<number>(42);
+
+console.log(output1); // Output: Hello, TypeScript!
+console.log(output2); // Output: 42
+
+// Generic Classes
+class GenericNumber<T> {
+    zeroValue: T;
+    add: (x: T, y: T) => T;
+
+    constructor(zeroValue: T, addFunction: (x: T, y: T) => T) {
+        this.zeroValue = zeroValue;
+        this.add = addFunction;
+    }
+}
+
+const myGenericNumber = new GenericNumber<number>(0, (x, y) => x + y);
+console.log(myGenericNumber.add(5, 10)); // Output: 15
+
+
+// Generic Interfaces
+interface GenericIdentityFn<T> {
+    (arg: T): T;
+}
+
+
+function identityFn<T>(arg: T): T {
+    return arg;
+}
+
+const myIdentity: GenericIdentityFn<number> = identityFn;
+console.log(myIdentity(42)); // Output: 42
+
+// Generic Constraints
+function loggingIdentity<T extends { length: number }>(arg: T): T {
+    console.log(arg.length); // Now we know it has a .length property, so no more error
+    return arg;
+}
+
+loggingIdentity("Hello, TypeScript!"); // Output: 18
+loggingIdentity([1, 2, 3]); // Output: 3
+// loggingIdentity(42); // Error: Argument of type 'number' is not assignable to parameter of type '{ length: number; }'.
+
+
+
+//================================================================================
+// Conditional Types
+type IsString<T> = T extends string ? "Yes" : "No";
+
+type Test1 = IsString<string>; // "Yes"
+type Test2 = IsString<number>; // "No"  
+
+//infer
+type ElementType<T> = T extends Array<infer U> ? U : never;
+type MyElementType = ElementType<string[]>; // string
