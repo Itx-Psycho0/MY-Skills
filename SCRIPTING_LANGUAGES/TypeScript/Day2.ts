@@ -461,3 +461,8 @@ function processInput(input: string | number) {
 
 processInput("hello");
 // processInput(42); // This will cause a runtime error because 42 is not a string.
+
+
+
+
+
