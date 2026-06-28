@@ -145,3 +145,33 @@ except Exception as e:
 
 
 
+#===============================================================================
+
+#Basic Types
+character_name: str = "Sir Galahad"
+character_level: int = 7
+character_health: float = 72.5
+has_magic: bool = True
+
+#Function Parameters with type
+def get_character_status(name: str, level: int, health: float, has_magic: bool):
+    status = f"{name} is level {level} with {health} HP"
+
+    if has_magic:
+        status += ", and can cast spells"
+    else:
+        status += ", and cannot cast spells"
+
+    return status
+
+
+#Return Type Annotations
+def get_item_description(item_name: str, damage: int, is_magical: bool)-> str:
+    description = f"{item_name} deals {damage} damage"
+
+    if is_magical:
+        description += " and glows with arcane power"
+    else:
+        description += " and has no magical properties"
+
+    return description
