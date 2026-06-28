@@ -175,3 +175,40 @@ def get_item_description(item_name: str, damage: int, is_magical: bool)-> str:
         description += " and has no magical properties"
 
     return description
+
+
+# List and Set Hints
+character_items: list[str] = ["Sword", "Shield", "Potion"]
+magic_spells: set[str] = {"Fireball", "Ice Bolt", "Lightning Strike"}
+
+
+#Dictionary Hints
+character_stats: dict[str, int] = {
+    "strength": 15,
+    "dexterity": 12,
+    "intelligence": 14
+}
+
+# Tuple Hints
+character_position: tuple[float, float] = (10.5, 20.3)
+stats: tuple[int, float, int] = (100, 42.5, 75)
+
+
+#Nested Types
+character_spells: dict[str, list[str]] = {
+    "Gandalf": ["Fireball", "Light"],
+    "Frodo": ["Hide"],
+}
+
+#Optional Types
+damage_bonus: int | None = None  # This variable can be an int or None
+def summon_mount(has_mount: bool, distance: int)-> str | None:
+    if not has_mount:
+        return None
+
+    if distance > 420:
+        return None
+
+    return "Battle Horse"
+
+
