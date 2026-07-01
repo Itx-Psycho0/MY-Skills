@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <climits>
 using namespace std;
 
 void ReverseArray(vector<int> &arr)
@@ -55,6 +56,23 @@ int removeDuplicates(vector<int> &arr)
     return p;
 }
 
+int maxProfit(vector<int> &prices)
+{
+    int minPrice = INT_MAX;
+    int maxProfit = 0;
+    for (int i = 0; i < prices.size(); i++)
+    {
+        if (prices[i] < minPrice)
+        {
+            minPrice = prices[i];
+        }
+        else if (prices[i] - minPrice > maxProfit)
+        {
+            maxProfit = prices[i] - minPrice;
+        }
+    }
+    return maxProfit;
+}
 int main()
 {
     int n;
@@ -93,6 +111,12 @@ int main()
     cout << "Remove Duplicates";
     int newSize = removeDuplicates(arr);
     cout << "New size after removing duplicates: " << newSize << endl;
+    for (int i = 0; i < newSize; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    cout << "Maximum profit: " << maxProfit(arr) << endl;
 
     return 0;
 }
