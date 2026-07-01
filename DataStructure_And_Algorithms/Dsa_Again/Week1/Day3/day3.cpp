@@ -41,6 +41,20 @@ void moveZeroes(vector<int> &arr)
     }
 }
 
+int removeDuplicates(vector<int> &arr)
+{
+    int p = 1;
+    for (int i = 1; i < arr.size(); i++)
+    {
+        if (arr[i] != arr[p - 1])
+        {
+            arr[p] = arr[i];
+            p++;
+        }
+    }
+    return p;
+}
+
 int main()
 {
     int n;
@@ -75,6 +89,10 @@ int main()
         cout << arr[i] << " ";
     }
     cout << endl;
+
+    cout << "Remove Duplicates";
+    int newSize = removeDuplicates(arr);
+    cout << "New size after removing duplicates: " << newSize << endl;
 
     return 0;
 }
