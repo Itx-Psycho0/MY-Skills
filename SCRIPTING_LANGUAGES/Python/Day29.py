@@ -156,3 +156,175 @@ class Human:
         self.__pos_y = pos_y
         self.__speed = speed
         self.__stamina = stamina
+
+
+
+#Inheritance
+#Inheritance is a fundamental concept in object-oriented programming that allows a class (called a child or subclass) to inherit properties and behaviors (attributes and methods) from another class (called a parent or superclass). This promotes code reusability and establishes a hierarchical relationship between classes. In Python, inheritance is implemented by defining a new class that specifies the parent class in parentheses after the class name. The child class can then access and override the attributes and methods of the parent class, while also adding its own unique features.
+
+class Human:
+    def __init__(self, name: str) -> None:
+        self.__name = name
+
+    def get_name(self) -> str:
+        return self.__name
+
+
+## don't touch above this line
+
+
+class Archer(Human):
+    def __init__(self, name: str, num_arrows: int) -> None:
+        super().__init__(name)
+        self.__num_arrows=num_arrows
+
+    def get_num_arrows(self) -> int:
+        return self.__num_arrows
+    
+
+
+#Multiple Children
+class Hero:
+    def __init__(self, name: str, health: int) -> None:
+        self.__name = name
+        self.__health = health
+
+    def get_name(self) -> str:
+        return self.__name
+
+    def get_health(self) -> int:
+        return self.__health
+
+    def take_damage(self, damage: int) -> None:
+        self.__health -= damage
+
+
+class Archer(Hero):
+    def __init__(self, name: str, health: int, num_arrows: int) -> None:
+        super().__init__(name, health)
+        self.__num_arrows = num_arrows
+
+    def shoot(self, target: Hero) -> None:
+        if self.__num_arrows <= 0:
+            raise Exception("not enough arrows")
+        self.__num_arrows -= 1
+        target.take_damage(10)
+
+
+
+
+class Wizard(Hero):
+    def __init__(self, name: str, health: int, mana: int) -> None:
+        super().__init__(name, health)
+        self.__mana = mana
+
+    def cast(self, target: Hero) -> None:
+        if self.__mana < 25:
+            raise Exception("not enough mana")
+
+        self.__mana -= 25
+        target.take_damage(25)
+
+
+
+
+
+#Polymorphism
+#Polymorphism is a fundamental concept in object-oriented programming that allows objects of different classes to be treated as objects of a common superclass. It enables a single interface to represent different underlying forms (data types or classes), allowing for more flexible and reusable code. In Python, polymorphism is achieved through method overriding, where a subclass provides a specific implementation of a method that is already defined in its superclass. This allows the same method name to be used for different types of objects, and the appropriate method is called based on the object's actual class at runtime.
+
+
+
+#Operator Overloading
+class Sword:
+    def __init__(self, sword_type: str) -> None:
+        self.sword_type = sword_type
+
+    def __add__(self, other: "Sword") -> "Sword":
+        if self.sword_type == "bronze" and other.sword_type == "bronze":
+            return Sword("iron")
+
+        if self.sword_type == "iron" and other.sword_type == "iron":
+            return Sword("steel")
+
+        raise Exception("cannot craft")
+    
+
+
+#Practice
+SUITS: list[str] = ["Clubs", "Diamonds", "Hearts", "Spades"]
+
+RANKS: list[str] = [
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "Jack",
+    "Queen",
+    "King",
+    "Ace",
+]
+
+
+class Card:
+    def __init__(self, rank: str, suit: str) -> None:
+        self.rank = rank
+        self.suit = suit
+        self.rank_index = RANKS.index(rank)
+        self.suit_index = SUITS.index(suit)
+
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, Card):
+            return False
+        return (
+            self.rank_index == other.rank_index
+            and self.suit_index == other.suit_index
+        )
+
+    def __lt__(self, other: "Card") -> bool:
+        if self.rank_index != other.rank_index:
+            return self.rank_index < other.rank_index
+        return self.suit_index < other.suit_index
+
+    def __gt__(self, other: "Card") -> bool:
+        if self.rank_index != other.rank_index:
+            return self.rank_index > other.rank_index
+        return self.suit_index > other.suit_index
+
+    def __str__(self) -> str:
+        return f"{self.rank} of {self.suit}"
+
+
+class Round:
+    def resolve_round(self) -> int:
+        raise Exception("not implemented")
+
+
+class HighCardRound(Round):
+    def __init__(self, card1: Card, card2: Card) -> None:
+        self.card1 = card1
+        self.card2 = card2
+
+    def resolve_round(self) -> int:
+        if self.card1 > self.card2:
+            return 1
+        if self.card2 > self.card1:
+            return 2
+        return 0
+
+
+class LowCardRound(Round):
+    def __init__(self, card1: Card, card2: Card) -> None:
+        self.card1 = card1
+        self.card2 = card2
+
+    def resolve_round(self) -> int:
+        if self.card1 < self.card2:
+            return 1
+        if self.card2 < self.card1:
+            return 2
+        return 0
