@@ -56,6 +56,10 @@ class Archer:
 
 
 
+
+#Encapsulation
+#Encapsulation is a fundamental concept in object-oriented programming that refers to the bundling of data (attributes) and methods (functions) that operate on that data into a single unit, known as a class. It restricts direct access to some of the object's components, which can prevent the accidental modification of data and promote modularity and maintainability in code. In Python, encapsulation is achieved through the use of access modifiers, such as public, protected, and private attributes and methods.
+
 #private attributes
 #In Python, private attributes are not truly private, but they are intended to be used only within the class. By convention, private attributes are prefixed with an underscore (_). This indicates to other programmers that these attributes should not be accessed directly from outside the class. However, it is still possible to access them if needed, but it is generally discouraged. 
 class Wizard:
@@ -65,3 +69,28 @@ class Wizard:
         self.__intelligence=intelligence
         self.health=100*stamina
         self.mana=10*intelligence
+
+
+#Practice
+class BankAccount:
+    def __init__(self, account_number: str, initial_balance: float) -> None:
+        self.__account_number = account_number
+        self.__balance = initial_balance
+
+    def get_account_number(self) -> str:
+        return self.__account_number
+
+    def get_balance(self) -> float:
+        return self.__balance
+
+    def deposit(self, amount: float) -> None:
+        if amount <= 0:
+            raise ValueError("cannot deposit zero or negative funds")
+        self.__balance += amount
+
+    def withdraw(self, amount: float) -> None:
+        if amount <= 0:
+            raise ValueError("cannot withdraw zero or negative funds")
+        if amount > self.__balance:
+            raise ValueError("insufficient funds")
+        self.__balance -= amount
