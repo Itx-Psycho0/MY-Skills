@@ -94,3 +94,65 @@ class BankAccount:
         if amount > self.__balance:
             raise ValueError("insufficient funds")
         self.__balance -= amount
+
+
+
+
+#Abstraction
+#Abstraction is a fundamental concept in object-oriented programming that focuses on simplifying complex systems by modeling classes based on the essential properties and behaviors of the objects they represent. It allows programmers to hide unnecessary implementation details and expose only the relevant features of an object, making it easier to understand and work with. In Python, abstraction can be achieved through the use of abstract classes and interfaces, which define a blueprint for other classes to follow without providing a complete implementation.
+
+
+class Human:
+    def sprint_right(self) -> None:
+        self.__raise_if_cannot_sprint()
+        self.__use_sprint_stamina()
+        self.move_right()
+        self.move_right()
+
+    def sprint_left(self) -> None:
+        self.__raise_if_cannot_sprint()
+        self.__use_sprint_stamina()
+        self.move_left()
+        self.move_left()
+
+    def sprint_up(self) -> None:
+        self.__raise_if_cannot_sprint()
+        self.__use_sprint_stamina()
+        self.move_up()
+        self.move_up()
+
+    def sprint_down(self) -> None:
+        self.__raise_if_cannot_sprint()
+        self.__use_sprint_stamina()
+        self.move_down()
+        self.move_down()
+
+    def __raise_if_cannot_sprint(self) -> None:
+        if self.__stamina <= 0:
+            raise Exception("not enough stamina to sprint")
+
+    def __use_sprint_stamina(self) -> None:
+        self.__stamina -= 1
+
+    # don't touch below this line
+
+    def move_right(self) -> None:
+        self.__pos_x += self.__speed
+
+    def move_left(self) -> None:
+        self.__pos_x -= self.__speed
+
+    def move_up(self) -> None:
+        self.__pos_y += self.__speed
+
+    def move_down(self) -> None:
+        self.__pos_y -= self.__speed
+
+    def get_position(self) -> tuple[int, int]:
+        return self.__pos_x, self.__pos_y
+
+    def __init__(self, pos_x: int, pos_y: int, speed: int, stamina: int) -> None:
+        self.__pos_x = pos_x
+        self.__pos_y = pos_y
+        self.__speed = speed
+        self.__stamina = stamina
