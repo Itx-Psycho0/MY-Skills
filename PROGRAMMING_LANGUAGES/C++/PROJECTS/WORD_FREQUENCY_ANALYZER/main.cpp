@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <unordered_map>
+#include <cctype>
 using namespace std;
 
 void countFrequency(string para)
@@ -12,7 +13,7 @@ void countFrequency(string para)
     {
         if (w != ' ')
         {
-            word += w;
+            word += tolower(w);
         }
         else
         {
@@ -28,10 +29,20 @@ void countFrequency(string para)
         mp[word]++;
     }
 
+    int highestFrequency = 0;
+    string mostFrequentWord = "";
+
     for (const auto &[key, value] : mp)
     {
         cout << key << ":" << value << endl;
+        if (value > highestFrequency)
+        {
+            highestFrequency = value;
+            mostFrequentWord = key;
+        }
     }
+
+    cout << "Most frequent word: " << mostFrequentWord << " (Frequency: " << highestFrequency << ")" << endl;
 }
 
 int main()
