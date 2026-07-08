@@ -6,6 +6,7 @@ import ping from "./router/ping.router.js";
 const app: Express = express();
 
 // Middleware and routes
+app.use(express.json());
 app.use(ping);
 
 app.listen(config.PORT, () => {
