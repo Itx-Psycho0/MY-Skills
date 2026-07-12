@@ -1,7 +1,9 @@
-// Contact Management System
+// Contact Management System (V1.1)
+
 #include <iostream>
 #include <vector>
 #include <string>
+#include <limits>
 
 using namespace std;
 
@@ -12,152 +14,178 @@ struct Contact
     string email;
 };
 
-void addContact(vector<Contact> &contacts)
+int findInsertPosition(const vector<Contact> &contacts, const string &phone)
 {
-    Contact newContact;
-    cout << "Enter name: ";
-    getline(cin, newContact.name); // To consume the newline character after name input
-    cout << "Enter phone number: " << endl;
-    getline(cin, newContact.phoneNumber); // To consume the newline character after phone number input
-    cout << "Enter email: " << endl;
-    getline(cin, newContact.email); // To consume the newline character after email input
-    int low = 0;
-    int high = contacts.size() - 1;
+    int low = 0, high = (int)contacts.size() - 1;
     while (low <= high)
     {
         int mid = low + (high - low) / 2;
-        if ((contacts[mid].phoneNumber) == (newContact.phoneNumber))
-        {
-            cout << "Contact with this phone number already exists." << endl;
-            return;
-        }
-        else if ((contacts[mid].phoneNumber) < (newContact.phoneNumber))
-        {
+
+        if (contacts[mid].phoneNumber == phone)
+            return mid;
+
+        if (contacts[mid].phoneNumber < phone)
             low = mid + 1;
-        }
         else
-        {
             high = mid - 1;
-        }
+    }
+    return low;
+}
+
+int binarySearchPhone(const vector<Contact> &contacts, const string &phone)
+{
+    int low = 0, high = (int)contacts.size() - 1;
+
+    while (low <= high)
+    {
+        int mid = low + (high - low) / 2;
+
+        if (contacts[mid].phoneNumber == phone)
+            return mid;
+
+        if (contacts[mid].phoneNumber < phone)
+            low = mid + 1;
+        else
+            high = mid - 1;
     }
 
-    contacts.insert(contacts.begin() + low, newContact);
-    cout << "Contact added successfully!" << endl;
+    return -1;
+}
+
+void addContact(vector<Contact> &contacts)
+{
+    Contact c;
+
+    cout << "Enter Name : ";
+    getline(cin, c.name);
+
+    cout << "Enter Phone: ";
+    getline(cin, c.phoneNumber);
+
+    cout << "Enter Email: ";
+    getline(cin, c.email);
+
+    if (binarySearchPhone(contacts, c.phoneNumber) != -1)
+    {
+        cout << "\nPhone number already exists.\n";
+        return;
+    }
+
+    int pos = findInsertPosition(contacts, c.phoneNumber);
+    contacts.insert(contacts.begin() + pos, c);
+
+    cout << "\nContact Added Successfully!\n";
 }
 
 void displayContacts(const vector<Contact> &contacts)
 {
     if (contacts.empty())
     {
-        cout << "No contacts to display." << endl;
+        cout << "\nNo Contacts Found.\n";
         return;
     }
-    for (const auto &contact : contacts)
+
+    cout << "\n========== CONTACT LIST ==========\n";
+
+    for (const auto &c : contacts)
     {
-        cout << "Name: " << contact.name << ", Phone: " << contact.phoneNumber << ", Email: " << contact.email << endl;
+        cout << "----------------------------------\n";
+        cout << "Name  : " << c.name << "\n";
+        cout << "Phone : " << c.phoneNumber << "\n";
+        cout << "Email : " << c.email << "\n";
     }
+
+    cout << "----------------------------------\n";
 }
 
-void searchContactByPhoneNumber(vector<Contact> &contacts, string phoneNumber)
+void searchContactByPhone(const vector<Contact> &contacts, const string &phone)
 {
-    int low = 0;
-    int high = contacts.size() - 1;
-    while (low <= high)
+    int idx = binarySearchPhone(contacts, phone);
+
+    if (idx == -1)
     {
-        int mid = low + (high - low) / 2;
-        if ((contacts[mid].phoneNumber) == (phoneNumber))
+        cout << "\nContact Not Found.\n";
+        return;
+    }
+
+    const Contact &c = contacts[idx];
+
+    cout << "\n========== CONTACT FOUND ==========\n";
+    cout << "Name  : " << c.name << "\n";
+    cout << "Phone : " << c.phoneNumber << "\n";
+    cout << "Email : " << c.email << "\n";
+    cout << "===================================\n";
+}
+
+void searchContactByName(const vector<Contact> &contacts, const string &name)
+{
+    for (const auto &c : contacts)
+    {
+        if (c.name == name)
         {
-            cout << "Contact found: Name: " << contacts[mid].name << ", Phone: " << contacts[mid].phoneNumber << ", Email: " << contacts[mid].email << endl;
+            cout << "\n========== CONTACT FOUND ==========\n";
+            cout << "Name  : " << c.name << "\n";
+            cout << "Phone : " << c.phoneNumber << "\n";
+            cout << "Email : " << c.email << "\n";
+            cout << "===================================\n";
             return;
         }
-        else if ((contacts[mid].phoneNumber) < (phoneNumber))
-        {
-            low = mid + 1;
-        }
-        else
-        {
-            high = mid - 1;
-        }
     }
-    cout << "Contact not found." << endl;
+
+    cout << "\nContact Not Found.\n";
 }
 
-void searchContactByName(vector<Contact> &contacts, string name)
+void updateContact(vector<Contact> &contacts, const string &oldPhone)
 {
-    int low = 0;
-    int high = contacts.size() - 1;
-    while (low <= high)
+    int idx = binarySearchPhone(contacts, oldPhone);
+
+    if (idx == -1)
     {
-        int mid = low + (high - low) / 2;
-        if ((contacts[mid].name) == (name))
-        {
-            cout << "Contact found: Name: " << contacts[mid].name << ", Phone: " << contacts[mid].phoneNumber << ", Email: " << contacts[mid].email << endl;
-            return;
-        }
-        else if ((contacts[mid].name) < (name))
-        {
-            low = mid + 1;
-        }
-        else
-        {
-            high = mid - 1;
-        }
+        cout << "\nContact Not Found.\n";
+        return;
     }
-    cout << "Contact not found." << endl;
+
+    Contact updated = contacts[idx];
+    contacts.erase(contacts.begin() + idx);
+
+    cout << "Enter New Name : ";
+    getline(cin, updated.name);
+
+    cout << "Enter New Phone: ";
+    getline(cin, updated.phoneNumber);
+
+    cout << "Enter New Email: ";
+    getline(cin, updated.email);
+
+    if (binarySearchPhone(contacts, updated.phoneNumber) != -1)
+    {
+        cout << "\nNew phone number already exists.\n";
+
+        int pos = findInsertPosition(contacts, oldPhone);
+        updated.phoneNumber = oldPhone;
+        contacts.insert(contacts.begin() + pos, updated);
+        return;
+    }
+
+    int pos = findInsertPosition(contacts, updated.phoneNumber);
+    contacts.insert(contacts.begin() + pos, updated);
+
+    cout << "\nContact Updated Successfully!\n";
 }
 
-Contact updateContact(vector<Contact> &contacts, string PhoneNumber)
+void deleteContact(vector<Contact> &contacts, const string &phone)
 {
-    int low = 0;
-    int high = contacts.size() - 1;
-    while (low <= high)
-    {
-        int mid = low + (high - low) / 2;
-        if ((contacts[mid].phoneNumber) == (PhoneNumber))
-        {
-            cout << "Enter new phone number: ";
-            getline(cin, contacts[mid].phoneNumber);
-            cout << "Enter new email: ";
-            getline(cin, contacts[mid].email);
-            cout << "Contact updated successfully!" << endl;
-            return contacts[mid];
-        }
-        else if ((contacts[mid].phoneNumber) < (PhoneNumber))
-        {
-            low = mid + 1;
-        }
-        else
-        {
-            high = mid - 1;
-        }
-    }
-    cout << "Contact not found." << endl;
-    return Contact(); // Return an empty contact if not found
-}
+    int idx = binarySearchPhone(contacts, phone);
 
-void deleteContact(vector<Contact> &contacts, string phoneNumber)
-{
-    int low = 0;
-    int high = contacts.size() - 1;
-    while (low <= high)
+    if (idx == -1)
     {
-        int mid = low + (high - low) / 2;
-        if ((contacts[mid].phoneNumber) == (phoneNumber))
-        {
-            contacts.erase(contacts.begin() + mid);
-            cout << "Contact deleted successfully!" << endl;
-            return;
-        }
-        else if ((contacts[mid].phoneNumber) < (phoneNumber))
-        {
-            low = mid + 1;
-        }
-        else
-        {
-            high = mid - 1;
-        }
+        cout << "\nContact Not Found.\n";
+        return;
     }
-    cout << "Contact not found." << endl;
+
+    contacts.erase(contacts.begin() + idx);
+
+    cout << "\nContact Deleted Successfully!\n";
 }
 
 int main()
@@ -167,82 +195,75 @@ int main()
 
     do
     {
-        cout << "Contact Management System" << endl;
-        cout << "Press 1 to Add Contact" << endl;
-        cout << "Press 2 to Display all Contacts" << endl;
-        cout << "Press 3 to Search Contact by phone number" << endl;
-        cout << "Press 4 to Search Contact by name" << endl;
-        cout << "Press 5 to Update Contact" << endl;
-        cout << "Press 6 to Delete Contact" << endl;
-        cout << "Press 7 to Exit" << endl;
-        cout << "Enter your choice: ";
+        cout << "\n========== CONTACT MANAGEMENT ==========\n";
+        cout << "1. Add Contact\n";
+        cout << "2. Display Contacts\n";
+        cout << "3. Search By Phone\n";
+        cout << "4. Search By Name\n";
+        cout << "5. Update Contact\n";
+        cout << "6. Delete Contact\n";
+        cout << "7. Exit\n";
+        cout << "========================================\n";
+        cout << "Enter Choice: ";
+
         cin >> choice;
-        cin.ignore(); // To consume the newline character after choice input
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
         switch (choice)
         {
         case 1:
             addContact(contacts);
             break;
+
         case 2:
             displayContacts(contacts);
             break;
+
         case 3:
         {
-            string phoneNumber;
-            cout << "Enter phone number to search: ";
-            getline(cin, phoneNumber);
-            searchContactByPhoneNumber(contacts, phoneNumber);
+            string phone;
+            cout << "Enter Phone: ";
+            getline(cin, phone);
+            searchContactByPhone(contacts, phone);
+            break;
         }
-        break;
+
         case 4:
         {
             string name;
-            cout << "Enter name to search: ";
+            cout << "Enter Name: ";
             getline(cin, name);
             searchContactByName(contacts, name);
+            break;
         }
-        break;
+
         case 5:
         {
-            string phoneNumber;
-            cout << "Enter phone number of the contact to update: ";
-            getline(cin, phoneNumber);
-            Contact updatedContact = updateContact(contacts, phoneNumber);
-            int low = 0;
-            int high = contacts.size() - 1;
-            while (low <= high)
-            {
-                int mid = low + (high - low) / 2;
-                if ((contacts[mid].phoneNumber) == (phoneNumber))
-                {
-                    contacts.erase(contacts.begin() + mid);
-                    break;
-                }
-                else if ((contacts[mid].phoneNumber) < (phoneNumber))
-                {
-                    low = mid + 1;
-                }
-                else
-                {
-                    high = mid - 1;
-                }
-            }
-            contacts.insert(contacts.begin() + low, updatedContact);
+            string phone;
+            cout << "Enter Existing Phone: ";
+            getline(cin, phone);
+            updateContact(contacts, phone);
+            break;
         }
-        break;
+
         case 6:
         {
-            string phoneNumber;
-            cout << "Enter phone number of the contact to delete: ";
-            getline(cin, phoneNumber);
-            deleteContact(contacts, phoneNumber);
-        }
-        break;
-        case 7:
-            cout << "Exiting..." << endl;
+            string phone;
+            cout << "Enter Phone: ";
+            getline(cin, phone);
+            deleteContact(contacts, phone);
             break;
-        default:
-            cout << "Invalid choice. Please try again." << endl;
         }
+
+        case 7:
+            cout << "\nGoodbye!\n";
+            break;
+
+        default:
+            cout << "\nInvalid Choice.\n";
+        }
+
     } while (choice != 7);
+
+    return 0;
 }
