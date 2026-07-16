@@ -1,0 +1,7 @@
+{"level":"info","message":"Server is running on port 3000","timestamp":"07-16-2026 12:40:17","correlationId":"unknown-error-while-creating-correlation-id","data":{}}
+{"level":"info","message":"Validating request body against schema","timestamp":"07-16-2026 12:40:27","correlationId":"ed339b83-0ac0-4b86-a192-dccd2c8a9677","data":{}}
+{"level":"info","message":"Request body validation successful","timestamp":"07-16-2026 12:40:27","correlationId":"ed339b83-0ac0-4b86-a192-dccd2c8a9677","data":{}}
+{"level":"info","message":"getall hotel request received","timestamp":"07-16-2026 12:40:27","correlationId":"ed339b83-0ac0-4b86-a192-dccd2c8a9677","data":{}}
+{"level":"info","message":"Validating request body against schema","timestamp":"07-16-2026 12:40:43","correlationId":"2ea7b295-97b0-4119-9c85-308576f35b0e","data":{}}
+{"level":"info","message":"Request body validation successful","timestamp":"07-16-2026 12:40:43","correlationId":"2ea7b295-97b0-4119-9c85-308576f35b0e","data":{}}
+{"level":"info","message":"getall hotel request received","timestamp":"07-16-2026 12:40:43","correlationId":"2ea7b295-97b0-4119-9c85-308576f35b0e","data":{}}
