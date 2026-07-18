@@ -12,6 +12,16 @@ fn main() {
     println!("The first word is: {}", word);
 
     // println!("The first word is: {}", first_word(&s1)); // this line will cause a compile-time error because s1 is being modified, which invalidates the slice
+
+    // String literals are slices
+    let s2 = "hello world"; // s2 is a string literal, which is a slice of a string
+    let word2 = first_word(&s2.to_string()); // word2 is a slice of s2 from index 0 to the first space
+    println!("The first word is: {}", word2);
+
+    // arrays are slices
+    let a = [1, 2, 3, 4, 5];
+    let slice = &a[1..3]; // slice is a slice of a from index 1 to 3 (exclusive)
+    println!("slice = {:?}", slice);
 }
 fn first_word(s: &String) -> &str {
     let bytes = s.as_bytes(); // convert the string to a byte array
