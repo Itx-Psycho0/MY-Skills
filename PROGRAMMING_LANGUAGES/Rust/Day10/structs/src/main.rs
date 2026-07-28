@@ -6,6 +6,12 @@ struct Color(u8, u8, u8);
 struct Point(i32, i32);
 struct UnitLikeStruct;
 
+#[derive(Debug)] // derive the Debug trait for the Rectangle struct, which allows us to print the struct using the {:?} or {:#?} format specifiers.
+struct Rectangle {
+    width: f64,
+    height: f64,
+}
+
 fn main() {
     // Struct is a custom data type that lets you name and package together multiple related values that make up a meaningful group.
 
@@ -48,8 +54,23 @@ fn main() {
     //     age: u8,
     // }
     // why can't we use &str in struct? Because the lifetime of the &str is not guaranteed to be valid for the entire lifetime of the struct. If the &str is created from a temporary value, it will be dropped at the end of the statement, leaving the struct with a dangling reference. To avoid this, we can use String instead of &str, which owns its data and ensures that it remains valid for the lifetime of the struct.
+
+    let width: f64 = 5.0;
+    let height: f64 = 10.0;
+    let rectangle: Rectangle = Rectangle { width, height };
+    let area: f64 = calculate_area(&rectangle);
+    println!("The area of the rectangle is: {}", area);
+    println!("Rectangle: {:#?}", rectangle);
+
+    // {:?} is used to print the debug representation of a struct. It is useful for debugging purposes, as it allows you to see the values of the fields in the struct. The {:#?} syntax is used to print the debug representation in a more readable format, with each field on a new line and indented. {:#?} is called pretty print. It is useful for debugging purposes, as it allows you to see the values of the fields in the struct in a more readable format.
+
+    dbg!(&rectangle); // dbg! is a macro that prints the value of the expression passed to it, along with the file and line number where it was called. It is useful for debugging purposes, as it allows you to see the value of an expression at a specific point in the code. // dbg! is similar to println!, but it is more convenient to use, as it does not require you to specify a format string. It also prints the value of the expression in a more readable format, with each field on a new line and indented and returns the value of the expression, which can be useful for chaining method calls or for passing the value to another function. // dbg! is only available in debug builds, and will not be included in release builds. This is because it is intended for debugging purposes only, and can have a performance impact if used in production code.
 }
 
 fn build_person(name: String, age: u8) -> Person {
     Person { name, age }
+}
+
+fn calculate_area(rectangle: &Rectangle) -> f64 {
+    rectangle.width * rectangle.height
 }
